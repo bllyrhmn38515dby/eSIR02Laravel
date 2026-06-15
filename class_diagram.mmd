@@ -1,0 +1,133 @@
+classDiagram
+    class Faskes {
+        +String name
+        +String type
+        +Text address
+        +Double latitude
+        +Double longitude
+        +Boolean is_active
+        +users()
+        +bedCapacities()
+        +referralsFrom()
+        +referralsTo()
+    }
+    
+    class User {
+        +Int faskes_id
+        +String name
+        +String email
+        +String password
+        +String role
+        +Boolean is_active
+        +faskes()
+        +referrals()
+    }
+    
+    class Patient {
+        +String nik
+        +String name
+        +Date dob
+        +String gender
+        +Text address
+        +String contact
+        +referrals()
+    }
+    
+    class Ambulance {
+        +Int faskes_id
+        +String police_number
+        +String vehicle_type
+        +String status
+        +faskes()
+    }
+    
+    class BedCapacity {
+        +Int faskes_id
+        +String room_name
+        +Int capacity
+        +Int available
+        +Timestamp last_updated
+        +faskes()
+    }
+    
+    class Referral {
+        +String referral_number
+        +Int patient_id
+        +Int from_faskes_id
+        +Int to_faskes_id
+        +Int created_by
+        +Int driver_id
+        +Int ambulance_id
+        +Int bed_capacity_id
+        +String diagnosis
+        +String blood_pressure
+        +String heart_rate
+        +String respiratory_rate
+        +String temperature
+        +Int gcs_score
+        +Text reason
+        +Int response_time_minutes
+        +String status
+        +Text notes
+        +messages()
+        +auditLogs()
+        +documents()
+        +trackingPoints()
+        +getTriageInfo()
+    }
+
+    class Message {
+        +Int referral_id
+        +Int user_id
+        +Text body
+        +user()
+        +referral()
+    }
+
+    class AuditLog {
+        +Int user_id
+        +Int referral_id
+        +String action
+        +Text description
+        +user()
+        +referral()
+    }
+
+    class ReferralDocument {
+        +Int referral_id
+        +Int uploaded_by
+        +String file_path
+        +String document_type
+        +referral()
+        +uploadedBy()
+    }
+
+    class TrackingPoint {
+        +Int referral_id
+        +Double latitude
+        +Double longitude
+        +Timestamp recorded_at
+        +referral()
+    }
+
+    %% Relationships
+    Faskes "1" --> "*" User : employs
+    Faskes "1" --> "*" BedCapacity : has
+    Faskes "1" --> "*" Ambulance : owns
+    Faskes "1" --> "*" Referral : fromFaskes
+    Faskes "1" --> "*" Referral : toFaskes
+    
+    Patient "1" --> "*" Referral : undergoes
+    
+    User "1" --> "*" Referral : createdBy / driver
+    User "1" --> "*" Message : sends
+    User "1" --> "*" AuditLog : performs
+    User "1" --> "*" ReferralDocument : uploads
+    
+    Ambulance "1" --> "*" Referral : used by
+    BedCapacity "1" --> "*" Referral : books
+    
+    Referral "1" --> "*" Message : contains
+    Referral "1" --> "*" AuditLog : tracked in
+    Referral "1" --> "*" ReferralDocument : has
+    Referral "1" --> "*" TrackingPoint : traced by

@@ -1,0 +1,166 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+// Tentukan Variabel Base Bootstrap terlebih dahulu
+$font-family-sans-serif: 'Outfit', sans-serif;
+$primary: #4361ee;
+$secondary: #3f37c9;
+$success: #06d6a0;
+$info: #4cc9f0;
+$warning: #f72585;
+$danger: #e63946;
+$border-radius: 0.75rem;
+$border-radius-lg: 1rem;
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// ===================================
+// CUSTOM PREMIUM UI STYLES (Fase 7)
+// ===================================
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.95rem;
+    letter-spacing: 0.2px;
+}
+
+/* Glassmorphism Navbar */
+.navbar {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, $primary, $info);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-bs-theme="dark"] .navbar {
+    background-color: rgba(33, 37, 41, 0.8) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Card Micro-Animations & Beauty */
+.card {
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-weight: 600;
+    padding: 1.25rem 1.5rem;
+}
+
+[data-bs-theme="dark"] .card {
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+[data-bs-theme="dark"] .card-header {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Button Glow and Hover Effects */
+.btn {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, $primary, $secondary);
+    border: none;
+    color: white;
+}
+.btn-primary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+}
+
+/* Beautiful Table Styling */
+.table {
+    border-collapse: separate;
+    border-spacing: 0 0px;
+    margin-bottom: 0;
+}
+.table thead th {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--bs-secondary-color);
+    padding: 1rem;
+    background: transparent;
+}
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+.table tbody tr:hover {
+    background-color: rgba(67, 97, 238, 0.02);
+}
+[data-bs-theme="dark"] .table tbody tr:hover {
+    background-color: rgba(255,255,255,0.02);
+}
+.table tbody td {
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    vertical-align: middle;
+    padding: 1rem;
+}
+[data-bs-theme="dark"] .table tbody td, [data-bs-theme="dark"] .table thead th {
+    border-color: rgba(255,255,255,0.05);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb { background: #475569; }
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+/* Prevenst oversized SVG icons in pagination */
+nav[role="navigation"] svg {
+    max-width: 1.25rem;
+    max-height: 1.25rem;
+}
+
+/* Custom Premium Helper Classes */
+.btn-white {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+    color: var(--bs-body-color);
+}
+.btn-white:hover {
+    background: #f8f9fa;
+    border-color: rgba(0,0,0,0.15);
+}
+[data-bs-theme="dark"] .btn-white {
+    background: #2b3035;
+    color: #fff;
+    border-color: rgba(255,255,255,0.1);
+}
+
+.bg-secondary-subtle {
+    background-color: rgba(108, 117, 125, 0.1) !important;
+}

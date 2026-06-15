@@ -1,0 +1,3061 @@
+PENERAPAN METODE 
+USER-CENTERED DESIGN
+ MENGGUNAKAN GPS PADA PENGEMBANGAN
+ FITUR
+ PELACAKAN PASIEN 
+SECARA 
+REAL-TIME
+ 
+DALAM APLIKASI RUJUKAN 
+ONLINE
+ RUMAH SAKIT 
+SKRIPSI
+Oleh:
+BILLY RAHMANSYAH
+N
+P
+M. 152100
+08
+JENJANG STRATA (S1)
+P
+ROGRAM STUDI TEKNIK INFORMATIKA
+FAKULTAS INFORMATIKA DAN KOMPUTER
+UNIVERSITAS BINANIAGA INDONESIA
+202
+5
+LEMBAR PERSETUJUAN SKRIPSI
+Judul
+:
+PENERAPAN METODE USER-CENTERED DESIGN MENGGUNAKAN GPS PADA PENGEMBANGAN FITUR PELACAKAN PASIEN SECARA REAL-TIME DALAM APLIKASI RUJUKAN ONLINE RUMAH SAKIT
+Peneliti/
+Penyusun
+:
+Billy Rahmansyah
+, NPM: 15210008
+Karya tuli Tugas Akhir ini telah diperiksa dan disetujui sebagai karya tulis ilmiah penelitian.
+Bogor, 16 Agustus 2025
+Disetujui Oleh:
+Pembimbing
+M
+uhammad
+. Miftahudin, 
+S.Kom
+, 
+M.Kom
+NIDN. 
+0401058504
+Ketua Program Studi
+Anggra Triawan, 
+S.Kom
+, 
+M.Kom
+NIDN: 
+043108875
+LEMBAR PENGESAHAN KARYA PENELITIAN 
+DAN 
+PENULISAN ILMIAH
+Judul
+:
+PENERAPAN METODE USER-CENTERED DESIGN MENGGUNAKAN GPS PADA PENGEMBANGAN PELACAKAN PASIEN SECARA REAL-TIME DALAM APLIKASI RUJUKAN ONLINE RUMAH SAKIT
+Peneliti/Penyusun
+:
+Billy Rahmansyah, NPM: 15210008
+Disetujui dan disahkan sebagai karya penelitian dan karya tulisan ilmiah
+Bogor, 
+25
+ 
+Januari
+ 2025
+Dis
+ahkan
+ Oleh:
+Dekan Fakultas Informatika dan Komputer
+Irmayansyah
+, 
+S.Kom
+, 
+M.Kom
+NIDN
+.
+HALAMAN PERSEMBAHAN
+Bismillāhirraḥmānirraḥīm 
+“Rabbi zidnī ‘ilmā, warzuqnī fahmā.” 
+(Ya Rabb, tambahkanlah kepadaku ilmu dan anugerahkanlah kepadaku pemahaman). 
+Segala puji dan syukur penulis panjatkan ke hadirat Allah Subḥānahu Wa 
+Ta‘
+ālā, yang telah memberikan nikmat iman, Islam, kesehatan, dan kesempatan sehingga skripsi ini dapat terselesaikan. Shalawat serta salam semoga selalu tercurahkan kepada junjungan Nabi Muhammad, keluarga, sahabat, dan seluruh pengikutnya hingga akhir zaman. 
+Dengan penuh rasa cinta, hormat, dan syukur, karya sederhana ini penulis persembahkan kepada: 
+Bapak 
+Hamdani
+ dan Ibu 
+Suryani
+ ter
+sayang.  
+Atas doa, kasih sayang, pengorbanan, serta dukungan yang tiada henti. Semoga Allah memanjangkan umur 
+Ayahanda dan 
+Ibunda dalam keberkahan.
+To My Self
+, terimakasih selalu bertahan 
+kuat 
+dalam situasi apapun, 
+kemb
+a
+li 
+bangkit dan
+ bersemangat, 
+You’re 
+So 
+Marvelous!!!
+.
+All 
+My 
+BFF “
+Youth’D
+”
+ 
+yang selalu menjadi salah satu faktor pendukung 
+bangkitnya semangat juang dalam menuntaskan
+ pendidikan ini.
+Teruntuk 
+CIBICA
+, 
+my
+ 
+another
+ 
+support
+ 
+system
+ 
+untuk hari-hari yang dijalan
+i dan terimakasih 
+selalu 
+me
+nebar senyum juga tawa bahagiaku
+.
+Teman - teman seperjuangan
+ y
+ang telah bersama-sama melewati suka dan duka dalam perjalanan perkuliahan. 
+Seluruh Dosen Universitas Binaniaga Yang telah memberikan ilmu dan bimbingan selama masa studi. Semoga Allah membalas dengan pahala yang berlipat ganda.
+Dan teruntuk orang-orang yang sangat berjasa di 
+sepanjang 
+perjalanan
+ 
+mengejar 
+gelar
+ 
+ini 
+yang sengaja tidak bisa saya sebutkan satu-persatu
+.
+ 
+Semoga setiap huruf dan kata dalam karya ini bernilai ibadah dan bermanfaat bagi umat. Āmīn Yā Rabbal ‘Ālamīn.
+HALAMAN RIWAYAT
+Penyusun bernama Billy Rahmansyah, lahir di Bogor pada tanggal 15 Juni 1998, dan saat ini berdomisili di Cibungbulang, Kab. Bogor. Penyususn menamatkan pendidikan terakhirnya di SMK Adi Sanggoro pada 2016 dan saat ini merupakan mahasiswa Program Studi Teknik Informatika di Universitas Bianiaga Indonesia (UNBIN), dengan fokus pada pengembangan perangkat lunak berbasis web.Selama masa studinya, penyususn juga bekerja sebagai Freelancer IT Implementor di PT. Harsa Digital Teknologi. 
+Dengan minat besar pada pengembangan perangkat lunak dan UI/UX, penyusun terus berusaha mengembangkan kemampuan teknis dan soft skill-nya. Penyusun percaya bahwa inovasi teknologi dapat memberikan dampak positif yang signifikan bagi berbagai sektor.
+LEMBAR HALAMAN PERNYATAAN KEASLIAN KARYA ILMIAH
+Nama Lengkap
+:
+NPM
+:
+Program Studi
+:
+Tahun Masuk
+:
+                                      Tahun 
+Sesuai
+:
+Judul Skripsi
+:
+Menyatakan dengan sebenarnya bahwa penulisan skripsi ini berdasarkan hasil penelitian, pemikiran dan pemaparan asli dari saya sendiri, baik untuk naskah laporan maupun kegiatan 
+Programming 
+yang tercantum sebagai bagian dari skripsi ini. Jika terdapat karya orang lain, saya mencantumkan sumber yang jelas. 
+Demikian peryataan ini saya buat dengan sesungguhnya dan apabila dikemudian hari terdapat penyimpangan dan ketidakbenaran dalam pernyataan ini, maka saya bersedia menerima sanksi akademik berupa pencabutan gelar yang telah diperoleh karna karya tulis ini dan saksi lain sesuai dengan peraturan yang berlaku di Universitas Binaniaga Indonesia. 
+Demikian Pernyataan ini saya buat dalam keadaan sadar tanpa paksaan dari pihak manapun.
+Bogor, 8 Agustus 2025
+Yang Membuat Pernyataan
+Billy Rahmansyah
+NPM 15210008
+KATA PENGANTAR
+Puji syukur kami panjatkan ke hadirat Tuhan Yang Maha Esa atas segala limpahan rahmat dan karunia-Nya sehingga penulis dapat menyelesaikan skripsi dengan judul 
+“
+PENERAPAN METODE USER-CENTERED DESIGN MENGGUNAKAN GPS PADA PENGEMBANGAN PELACAKAN PASIEN SECARA REAL-TIME DALAM APLIKASI RUJUKAN ONLINE RUMAH SAKIT
+”
+. Skripsi ini disusun sebagai salah satu syarat akademik dalam menyelesaikan program Sarjana Komputer (
+S.Kom
+) pada Program Studi Teknik Informatika, Universitas Binaniaga Indonesia.
+Skripsi ini disusun dengan tujuan untuk memberikan solusi terhadap permasalahan keterbatasan sistem rujukan online rumah sakit yang belum optimal, khususnya dalam aspek pelacakan pasien secara real-time. Dengan menerapkan pendekatan berbasis metode User-Centered Design (UCD) dan teknologi GPS, diharapkan hasil penelitian ini dapat meningkatkan efisiensi, akurasi, serta kepuasan pengguna, khususnya tenaga medis yang menggunakan sistem tersebut.
+Penulis menyampaikan terima kasih yang sebesar-besarnya kepada semua pihak yang telah memberikan dukungan dalam pelaksanaan dan penyusunan penelitian ini. Ucapan terima kasih khusus penulis sampaikan kepada Dosen Pembimbing atas bimbingan, masukan, dan arahan yang sangat berharga. Terima kasih juga kepada keluarga serta teman-teman yang telah memberikan dukungan moral dan semangat selama proses penyusunan penelitian ini.
+Penulis berharap karya ilmiah ini dapat memberikan kontribusi positif dalam pengembangan teknologi deteksi objek serta penerapannya dalam pengelolaan lingkungan, khususnya pada sistem pendukung proses daur ulang sampah yang lebih efisien dan terotomatisasi.
+Bogor, 1
+6
+ 
+Agustus
+ 2025
+Penulis,
+Billy Rahmansyah
+DAFTAR ISI
+LEMBAR PERSETUJUAN SKRIPSI
+ii
+LEMBAR PENGESAHAN KARYA PENELITIAN  DAN PENULISAN ILMIAH
+iii
+HALAMAN PERSEMBAHAN
+iv
+HALAMAN RIWAYAT
+v
+LEMBAR HALAMAN PERNYATAAN KEASLIAN KARYA ILMIAH
+vi
+KATA PENGANTAR
+vii
+DAFTAR ISI
+viii
+DAFTAR TABEL
+ix
+DAFTAR GAMBAR
+x
+DAFTAR LAMPIRAN
+xi
+BAB I PENDAHULUAN
+1
+BAB II KERANGKA TEORITIS
+11
+BAB III METODOLOGI PENELITIAN DAN PENGEMBANGAN
+23
+BAB IV  HASIL DAN PEMBAHASAN
+41
+BAB V  KESIMPULAN DAN SARAN
+82
+DAFTAR PUSTAKA
+84
+LAMPIRAN
+86
+DAFTAR TABEL
+Tabel. 1.1 Pertanyaan dan Jawaban Responden 
+Kuesioner
+3
+Tabel 2.1 Kontribusi Penelitian Jurnal
+16
+Tabel 3.1 Tabel Pengujian BlackBox
+34
+Tabel 3.2 Tabel Pengujian PSSUQ
+34
+Tabel 3.3 Perhitungan 
+Skor PSSUQ
+34
+Tabel 3.
+4
+ 
+Kuesioner Terbuka Untuk Pengguna
+34
+Tabel 3.
+5
+ Tabel 
+Skala Likert
+34
+Tabel 3.6 Konversi Tingkat Pencapaian
+34
+Tabel 3.7 Penjadwalan Sistem
+34
+Tabel 
+4
+.1 Tabel 
+Kebutuhan Sistem
+44
+Tabel 
+4
+.
+2
+ Tabel 
+Perangkat Keras
+45
+Tabel 
+4
+.
+3
+ Tabel Pe
+rangkat Lunak
+45
+Tabel 4.
+4
+ 
+Hasil Kuesioner Uji Ahli
+6
+3
+Tabel 4.5 Hasil Kuesioner Uji 
+Pengguna
+65
+DAFTAR 
+GAMBA
+R
+Gambar 1.1 Grafik Kebutuhan Fitur Pelacakan Real-time
+4
+Gambar 2. 1 Kerangka Pemikiran
+19
+Gambar 3. 1 Langkah-langkah penelitian dan pengembangan
+23
+Gambar 3. 2 Flowchart Langkah-langkah Pemecahan Masalah
+25
+Gambar 3. 3 Prosedur Pengembangan
+29
+Gambar 3. 4 
+Alur Timeline Penjadwalan
+39
+Gambar 
+4
+. 
+1
+ 
+Pro
+ses Bisnis Lama
+4
+25
+Gambar 
+4
+. 
+2
+ Pro
+ses Bisnis Baru
+43
+Gambar 
+4
+. 
+3
+ 
+Usecase
+ Diagram
+49
+Gambar 
+4
+.
+4
+ 
+Sequence
+ Diagram
+49
+Gambar 
+4
+.
+5
+ 
+Diagram 
+Activity
+51
+Gambar 4. 6 Class Diagram
+5
+23
+Gambar 
+4
+.
+7
+ 
+Component
+ Diagram
+25
+Gambar 
+4
+.
+8
+ 
+Deployment
+ Diagram
+54
+Gambar 
+4
+.
+9
+ 
+Rancangan Halaman 
+Login
+55
+Gambar 
+4
+.
+10
+ 
+Rancangan Halaman 
+Dashboard
+55
+Gambar 
+4
+.
+11 Rancangan Halaman Rujukan
+56
+Gambar 4.
+12
+ 
+Tampilan Halaman
+ Login Aplikasi
+56
+Gambar 
+4
+.
+13
+ 
+Tampilan Halaman Dashboard Aplikasi
+57
+Gambar 
+4.14 Tampilan Halaman 
+Rujukan
+ Aplikasi
+57
+Gambar 4.15 Tampilan Halaman 
+Faskes
+ Aplikasi
+57
+Gambar 4.16 
+Tampilan Halaman
+ 
+Track
+ing
+ Aplikasi
+58
+Gambar 
+4
+.
+17 Tampilan Halaman
+ Ambulans Tracker Aplikasi
+58
+Gambar 4.18 
+CodeLoginFrontendComponent
+59
+Gambar 4.19 
+CodeAuthContext
+60
+Gambar 4.20 
+CodeInput
+Rujukan
+61
+Gambar 4.21 
+Code
+WebsocketSetup
+61
+Gambar 
+4
+.2
+2
+ 
+CodeLeafletIntegration
+6
+25
+Gambar 
+4
+.
+23 
+CodeRoute
+Display
+6
+29
+Gambar 4.2
+4
+ 
+Rangkaian 
+Test
+ 
+GPS Tracking Performance
+6
+29
+Gambar 4.2
+5
+ 
+GPS 
+Accuracy Testing
+6
+29
+Gambar 4.2
+6
+ 
+Update Speed Testing
+68
+Gambar 4.2
+7
+ 
+ETA Accuracy Testing
+68
+DAFTAR 
+LAMPIRA
+N
+Lampiran 
+1 
+Plagiarism Checker Report by iTentix
+73
+Lampiran 2 Kuesioner Pertanyaan Permasalahan
+74
+Lampiran 3 Uji Ahli
+ 1
+76
+Lampiran 4 Uji Ahli
+ 2
+79
+Lampiran 5 
+Uji Pengguna 1
+82
+Lampiran 
+6
+ Uji 
+Pengguna
+ 2
+8
+4
+Lampiran 
+7
+ Uji 
+Pengguna
+ 
+3
+8
+8
+Lampiran 
+8
+ Uji 
+Pengguna
+ 
+4
+91
+Lampiran 
+9
+ Uji 
+Pengguna
+ 
+5
+94
+Lampiran 
+10
+ Uji 
+Pengguna
+ 
+6
+97
+Lampiran 
+11 
+Uji 
+Pengguna
+ 
+7
+100
+Lampiran 
+12
+ Uji 
+Pengguna
+ 
+8
+103
+Lampiran 
+13
+ Uji 
+Pengguna
+ 
+9
+10
+6
+Lampiran 
+14 
+Uji 
+Pengguna
+ 
+10
+109
+BAB I
+PENDAHULUAN
+Latar Belakang
+Layanan kesehatan telah berkembang pesat di era komputer dan internet saat ini berkat penggunaan teknologi informasi untuk meningkatkan efisiensi dan membuat layanan lebih mudah diakses 
+(Arief Darmawan et al., 2023)
+. 
+Sistem rujukan pasien adalah komponen krusial dalam penyediaan layanan kesehatan yang terintegrasi di Indonesia. Teknologi informasi telah memfasilitasi pengembangan Sistem Informasi Rujukan Terintegrasi (SISRUTE) untuk mempercepat proses rujukan, memastikan akurasi data, dan memperkuat koordinasi antar fasilitas kesehatan—dari primer hingga tersier—agar pasien segera mendapat penanganan yang tepat.
+ 
+(Arief Darmawan et al., 2023)
+.
+Namun, kenyataan di lapangan menunjukkan bahwa implementasi SISRUTE masih jauh dari ideal. 
+Menurut 
+Detik.com 
+(
+2024
+)
+ b
+erdasarkan pembahasan Komisi D DPRD Kota Bandung, SISRUTE “jarang ada yang berhasil” karena rumah sakit penerima sering kali tidak merespons atau berkelit terhadap rujukan yang dikirim secara daring
+ 
+(Detik.com, 2024)
+. Kondisi serupa juga terjadi di Kabupaten Gunungkidul, Daerah Istimewa Yogyakarta, di mana waktu respon SISRUTE mencapai 20–30 menit, belum tersedia operator khusus di IGD, dan sistem hanya mampu mengirim rujukan ke satu rumah sakit tujuan—sehingga petugas medis kembali bergantung pada WhatsApp untuk memastikan kesiapan fasilitas tujuan
+ 
+(DINKES Provinsi Jogja, 2023)
+.
+Isu lain menyangkut ketidakakuratan data fasilitas—seperti status tempat tidur, unit ICU, dan ketersediaan tenaga medis—yang tidak diperbarui secara waktu-nyata. Hal ini berpotensi menyebabkan rujukan diarahkan ke fasilitas yang sudah penuh atau tidak memiliki dukungan klinis memadai.
+Dari sudut teknis, sistem rujukan online saat ini tidak menyediakan pemantauan lokasi pasien atau ambulans secara real-time berbasis GPS. Padahal, fitur ini sangat penting untuk memfasilitasi kesiapan rumah sakit tujuan dalam menyambut pasien, serta memungkinkan prediksi estimasi waktu kedatangan (ETA) yang lebih akurat. Tanpa fitur tersebut, koordinasi sering terhambat, dan alur pelayanan menjadi tidak efisien.
+Lebih jauh, sistem ini saat ini dikembangkan tanpa masukan langsung dari tenaga medis yang merupakan pengguna utama. Hal ini menunjukkan bahwa pendekatan pengembangan sistem kurang memperhatikan kebutuhan nyata pengguna akhir. Akibatnya, sistem tidak sepenuhnya memenuhi kebutuhan mereka dan sering kali memaksa tenaga medis untuk beralih menggunakan metode manual, seperti panggilan telepon, untuk memastikan validitas rujukan. Ini bertentangan dengan tujuan utama digitalisasi layanan kesehatan.
+Untuk mengatasi celah ini, diperlukan pengembangan sistem rujukan online yang mengintegrasikan teknologi GPS untuk pelacakan lokasi secara real-time, sambil menerapkan metodologi User-Centered Design (UCD) untuk memastikan relevansi fungsi dan kemudahan penggunaan oleh tenaga medis sebagai pengguna utama. Melalui UCD—dengan tahap analisis kebutuhan, desain, prototyping, dan pengujian bersama pengguna—diharapkan sistem ini tidak hanya andal secara teknis, tetapi juga intuitif dan sesuai kebutuhan lapangan.
+Dengan sinergi antara metode UCD dan teknologi GPS, sistem rujukan online diharapkan mampu meningkatkan kecepatan koordinasi, akurasi informasi, dan keandalan proses rujukan pasien. Hal ini sejalan dengan lingkup Teknik Informatika, yang mencakup integrasi perangkat keras dan lunak, pengelolaan data real-time, serta desain sistem terpusat pada pengguna—menjadikan penelitian ini relevan dan aplikatif bagi pengembangan solusi teknologi kesehatan.
+Permasalahan
+Sistem rujukan online rumah sakit saat ini masih menghadapi berbagai kendala yang mempengaruhi efektivitas dan efisiensinya di lapangan. Berdasarkan temuan Komisi D DPRD Kota Bandung (2024), banyak pengiriman rujukan melalui SISRUTE yang gagal diproses karena rumah sakit tujuan lambat atau tidak merespons sama sekali. Kondisi serupa terjadi di Kabupaten Gunungkidul (DIY), di mana waktu respon mencapai 20–30 menit, belum adanya operator khusus di IGD, serta keterbatasan sistem yang hanya dapat mengirim rujukan ke satu rumah sakit tujuan, sehingga tenaga medis masih mengandalkan WhatsApp atau telepon untuk memastikan kesiapan fasilitas
+(DINKES Provinsi Jogja, 2023)
+(Detik.com, 2024)
+Selain itu, permasalahan ketidakakuratan dan keterlambatan pembaruan data ketersediaan fasilitas—seperti jumlah tempat tidur, ketersediaan tenaga medis, dan peralatan kritis—masih sering terjadi. Data dari Dinas Kesehatan Jawa Barat (2023) menunjukkan sekitar 12% rujukan gawat darurat terlambat lebih dari 30 menit akibat kendala administratif. Keterlambatan ini berdampak langsung pada pasien, terutama dalam kasus darurat yang membutuhkan tindakan segera.
+Dari sisi teknis, sistem rujukan online saat ini belum memiliki fitur pelacakan posisi pasien atau ambulans secara real-time berbasis GPS. Padahal, fitur ini dapat meningkatkan akurasi koordinasi, membantu rumah sakit tujuan mempersiapkan penanganan, dan meminimalkan ketidakpastian estimasi waktu kedatangan (ETA). Tanpa fitur pelacakan ini, proses rujukan berisiko mengalami keterlambatan koordinasi antar faskes.
+Tabel. 1.1 Pertanyaan dan Jawaban Responden 
+Kuesioner
+No.
+Pertanyaan
+Jawaban
+Responden
+1
+Seberapa sering Anda mengalami RS tujuan tidak merespon rujukan online?
+Tidak Pernah
+0
+Pernah
+0
+Kadang
+2
+Sering
+15
+Sangat Sering
+3
+2
+Apakah informasi ketersediaan tempat tidur, tenaga medis, atau alat medis di sistem rujukan biasanya akurat?
+Sangat Akurat
+0
+Akurat
+0
+Netral
+10
+Kurang Akurat
+9
+Tidak Akurat
+1
+3
+Apakah Anda merasa perlu adanya fitur pelacakan posisi ambulans/pasien secara real-time?
+Tidak Perlu
+0
+Kurang Perlu
+0
+Netral
+0
+Perlu
+7
+Sangat Perlu
+13
+Berdasarkan hasil survei yang dilakukan terhadap tenaga medis di berbagai rumah sakit, diperoleh temuan bahwa proses rujukan online masih menghadapi sejumlah kendala signifikan. Mayoritas responden mengungkapkan bahwa RS tujuan sering kali tidak memberikan respon terhadap permintaan rujukan secara daring, sehingga menyebabkan keterlambatan dalam proses penanganan pasien. Selain itu, data ketersediaan fasilitas seperti tempat tidur, tenaga medis, dan alat medis yang ditampilkan dalam sistem rujukan dinilai kurang akurat, sehingga menimbulkan ketidakpastian dan berpotensi mengakibatkan kesalahan dalam pengambilan keputusan rujukan.
+Gambar 1.1 Grafik Kebutuhan Fitur Pelacakan Real-time
+Di sisi lain, hampir seluruh responden menekankan pentingnya penambahan fitur pelacakan GPS yang dapat memantau posisi ambulans atau pasien secara real-time. Fitur ini dinilai mampu meningkatkan koordinasi antar fasilitas kesehatan dan mempersiapkan RS tujuan dengan lebih optimal sebelum pasien tiba.
+ Masalah utama lainnya adalah bahwa aplikasi tidak memiliki petunjuk yang jelas, sehingga pengguna sering salah memasukkan data penting. Kesalahan ini memperpanjang proses pengisian data rujukan, yang seharusnya dapat dilakukan secara cepat dan akurat.
+ Dapat dilihat dari gambar grafik dibawah ini.
+Identifikasi Masalah
+Berdasarkan permasalahan yang telah diuraikan diatas, sehingga dapat menjadi poin penting untuk diidentifikasi permasalahan, yaitu sebagai berikut:
+Respon rumah sakit tujuan terhadap rujukan sering lambat atau tidak ada, sehingga proses rujukan tertunda.
+Data ketersediaan fasilitas rumah sakit tidak diperbarui secara real-time, menyebabkan rujukan terkirim ke fasilitas yang tidak siap menerima pasien.
+Tidak adanya fitur pelacakan berbasis GPS yang dapat memantau posisi pasien/ambulans secara real-time dan memberikan estimasi waktu kedatangan.
+Proses pengembangan sistem rujukan online yang ada kurang melibatkan tenaga medis sebagai pengguna utama, sehingga beberapa fitur tidak sesuai kebutuhan lapangan.
+Tenaga medis masih mengandalkan metode manual (telepon/WhatsApp) akibat keterbatasan fitur sistem digital.
+Rumusan Masalah
+Pokok Masalah (Problem Statement)
+Berdasarkan identifikasi masalah yang sudah di uraikan diatas,
+ s
+istem rujukan online rumah sakit saat ini memiliki keterbatasan dalam kecepatan respon, keakuratan informasi fasilitas, dan tidak adanya fitur pelacakan real-time berbasis GPS. Selain itu, proses pengembangannya minim melibatkan pengguna utama, sehingga kurang efektif digunakan di lapangan.
+Pertanyaan Penelitian (Research Question)
+Bagaimana metode User-Centered Design dapat diterapkan dalam pengembangan sistem pelacakan pasien berbasis GPS pada aplikasi rujukan online rumah sakit?
+Bagaimana pengujian sistem pelacakan pasien dapat mengukur akurasi lokasi, waktu pembaruan data, dan keandalan sistem dalam kondisi nyata?
+Maksud dan Tujuan
+Maksud
+Berdasarkan rumusan masalah yang telah diuraikan, maksud dari penelitian ini adalah mengembangkan dan meningkatkan kinerja sistem rujukan online rumah sakit melalui penerapan metode User-Centered Design (UCD) yang mengintegrasikan teknologi Global Positioning System (GPS). Sistem ini dirancang untuk memberikan fitur pelacakan pasien atau ambulans secara real-time, sehingga dapat mempercepat koordinasi antar fasilitas kesehatan, meningkatkan akurasi estimasi waktu kedatangan, dan meminimalkan keterlambatan dalam penanganan pasien.
+Tujuan
+Adapun tujuan dalam penelitian ini yaitu sebagai berikut:
+Mengembangkan sistem pelacakan pasien berbasis GPS pada aplikasi rujukan online rumah sakit yang dapat menampilkan posisi secara real-time dan estimasi waktu kedatangan.
+Menerapkan metode User-Centered Design dalam perancangan sistem pelacakan agar sesuai dengan kebutuhan tenaga medis sebagai pengguna utama.
+Mengintegrasikan teknologi GPS dengan peta digital untuk meningkatkan keakuratan dan transparansi proses rujukan pasien.
+Melakukan pengujian terhadap akurasi lokasi, waktu pembaruan data, dan keandalan sistem pelacakan pasien di lapangan.
+Spesifikasi Hasil
+Melalui penelitian ini, diharapkan dapat dihasilkan sebuah rancangan sistem pelacakan pasien berbasis GPS yang terintegrasi pada aplikasi rujukan online rumah sakit dengan kemampuan pembaruan data secara real-time. Sistem ini akan diwujudkan dalam bentuk prototipe yang dikembangkan menggunakan metode User-Centered Design (UCD) dan disesuaikan berdasarkan masukan langsung dari tenaga medis sebagai pengguna utama. Fitur utama yang dikembangkan meliputi peta digital interaktif yang menampilkan posisi pasien atau ambulans, rute perjalanan, serta estimasi waktu kedatangan (ETA) secara akurat.
+ 
+Untuk
+ 
+memastikan
+ 
+keterhubungan data,
+ 
+sistem
+ 
+akan mengimplementasikan integrasi API atau Web Service yang menghubungkan informasi GPS dengan aplikasi rujukan online secara otomatis dan sinkron. Hasil akhir penelitian ini juga mencakup uji coba sistem yang bertujuan untuk mengukur tingkat akurasi lokasi, kecepatan pembaruan data, serta tingkat kepuasan pengguna terhadap kemudahan dan kegunaan sistem. Selain itu, akan disusun dokumentasi teknis dan panduan penggunaan sistem untuk memudahkan implementasi di lapangan oleh tenaga medis dan pihak rumah sakit.
+Signifikansi Penelitian
+Penelitian ini dilakukan dalam rangka mengembangkan desain antarmuka berbasis pengguna dan navigasi sistem digital, serta mendukung pengembangan kebijakan layanan kesehatan yang lebih terarah dan optimal. Manfaat yang dapat diperoleh dari penelitian ini adalah sebagai berikut:
+Manfaat teoritis dari penelitian ini, 
+berkontribusi pada pengembangan ilmu di bidang Teknik Informatika, khususnya pada integrasi teknologi GPS dan sistem informasi kesehatan. Dengan menggabungkan metode User-Centered Design dalam pengembangan fitur pelacakan real-time, penelitian ini memberikan kerangka kerja yang dapat digunakan untuk merancang sistem pelacakan berbasis lokasi di bidang kesehatan dan sektor lainnya
+;
+Manfaat praktis dari penelitian ini, 
+menghasilkan solusi nyata terhadap permasalahan rujukan pasien di lapangan dengan menyediakan fitur pelacakan real-time berbasis GPS. Tenaga medis dan rumah sakit penerima dapat memantau pergerakan pasien atau ambulans secara akurat, sehingga dapat mempersiapkan tindakan medis sebelum pasien tiba dan mengurangi keterlambatan penanganan
+;
+Manfaat kebijakan penelitian ini 
+dijadikan acuan bagi Dinas Kesehatan, rumah sakit, dan pembuat kebijakan untuk mengembangkan sistem rujukan pasien yang lebih responsif dan terintegrasi. Dengan adanya bukti efektivitas sistem pelacakan GPS, kebijakan dapat diarahkan untuk mengadopsi fitur serupa secara nasional guna meningkatkan mutu pelayanan kesehatan.
+Asumsi dan Keterbatasan
+Berikut ini adalah asumsi dan keterbatasan pada penelitian yang dilakukan:
+Asumsi
+Asumsi dalam penelitian ini yaitu:
+Tenaga medis yang menjadi responden memiliki pengalaman dalam proses rujukan pasien dan memahami prosedur koordinasi antar fasilitas kesehatan.
+Data dan masukan yang diberikan oleh tenaga medis selama penelitian merepresentasikan kebutuhan dan permasalahan nyata yang mereka hadapi di lapangan.
+Teknologi 
+Global Positioning System (GPS)
+ yang digunakan dapat memberikan data lokasi yang akurat dan pembaruan secara 
+real-time
+ ketika terintegrasi dengan aplikasi rujukan online.
+Pendekatan 
+User-Centered Design (UCD)
+ akan membantu merancang sistem pelacakan yang sesuai kebutuhan pengguna dan mudah dioperasikan dalam kondisi lapangan.
+Infrastruktur jaringan internet yang digunakan di lokasi penelitian memadai untuk mendukung pengiriman data GPS secara real-time.
+Keterbatasan
+Penelitian difokuskan pada pengembangan dan pengujian 
+fitur pelacakan pasien berbasis GPS 
+pada aplikasi rujukan online, sehingga tidak membahas seluruh aspek sistem rujukan secara menyeluruh.
+Akurasi dan kecepatan pembaruan data GPS dapat dipengaruhi oleh faktor teknis seperti kualitas sinyal GPS, kondisi geografis, dan kestabilan jaringan internet.
+Lingkup penelitian terbatas pada rumah sakit dan fasilitas kesehatan yang menjadi sampel uji, sehingga hasilnya mungkin tidak sepenuhnya mencerminkan kondisi di seluruh wilayah Indonesia.
+Implementasi metode UCD dalam penelitian ini hanya melibatkan kelompok pengguna tertentu (misalnya tenaga medis dan operator rujukan), sehingga kebutuhan pihak lain seperti manajemen rumah sakit atau pasien mungkin belum sepenuhnya terakomodasi.
+Pengujian sistem dilakukan dalam periode waktu terbatas, sehingga belum dapat menggambarkan kinerja sistem dalam jangka panjang atau pada beban penggunaan tinggi (
+high traffic
+).
+Definisi Istilah
+Beberapa istilah yang digunakan dalam penyusun laporan penelitian:
+User-Centered Design (UCD) 
+adalah p
+endekatan desain yang menempatkan pengguna sebagai pusat dari setiap tahap pengembangan sistem, mulai dari pengumpulan kebutuhan hingga evaluasi akhir, untuk memastikan sistem sesuai dengan kebutuhan, karakteristik, dan keterbatasan pengguna.
+Global Positioning System (GPS)
+ adalah s
+istem navigasi berbasis satelit yang digunakan untuk menentukan posisi geografis objek secara akurat di permukaan bumi, yang dalam penelitian ini digunakan untuk melacak posisi pasien atau ambulans secara 
+real-time
+.
+Real-Time Tracking
+ adalah p
+roses pemantauan posisi objek secara langsung dan berkelanjutan dengan pembaruan data secara instan. Dalam konteks penelitian ini, digunakan untuk memantau pergerakan pasien atau ambulans dari fasilitas kesehatan pengirim menuju rumah sakit tujuan.
+Estimated Time of Arrival (ETA)
+ adalah p
+erkiraan waktu kedatangan suatu objek pada lokasi tujuan berdasarkan data lokasi terkini, kecepatan perjalanan, dan kondisi rute. Dalam penelitian ini, ETA digunakan untuk memprediksi waktu kedatangan pasien ke rumah sakit rujukan.
+Sistem Rujukan Online
+ adalah a
+plikasi berbasis digital yang digunakan untuk mengelola proses rujukan pasien dari fasilitas kesehatan primer ke rumah sakit sekunder atau tersier, dengan tujuan mempercepat koordinasi dan memastikan kesiapan fasilitas tujuan.
+API (Application Programming Interface)
+ adalah k
+umpulan aturan, protokol, dan alat yang memungkinkan perangkat lunak dan aplikasi untuk saling berinteraksi dan bertukar data, termasuk integrasi data GPS dengan sistem rujukan online.
+Web Service
+ adalah l
+ayanan berbasis web yang memungkinkan pertukaran data dan komunikasi antara dua atau lebih aplikasi melalui jaringan internet, digunakan untuk sinkronisasi data lokasi dan informasi rujukan pasien.
+Peta Digital Interaktif
+ adalah r
+epresentasi visual lokasi geografis yang ditampilkan pada aplikasi, yang dapat menampilkan posisi pasien atau ambulans secara 
+real-time
+, rute perjalanan, dan ETA
+BAB II
+KERANGKA TEORITIS
+Landasan Teori
+User-Centered Design (UCD)
+User-Centered Design (UCD)
+ 
+adalah pendekatan desain yang berfokus pada kebutuhan, preferensi, dan keterbatasan pengguna akhir pada setiap tahap proses pengembangan sistem. Dalam bidang layanan kesehatan, penerapan UCD dapat terlihat pada pengembangan aplikasi manajemen pasien yang dirancang untuk memudahkan tenaga medis dalam mengakses data pasien, menjadwalkan rujukan, serta memastikan ketersediaan fasilitas medis. Contoh nyata penerapan ini adalah pengembangan aplikasi telemedicine yang melibatkan dokter dan pasien dalam proses iteratif untuk memastikan fitur-fiturnya sesuai dengan kebutuhan mereka. Pendekatan ini menempatkan pengguna sebagai pusat dari proses desain dengan tujuan menciptakan produk yang lebih efektif, efisien, dan memuaskan pengguna. Dalam konteks penelitian ini, UCD digunakan untuk merancang ulang navigasi dan antarmuka sistem rujukan online rumah sakit agar lebih sesuai dengan kebutuhan tenaga medis. Menurut ISO 9241-210, UCD melibatkan empat prinsip utama:
+Mengidentifikasi kebutuhan dan preferensi pengguna.
+Pengguna dilibatkan secara langsung untuk memberikan umpan balik selama proses desain.
+Proses pengembangan dilakukan secara bertahap dengan perbaikan berkelanjutan berdasarkan evaluasi pengguna.
+Mempertimbangkan seluruh konteks penggunaan produk.
+Global Positioning System (GPS)
+GPS adalah sistem navigasi berbasis satelit yang digunakan untuk menentukan lokasi geografis secara akurat di permukaan bumi. GPS bekerja dengan menerima sinyal dari minimal empat satelit untuk menghitung koordinat lintang, bujur, dan ketinggian objek (Hofmann-Wellenhof et al., 2008).
+Keunggulan GPS dalam konteks sistem rujukan:
+Menyediakan informasi lokasi 
+real-time
+ pasien atau ambulans.
+Memungkinkan estimasi waktu kedatangan (Estimated Time of Arrival/ETA).
+Mendukung pengambilan keputusan cepat di rumah sakit tujuan.
+Integrasi GPS dengan aplikasi rujukan online dilakukan melalui API untuk mengirimkan data posisi secara terus-menerus ke server, yang kemudian divisualisasikan pada peta digital.
+Web Service
+ 
+dan
+ 
+API
+ 
+untuk Integrasi
+ GPS
+Web service
+ adalah layanan berbasis internet yang memungkinkan pertukaran data antar sistem. 
+API (Application Programming Interface) 
+adalah kumpulan aturan dan protokol yang digunakan untuk mengakses fungsi atau data dari sistem lain.
+Dalam penelitian ini, API digunakan untuk:
+Mengambil data lokasi dari perangkat GPS.
+Mengirimkan data tersebut ke server aplikasi rujukan online.
+Menyinkronkan data lokasi dengan peta digital interaktif.
+Sistem Rujukan Online Rumah Sakit
+Sistem rujukan online adalah platform digital yang dirancang untuk mengelola proses rujukan pasien dari fasilitas kesehatan primer ke rumah sakit sekunder atau tersier. Sebelum adanya sistem ini, proses rujukan dilakukan secara manual, yang biasanya melibatkan komunikasi melalui telepon atau dokumen fisik. Metode manual ini sering kali menghadapi kendala seperti kesalahan informasi, keterlambatan dalam pengiriman data, dan kurangnya transparansi mengenai ketersediaan fasilitas di rumah sakit tujuan. Dengan sistem online, diharapkan proses ini menjadi lebih cepat, akurat, dan terorganisir. Tujuan utama dari sistem ini adalah untuk meningkatkan efisiensi, akurasi, dan kecepatan dalam proses rujukan.
+Real-Time Tracking
+Real-time tracking
+ adalah proses pemantauan lokasi atau pergerakan objek secara langsung dan berkelanjutan dengan pembaruan data instan. Dalam sistem rujukan pasien, real-time tracking memungkinkan tenaga medis di rumah sakit penerima mengetahui posisi ambulans secara tepat dan mempersiapkan tindakan medis sebelum pasien tiba.
+Komponen utama real-time tracking berbasis GPS:
+GPS Receiver
+ pada perangkat pengirim data (misalnya ponsel di ambulans).
+Server aplikasi
+ yang menerima dan menyimpan data lokasi.
+Peta digital
+ untuk menampilkan posisi secara visual.
+Algoritma ETA
+ untuk memprediksi waktu kedatangan berdasarkan kecepatan dan rute.
+Peta Digital Interaktif
+Peta digital interaktif adalah representasi grafis wilayah geografis yang dapat menampilkan informasi tambahan seperti posisi objek, rute perjalanan, dan ETA. Teknologi ini umumnya menggunakan layanan seperti Google Maps API, Leaflet.js, atau OpenStreetMap.
+Manfaat peta digital interaktif dalam sistem rujukan:
+Menyediakan tampilan lokasi pasien atau ambulans secra visual.
+Mempermudah koordinasi antar fasilitas kesehatan.
+Menunjukkan rute optimal yang dapat mempercepat proses rujukan.
+Tinjauan Pustaka
+Tinjauan pustaka memuat penelitian-penelitian terdahulu yang relevan dengan topik penelitian ini. Penelitian-penelitian ini memberikan wawasan penting mengenai temuan-temuan sebelumnya, metodologi yang telah digunakan, serta kesenjangan yang ada. Wawasan tersebut tidak hanya membantu mengidentifikasi kontribusi unik penelitian ini tetapi juga memperkuat landasan teori yang melatarbelakangi pengembangan sistem rujukan 
+online
+ berbasis metode 
+User-Centered Design
+ (UCD). 
+Penelitian ini merujuk pada penelitian sebelumnya yang menggunakan metode dan permasalahan yang serupa, dalam berbagai kasus. Antara lain:
+ 
+Penelitian dilakukan oleh 
+(Khatib Sulaiman et al., 2023)
+ dengan Judul "
+ 
+Penerapan 
+User-Centered Design
+ Pada Perancangan Website Inovasi Pelayanan”. 
+Penelitian ini membahas penerapan metode 
+User-Centered Design
+ (UCD) untuk mendesain ulang aplikasi pelayanan publik dengan fokus pada kebutuhan pengguna. Dalam penelitian ini, UCD diterapkan melalui serangkaian proses iteratif yang melibatkan pengguna sebagai pusat dari pengembangan. Hasilnya menunjukkan peningkatan signifikan dalam kepuasan pengguna hingga 30% dibandingkan dengan pendekatan tradisional, terutama karena antarmuka yang lebih mudah digunakan dan waktu pelatihan yang lebih singkat.
+Studi dilakukan oleh 
+(Arief Darmawan et al., 2023)
+ dengan Judul "
+ P
+enerapan Metode User-Centered Design (UCD) Dalam Merancang Rekam Medis Elektronik Poli Kedokteran Keluarga Layanan Primer". 
+ Penelitian ini berfokus pada pengembangan antarmuka yang lebih ramah pengguna melalui penerapan metode UCD. Mereka menggunakan pendekatan iteratif dengan melibatkan tenaga medis dan pasien untuk memberikan masukan langsung terkait desain aplikasi. Penelitian ini menunjukkan bahwa desain antarmuka yang dirancang ulang mampu mengurangi waktu pelatihan pengguna hingga 25%, sekaligus meningkatkan efisiensi dalam penggunaan fitur aplikasi, seperti pencatatan data pasien dan penjadwalan rujukan.
+Studi dilakukan oleh 
+(Serbiadventa et al., 2023)
+ dengan Judul "IT-Explore Penggunaan User Centered Design Dalam Perancangan Antarmuka Website Smp Pangudi Luhur Ambarawa ".
+ Penelitian ini menunjukkan bahwa 
+wireframing
+ memainkan peran penting dalam menyatukan pemahaman antara tim pengembang dan pengguna sejak awal proses pengembangan. Dengan menggunakan alat seperti Balsamiq dan Figma, penelitian ini menemukan bahwa 
+wireframing
+ membantu mengidentifikasi potensi masalah desain lebih awal, yang pada akhirnya mengurangi waktu revisi hingga 15%. Contoh kasus yang diangkat adalah pengembangan aplikasi manajemen tugas, di mana 
+wireframing 
+digunakan untuk memastikan tata letak elemen antarmuka sesuai dengan ekspektasi pengguna.
+Penelitian dilakukan oleh 
+(Fatah et al., 2022)
+ dengan Judul "Perancangan Antarmuka Pengguna Sistem Informasi Akademik Berbasis Wireframing Wireframing-Based Academic Information System User Interface Design" 
+Dalam penelitian ini, 
+wireframing
+ digunakan untuk membuat kerangka visual antarmuka sebelum implementasi teknis dilakukan. Hasil menunjukkan bahwa penggunaan wireframing mampu mengurangi revisi desain hingga 20% dengan membantu tim pengembang dan pemangku kepentingan mencapai pemahaman yang sama sejak tahap awal. Sebagai contoh, wireframing berhasil memvalidasi desain tata letak aplikasi manajemen proyek sehingga masalah navigasi dapat diidentifikasi dan diperbaiki lebih awal.
+Penelitian dilakukan oleh 
+(Susiloningtyas, 2020)
+ dengan Judul "Sistem Rujukan Dalam Sistem Pelayanan Kesehatan Maternal Perinatal di Indonesia Refferal System 
+In
+ Maternal Perinatal Health Services 
+In
+ Indonesia ". 
+Penelitian ini mengungkapkan bahwa sistem rujukan 
+online
+ mampu memangkas waktu rujukan hingga 40% dibandingkan sistem manual. Hal ini dicapai melalui fitur otomatisasi proses validasi data pasien dan pemberitahuan 
+real-time
+, yang secara signifikan mengurangi risiko kesalahan administrasi dalam metode manual. Selain itu, sistem ini juga mempersingkat waktu respons antara fasilitas kesehatan pengirim dan penerima, yang merupakan langkah penting dalam meningkatkan efisiensi pelayanan kesehatan.
+Studi dilakukan oleh 
+(Nur Masyithah Saing & Rulyandari, 2023)
+ dengan Judul "
+Efektivitas Pelaksanaan Sistem Rujukan Elektronik: Literature Review
+".
+ 
+Penelitian ini 
+Mengidentifikasi adanya kelambatan respon, keterbatasan SDM terlatih, dan infrastruktur teknologi yang belum memadai sebagai kendala utama dalam sistem rujukan elektronik
+.
+Studi dilakukan oleh 
+(Yunus Oktavianto Ismail et al., 2022)
+ dengan Judul "Penilaian Jawaban Essay Otomatis Menggunakan Algoritma Winnowing Pada Aplikasi E-Learning Sma Hang Tuah 4 Surabaya". 
+Penelitian ini menjelaskan bagaimana elemen navigasi yang dirancang secara konsisten dan responsif dapat membantu pengguna dalam menemukan informasi dengan lebih cepat sekaligus mengurangi risiko kesalahan input data. Dalam studinya, Kurniawan juga menggarisbawahi peran penting konsistensi dalam tata letak dan responsivitas antarmuka terhadap berbagai perangkat, seperti komputer dan perangkat 
+mobile
+, yang mendukung pengalaman pengguna secara optimal. Penelitian ini dilakukan dengan menguji prototipe aplikasi yang memiliki tingkat kompleksitas navigasi tinggi, dan hasilnya menunjukkan peningkatan produktivitas pengguna hingga 35% setelah implementasi desain baru tersebut.
+Studi dilakukan oleh
+ 
+(Ado Christian Susanto et al., 2023)
+  dengan Judul "
+Evaluasi Usability Sistem Rujukan Terintegrasi (Sisrute) Di Igd Rumah Sakit Daerah Istimewa Yogyakarta 
+".
+ Penelitian ini mengeksplorasi 
+h
+asil penilaian usability scale menempatkan SISRUTE di kategori “OK (Netral)”—menunjukkan penerimaan yang masih lemah dan perlu pengembangan lebih lanjut
+Studi dilakukan oleh
+ 
+(Yuni Riyanti, 2023)
+ dengan Judul "
+Kendala Implementasi Sistem Rujukan Terintegrasi (Sisrute) di Indonesia
+"
+.
+ Penelitian ini berfokus pada 
+Menganalisis berbagai hambatan, termasuk resistensi pengguna, ketidaksiapan fasilitas, dan keterbatasan pelatihan di fasyankes.
+Penelitian dilakukan oleh 
+(Nugroho & Riasetiawan, 2023)
+ dengan Judul "
+Pengaembangan prototipe tracking ambulans berbasis 
+android pada modul SPGDT Daerah Istimewa Yogyakarta
+".
+ Dalam penelitian ini, 
+Pengembangan dan pengujian prototipe sistem pelacakan ambulans dan penyempurnaan pencatatan/pelaporan kejadian gawat darurat menunjukkan bahwa sistem ini "acceptable" dan berdaya guna secara optimal untuk membantu penanganan kasus gawat darurat.
+Tabel 2.1 Kontribusi Penelitian Jurnal
+No
+Author(s)
+Judul
+Jurnal
+Kontribusi
+1
+(Khatib Sulaiman et al., 2023)
+Penerapan User-Centered Design Pada Perancangan Website Inovasi Pelayanan
+Indonesian Journal of Computer Science
+ISSN 2302-4364 (print) dan 2549-7286 (online)
+Website: ijcs.stmikindonesia.ac.id
+Memberikan dasar teori mengenai penerapan UCD dalam perancangan website inovasi pelayanan, yang dapat menjadi referensi dalam memahami pendekatan UCD untuk sistem rujukan rumah sakit.
+2
+Arief Darmawan et al., 2023
+Penerapan Metode User-Centered Design (UCD) Dalam Merancang Rekam Medis Elektronik Poli Kedokteran Keluarga Layanan Primer
+Journal of Information Systems for Public Health, Vol. VIII, No. 3, Desember 2023
+Menyediakan referensi tentang penerapan UCD dalam pengembangan sistem rekam medis elektronik, yang relevan dengan aspek desain berbasis pengguna dalam sistem rujukan rumah sakit.
+3
+Serbiadventa et al., 2023
+It-Explore Penggunaan User Centered Design Dalam Perancangan Antarmuka Website Smp Pangudi Luhur Ambarawa
+Jurnal Penerapan Teknologi Informasi dan Komunikasi
+ISSN 2828-7940, e-ISSN 2829-1727
+Volume 02 Nomor 01 Tahun 2023
+Menyajikan studi kasus penerapan UCD dalam perancangan antarmuka website sekolah, yang dapat dijadikan pembanding dalam mendesain navigasi sistem rujukan online.
+4
+Fatah et al., 2022
+Perancangan Antarmuka Pengguna Sistem Informasi Akademik Berbasis Wireframing Wireframing-Based Academic Information System User Interface Design
+Jurnal SimanteC
+ISSN 2088-2130, e-ISSN 2502-4884
+Vol. 11, No. 01 Desember 2022
+Memberikan referensi tentang penggunaan wireframing dalam desain antarmuka sistem akademik, yang dapat diaplikasikan dalam pengembangan wireframe sistem rujukan rumah sakit.
+5
+(Susiloningtyas, 2020)
+Sistem Rujukan Dalam Sistem Pelayanan Kesehatan Maternal Perinatal 
+Di
+ Indonesia Refferal System 
+In
+ Maternal Perinatal Health Services 
+In
+ Indonesia 
+Jurnal Ilmiah Pamenang - JIP
+E-ISSN: 2715-6036
+P-ISSN: 2716-0483
+ DOI: 10.53599
+Vol. 2 No. 1, Juni 2020, 6-16
+Menyediakan informasi tentang sistem rujukan dalam pelayanan kesehatan perinatal di Indonesia, yang dapat digunakan untuk memahami kebutuhan pengguna dalam sistem rujukan online rumah sakit.
+9
+Yuni Riyanti, 2023
+Kendala Implementasi Sistem Rujukan Terintegrasi (Sisrute) di Indonesia
+Jurnal Ilmu Kedokteran dan Kesehatan Indonesia (JIKKI) Vol. 3, No. 2 Juli 2023 e-ISSN: 2827-797X; p-ISSN: 2827-8488, Hal 162-173 DOI: 
+https://doi.org/10.55606/jikki.v3i2.1720
+Berdasarkan kontribusi ini, penelitian yang akan dilakukan memposisikan dirinya untuk menjawab tantangan yang diidentifikasi oleh Yuni melalui pengembangan sistem rujukan online dengan integrasi GPS dan pelacakan real-time.
+10
+(Nugroho & Riasetiawan, 2023)
+Pengembangan Prototipe Tracking Ambulans Berbasis Android Pada Modul Spgdt Daerah Istimewa Yogyakarta
+Journal of Information Systems for Public Health, Vol. VIII, No. 2, Agustus 2023
+Jurnal ini berkontribusi pada pengembangan prototipe sistem pelacakan ambulans berbasis Android dan penyempurnaan pencatatan/pelaporan di modul SPGDT Daerah Istimewa Yogyakarta.
+No
+Author(s)
+Judul
+Jurnal
+Kontribusi
+6
+Nur Masyithah Saing & Rulyandari, 2023
+Efektivitas Pelaksanaan Sistem Rujukan Elektronik: Literature Review
+PREPOTIF: JURNAL KESEHATAN MASYARAKAT, 8(2), 3185–3187. 
+https://doi.org/10.31004/prepotif.v8i2.30405
+B
+erkontribusi pada penelitian ini dengan mengidentifikasi kendala utama dalam sistem rujukan elektronik, yaitu kelambatan respon, terbatasnya SDM terlatih, dan infrastruktur teknologi yang belum memadai. 
+7
+Yunus Oktavianto Ismail et al., 2022
+Penilaian Jawaban Essay Otomatis Menggunakan Algoritma Winnowing Pada Aplikasi E-Learning Sma Hang Tuah 4 Surabaya
+Prosiding Seminar Nasional Teknologi dan Sistem Informasi (SITASI) 2022
+Surabaya, 10 – 11 September 2022
+ISSN (Online) 2828-786X
+Tidak secara langsung relevan dengan penelitian ini karena membahas penilaian otomatis menggunakan algoritma, tetapi dapat memberikan wawasan terkait implementasi sistem berbasis teknologi dalam lingkungan pendidikan.
+8
+Ado Christian Susanto et al., 2023
+Evaluasi Usability Sistem Rujukan Terintegrasi (Sisrute) Di Igd Rumah Sakit Daerah Istimewa Yogyakarta
+JURNAL MANAJEMEN PELAYANAN KESEHATAN
+VOLUME 26
+No. 01 Maret 2023
+Halaman 8 - 14
+https://jurnal.ugm.ac.id/v3/JMPK/article/view/7019/2824
+K
+ontribusi bagi penelitian ini dengan menunjukkan bahwa tingkat usability SISRUTE berada pada kategori “OK (Netral)”, yang mencerminkan penerimaan pengguna masih lemah dan belum optimal. Temuan ini menegaskan perlunya pengembangan lebih lanjut pada aspek kemudahan penggunaan dan efektivitas sistem. 
+No
+Author(s)
+Judul
+Jurnal
+Kontribusi
+9
+Yuni Riyanti, 2023
+Kendala Implementasi Sistem Rujukan Terintegrasi (Sisrute) di Indonesia
+Jurnal Ilmu Kedokteran dan Kesehatan Indonesia (JIKKI) Vol. 3, No. 2 Juli 2023 e-ISSN: 2827-797X; p-ISSN: 2827-8488, Hal 162-173 DOI: 
+https://doi.org/10.55606/jikki.v3i2.1720
+Berdasarkan kontribusi ini, penelitian yang akan dilakukan memposisikan dirinya untuk menjawab tantangan yang diidentifikasi oleh Yuni melalui pengembangan sistem rujukan online dengan integrasi GPS dan pelacakan real-time. Dengan metode User-Centered Design, sistem yang dihasilkan diharapkan mampu mengurangi resistensi pengguna, menyesuaikan alur kerja dengan kondisi lapangan, serta mempermudah pelatihan operator melalui antarmuka yang intuitif dan informasi lokasi yang akurat.
+10
+(Nugroho & Riasetiawan, 2023)
+Pengembangan Prototipe Tracking Ambulans Berbasis Android Pada Modul Spgdt Daerah Istimewa Yogyakarta
+Journal of Information Systems for Public Health, Vol. VIII, No. 2, Agustus 2023
+Jurnal ini berkontribusi pada pengembangan prototipe sistem pelacakan ambulans berbasis Android dan penyempurnaan pencatatan/pelaporan di modul SPGDT Daerah Istimewa Yogyakarta.
+Kerangka Pemikiran
+Berikut adalah kerangka pemikiran untuk memecahkan penelitian ini yang dapat dilihat pada gambar berikut:
+Gambar 2. 
+1
+ Kerangka Pemikiran
+Kerangka pemikiran ini menjelaskan alur penelitian mulai dari identifikasi masalah hingga pencapaian hasil, menggunakan pendekatan 
+User-Centered Design (UCD)
+ dengan bantuan 
+wireframing
+ untuk meningkatkan navigasi dan pelacakan real-time pada aplikasi sistem rujukan online rumah sakit.
+Penetapan Masalah
+Tahap ini mengidentifikasi permasalahan yang ada pada sistem rujukan online, yaitu navigasi yang kurang intuitif dan fitur pelacakan real-time yang belum optimal. Permasalahan ini berdampak pada efisiensi proses rujukan dan kepuasan pengguna, khususnya tenaga medis di puskesmas dan rumah sakit.
+Pendekatan
+Penelitian menggunakan metode 
+User-Centered Design (UCD)
+ yang berfokus pada keterlibatan pengguna akhir dalam proses perancangan. UCD dipilih karena mampu menghasilkan desain yang sesuai kebutuhan pengguna melalui umpan balik langsung pada setiap tahap pengembangan.
+Pengembangan
+Pada tahap ini dilakukan pembuatan 
+wireframe
+ untuk merancang ulang struktur navigasi dan antarmuka fitur pelacakan real-time. Desain dikembangkan secara iteratif berdasarkan masukan dari pengguna, sehingga meminimalkan risiko kesalahan desain.
+ Integrasi dengan
+ Web Service/API juga direncanakan pada tahap ini untuk memungkinkan pembaruan data fasilitas secara rea-time.
+Penerapan
+Wireframe yang telah disetujui diimplementasikan ke dalam aplikasi sistem rujukan online. Fitur navigasi baru dan pelacakan real-time diintegrasikan, kemudian diuji coba langsung oleh tenaga medis di lapangan.
+Pengukuran
+Uji Ahli Materi
+Dilakukan oleh pakar untuk menilai kelayakan konten, akurasi informasi, dan kesesuaian fitur dengan tujuan sistem.
+Uji Coba Pengguna
+Dilakukan dengan melibatkan tenaga medis (pengguna akhir) untuk menilai kemudahan penggunaan, kualitas informasi, dan kualitas antarmuka. Instrumen yang digunakan adalah 
+PSSUQ
+ yang mencakup tiga aspek utama:
+System Usefulness
+ (kegunaan sistem)
+Information Quality
+ (kualitas informasi)
+Interface Quality
+ (kualitas antarmuka)
+Hasil pengukuran dianalisis untuk mengetahui efektivitas perbaikan.
+Hasil
+Navigasi menjadi lebih intuitf, pelacakan real-time lebih akurat, dan kepuasan pengguna men
+ingkat. Hasil uji ahli materi meninjukkan sistem layak digunakan, sementara uji coba pengguna menunjukkan skor PSSUQ yang lebih tinggi dibanding sebelum perbaikan.
+Hipotesis
+Berdasarkan landasan teori dan tinjauan pustaka yang telah dijelaskan, hipotesis dalam penelitian ini menyatakan bahwa penerapan metode User-Centered Design (UCD) dan integrasi teknologi Global Positioning System (GPS) dalam pengembangan sistem rujukan online rumah sakit akan berdampak positif terhadap peningkatan akurasi pelacakan pasien, kecepatan koordinasi, serta kepuasan pengguna. Pendekatan UCD, yang menempatkan pengguna sebagai pusat dari proses perancangan, memungkinkan identifikasi kebutuhan nyata, preferensi, serta kendala yang dihadapi oleh tenaga medis sebagai pengguna utama sistem. Melalui keterlibatan langsung dalam proses desain dan pengujian iteratif, sistem yang dikembangkan diharapkan mampu memberikan pengalaman penggunaan yang lebih intuitif, mendukung alur kerja klinis yang efisien, dan mempermudah pengambilan keputusan di lapangan.
+Penggunaan teknologi GPS dalam tahap implementasi diyakini berperan penting dalam menciptakan sistem pelacakan real-time yang akurat dan dapat diandalkan. Dengan kemampuan menampilkan posisi pasien atau ambulans secara langsung melalui peta digital interaktif dan menghitung estimasi waktu kedatangan (Estimated Time of Arrival/ETA), rumah sakit penerima dapat mempersiapkan penanganan medis lebih cepat dan tepat sasaran. Integrasi GPS dengan Web Service atau Application Programming Interface (API) juga memungkinkan sinkronisasi data lokasi secara otomatis dan berkelanjutan, sehingga informasi yang diterima pengguna selalu terkini.
+Hal ini tidak hanya mempercepat proses koordinasi rujukan, tetapi juga mengurangi risiko keterlambatan penanganan pasien, terutama pada kasus gawat darurat. Selain itu, penerapan UCD dalam pengembangan antarmuka memastikan bahwa sistem pelacakan berbasis GPS ini tetap mudah dioperasikan, bahkan dalam situasi darurat sekalipun. Dengan demikian, hipotesis penelitian ini secara keseluruhan menyatakan bahwa kombinasi antara metode UCD dan teknologi GPS untuk pelacakan real-time akan memberikan kontribusi nyata terhadap peningkatan kualitas sistem rujukan online rumah sakit. Sistem yang dikembangkan dengan pendekatan ini diharapkan tidak hanya ramah pengguna, tetapi juga responsif terhadap kebutuhan operasional di lapangan, sehingga mampu menjawab tantangan koordinasi antar fasilitas kesehatan secara lebih efektif, efisien, dan terukur.
+BAB III
+METODOLOGI PENELITIAN DAN PENGEMBANGAN
+Metode Penelitian dan Pengembangan
+Metode penelitian merupakan langkah krusial dalam mengatasi suatu masalah, di mana terdapat prosedur dan teknik penelitian. Dengan menguasai metode penelitian, seseorang tidak hanya mampu memecahkan berbagai masalah, tetapi juga dapat mengembangkan bidang ilmu yang ditekuni.
+Dalam penelitian ini, digunakan metode penelitian dan pengembangan (research and development, Menurut Borg and Gall (hal: 772) dalam (Winaryati dkk., 2021, p.13) menyampaikan bahwa, riset dan pengembangan (R&D) dalam bidang pendidikan merujuk pada proses yang digunakan untuk mengembangkan dan memvalidasi produk dalam bidang pendidikan. Terdapat 10 langkah dalam fase R&D dari model R&D yang dikembangkan oleh Borg & Gall. Langkah riset berada pada langkah pertama, sedangkan langkah pengembangan berada pada langkah ke-4 (empat) hingga ke-10 (sepuluh).
+Gambar 3. 1 Langkah-langkah penelitian dan pengembangan
+“Sumber: Borg and Gall, 1989 dalam Winaryati dkk., 2021, p.15”
+Dari gambar 3.1, dapat didefinisikan sebagai berikut:
+Research and Information Collecting
+:
+ Studi literatur memiliki keterkaitan dengan masalah yang dibahas dalam penelitian dan berperan penting dalam persiapan penyusunan kerangka kerja penelitian;
+Planning
+:
+ Penting untuk merumuskan keterampilan yang ingin dicapai dan menetapkan tujuan yang harus dipenuhi di setiap tahap. Jika memungkinkan, juga dapat dilakukan studi lapangan;
+Develop Preliminary Form of Product
+:
+ Melakukan pengembangan produk atau model yang direncanakan dalam bentuk prototipe. Seluruh komponen pendukung yang diperlukan telah dipersiapkan, termasuk bahan-bahan, perangkat lunak, atau perangkat keras yang dibutuhkan untuk mengoperasikan prototipe;
+Preliminary Field Testing
+:
+ Melakukan pengujian lapangan yang melibatkan pengumpulan data melalui berbagai metode seperti wawancara, observasi, dan kuesioner. Data yang diperoleh dari pengujian lapangan harus diperiksa dan dievaluasi;
+Main product revision
+:
+ Melakukan perbaikan utama terhadap produk berdasarkan saran perbaikan yang diperoleh dari uji coba pertama. Evaluasi yang dilakukan difokuskan pada evaluasi proses, sehingga perbaikan yang dilakukan bersifat internal;
+Main field testing
+:
+ Melakukan uji produk untuk menguji efektivitas desain produk guna memastikan bahwa nilai yang dihasilkan sesuai dengan tujuan penelitian;
+Operational product revision
+:
+ Melakukan perbaikan terhadap produk yang siap dijalankan berdasarkan hasil uji coba sebelumnya;
+Operational field testing
+:
+ Dalam tahap uji lapangan yang bersifat operasional, pengguna harus terlibat karena mereka akan menjadi pengguna utama produk tersebut. Pengujian dilakukan melalui wawancara dan observasi, dan hasil yang diperoleh akan dianalisis;
+Final product revision
+:
+ Memperbaiki produk berdasarkan uji coba sebelumnya dan memastikan bahwa produk dapat dipertanggungjawabkan dan akurat sesuai dengan tujuan penelitian;
+Dissemination and Implementation
+:
+ Mendiseminasi dan mengimplementasikan produk, serta membuat laporan mengenai produk yang dibuat.
+Metode Yang Diusulkan
+Dalam penelitian ini, model yang diusulkan mengacu pada pendekatan User-Centered Design (UCD) untuk mendesain ulang antarmuka dan navigasi aplikasi sistem rujukan online rumah sakit. Model ini dirancang untuk mengatasi permasalahan yang telah diidentifikasi sebelumnya, seperti kompleksitas antarmuka, kurangnya kemudahan penggunaan, dan minimnya keterlibatan pengguna dalam proses pengembangan aplikasi. Model yang diusulkan terdiri dari tiga tahapan utama:
+Model Teoritis
+Model teoritis menjelaskan pemecahan masalah secara teoritis melalui logika perubahan antar peristiwa pada objek permasalahan. Dalam penelitian ini, model teoritis menggambarkan hubungan antara metode User-Centered Design (UCD) dengan peningkatan efisiensi dan efektivitas desain navigasi aplikasi sistem rujukan online rumah sakit.
+Flowchart Pemecahan Masalah
+Gambar 3. 2 Flowchart Langkah-langkah Pemecahan Masalah
+Flowchart pada gambar 3.2 menggambarkan langkah-langkah dalam mengidentifikasi kebutuhan pengguna, mendesain navigasi berbasis UCD, dan melakukan pengujian:
+Identifikasi kebutuhan pengguna:
+ Mengumpulkan informasi mengenai kebutuhan navigasi dari tenaga medis sebagai pengguna utama.
+Perancangan wireframe awal:
+ Membuat sketsa awal navigasi berdasarkan analisis kebutuhan.
+Evaluasi desain awal:
+ Melibatkan pengguna untuk memberikan masukan terkait desain wireframe.
+Perbaikan desain:
+ Melakukan revisi berdasarkan masukan pengguna hingga desain memenuhi kebutuhan.
+Implementasi prototipe:
+ Mewujudkan desain navigasi yang telah diperbaiki dalam aplikasi sistem rujukan.
+Uji Coba Real-Time:
+ Melakukan uji coba prototipe dalam situasi nyata untuk mendapatkan umpan balik.
+Pengujian akhir:
+ Melakukan uji coba navigasi pada aplikasi untuk memastikan kepuasan pengguna.
+Model Konseptual
+Model konseptual mengidentifikasi komponen-komponen utama yang akan dikembangkan serta hubungan antar komponen.
+Komponen Model Konseptual
+Antarmuka Navigasi
+Antarmuka navigasi mencakup dua elemen utama, yaitu menu utama dan fitur pencarian. Menu utama dirancang untuk memberikan akses cepat ke fitur-fitur utama dalam aplikasi, sehingga pengguna dapat dengan mudah menjelajahi sistem. Fitur pencarian memungkinkan pengguna untuk menemukan data rujukan tertentu dengan efisien, mendukung kebutuhan tenaga medis untuk navigasi yang cepat dan akurat.
+Basis Data
+Basis data bertanggung jawab untuk menyimpan seluruh data yang relevan, termasuk data pengguna dan informasi rujukan. Struktur basis data dirancang agar mudah diakses dan diperbarui, memastikan bahwa informasi yang tersedia selalu terkini dan dapat diandalkan untuk mendukung proses rujukan.
+Prototipe Wireframe
+Prototipe wireframe berfungsi sebagai representasi awal desain antarmuka. Elemen-elemen navigasi utama diilustrasikan dalam wireframe untuk memberikan gambaran visual tentang tata letak dan alur interaksi. Dengan ini, pengembang dapat memperoleh umpan balik awal dari pengguna sebelum implementasi lebih lanjut.
+Fungsi Uji Pengguna
+Fungsi uji pengguna dirancang untuk mengumpulkan evaluasi langsung dari pengguna terkait pengalaman mereka menggunakan aplikasi.
+Hubungan Antar Komponen
+Antarmuka Navigasi memanfaatkan data dari basis data untuk menampilkan informasi rujukan.
+Prototipe Wireframe digunakan sebagai dasar desain untuk antarmuka navigasi.
+Fungsi Uji Pengguna memberikan masukan untuk perbaikan antarmuka navigasi.
+Model Prosedural
+Model prosedural ini memberikan langkah-langkah yang harus diikuti untuk menerapkan metode 
+User-Centered Design (UCD),
+ dengan fokus pada penggunaan wireframing dalam meningkatkan navigasi dan pelacakan real-time pada aplikasi sistem rujukan online rumah sakit. Setiap tahapan bertujuan untuk memastikan bahwa desain yang dihasilkan sesuai dengan kebutuhan pengguna, dalam hal ini tenaga medis, sehingga aplikasi dapat berfungsi dengan efektif dan intuitif.
+ 
+Berikut adalah tahapan model prosedural yang digunakan:
+Tahapan Model Prosedural
+Analisis Kebutuhan
+Tahap ini dilakukan dengan mengumpulkan data kebutuhan pengguna melalui wawancara dan survei terhadap tenaga medis sebagai pengguna utama sistem rujukan online. 
+Memfo
+kus
+kan
+ pada 
+kebutuhan 
+terkait navigasi yang
+ mencakup akses fitur rujukan. Menganalisis data untuk mengidentifikasi masalah serta harapan pengguna.
+Perancangan Wireframe
+Mengembangkan desain awal 
+dalam bentuk wireframe untuk membarikan gambaran konseptual mengenai navigasi sistem. Wireframe mancakup elemen navigasi 
+sebagai dasar diskusi dengan pengguna.
+Evaluasi dan Revisi
+Wireframe awal diuji oleh pengguna, terutama tenaga medis yang akan menggunakan sistem rujukan online. Pengujian ini dilakukan untuk mengidentifikasi kelemahan pada desain awal, seperti tata letak yang membingungkan atau elemen yang sulit diakses. Masukan dari pengguna kemudian digunakan untuk memperbaiki wireframe sehingga desain navigasi menjadi lebih sesuai dengan kebutuhan dan preferensi pengguna.
+Pengembangan Prototipe
+Setelah yang direvisi wireframe disetujui, proses pengembangan prototipe dimulai. Pada tahap ini, desain navigasi yang telah disempurnakan diimplementasikan dalam aplikasi sistem rujukan online menggunakan teknologi yang relevan. Prototipe ini mencakup elemen antarmuka yang interaktif dan fungsi dasar navigasi, sehingga pengguna dapat mencoba sistem secara langsung.
+Uji Usabilitas
+Prototipe yang telah dikembangkan diuji melalui uji usabilitas dengan melibatkan tenaga medis sebagai pengguna. Tujuan dari uji ini adalah untuk mengevaluasi seberapa mudah dan nyaman pengguna dalam berinteraksi dengan sistem navigasi. Pengujian ini juga mencakup analisis waktu penyelesaian tugas, tingkat kesalahan pengguna, dan tingkat kepuasan. Hasil uji usabilitas digunakan untuk menentukan apakah desain navigasi sudah memenuhi standar atau memerlukan perbaikan lebih lanjut.
+Finalisasi Desain
+Tahap terakhir adalah menyelesaikan desain navigasi berdasarkan hasil evaluasi dari uji usabilitas. Perbaikan dilakukan pada aspek-aspek yang masih memerlukan penyempurnaan, seperti meningkatkan konsistensi antarmuka atau menambahkan fitur pendukung navigasi. 
+Desain akhir ini kemudian diterapkan secara penuh dalam sistem rujukan online dan dioptimalkan untuk memenuhi kebutuhan pengguna secara maksimal.
+Prosedur Pengembangan
+Prosedur pengembangan dalam penelitian ini mengikuti tahapan model prosedural
+yang telah dirancang. Dalam penelitian ini, proses pengembangan dapat digunakan
+pada 
+flowchart berikut:
+Gambar 3. 3 Prosedur Pengembangan
+Langkah-langkah pada gambar 3.3 menggambarkan proses pengembangan desain navigasi berbasis User-Centered Design (UCD) pada sistem rujukan online:
+Analisis Kebutuhan
+Langkah pertama dalam prosedur pengembangan adalah mengidentifikasi kebutuhan pengguna. Data dikumpulkan melalui wawancara dan survei terhadap tenaga medis sebagai pengguna utama sistem. Fokusnya adalah memahami kendala yang dihadapi pada sistem navigasi saat ini serta fitur yang diharapkan oleh pengguna untuk mendukung tugas mereka. Hasil analisis kebutuhan ini menjadi dasar dalam merancang navigasi 
+dan pelacakan 
+rujukan 
+yang lebih 
+real-time juga
+ efisien.
+Perancangan Wireframe
+Berdasarkan hasil analisis kebutuhan, dilakukan perancangan wireframe yang berfungsi sebagai representasi visual awal dari navigasi sistem. Wireframe ini menampilkan tata letak dan struktur halaman, termasuk elemen-elemen navigasi seperti menu, tombol, dan fitur pencarian. Wireframe dirancang menggunakan perangkat lunak desain seperti Figma atau Adobe XD untuk mempermudah revisi berdasarkan masukan pengguna.
+Evaluasi dan Revisi
+Wireframe yang telah dirancang diuji oleh tenaga medis sebagai pengguna potensial. Pengujian ini bertujuan untuk mengidentifikasi kekurangan dalam desain, seperti elemen yang sulit diakses atau tata letak yang membingungkan. Berdasarkan hasil evaluasi, dilakukan revisi terhadap wireframe untuk memastikan desain memenuhi kebutuhan pengguna.
+Pengembangan Prototipe
+Setelah wireframe disetujui, tahap selanjutnya adalah pengembangan prototipe. Prototipe ini merupakan implementasi awal desain navigasi ke dalam sistem rujukan online menggunakan teknologi yang relevan
+.
+ 
+Pengembangan juga mencakup integrasi dengan Web Service/API
+ untuk memungkinkan pembaruan data fasilitas secara 
+real-time
+. Prototipe mencakup elemen interaktif yang memungkinkan pengguna mencoba sistem secara langsung.
+Uji Usabilitas
+Prototipe yang telah dikembangkan diuji melalui uji usabilitas. Tenaga medis dilibatkan dalam uji ini untuk mengevaluasi kemudahan penggunaan, efektivitas navigasi, dan kenyamanan interaksi dengan sistem. Data hasil uji usabilitas dianalisis untuk mengukur tingkat keberhasilan desain, termasuk waktu penyelesaian tugas, tingkat kesalahan, tingkat kepuasan pe
+ngguna, dan akurasi infromasi 
+real-time
+.
+Finalisasi Desain
+Langkah terakhir dalam prosedur pengembangan adalah finalisasi desain navigasi. Berdasarkan hasil uji usabilitas, dilakukan penyempurnaan terhadap aspek-aspek yang masih kurang optimal. Desain yang telah difinalisasi kemudian diterapkan secara penuh dalam sistem rujukan online untuk mendukung pengguna dalam menjalankan tugas mereka dengan lebih baik.
+Uji Coba Produk
+Uji coba produk dilakukan untuk mengumpulkan data yang dapat digunakan sebagai dasar penilaian terhadap tingkat keefektifan, efisiensi, dan daya tarik dari desain navigasi berbasis 
+User-Centered Design 
+(UCD) yang telah dikembangkan. Berikut adalah tahapan uji coba produk:
+Desain Uji Coba
+Uji Coba Ahli
+Uji coba ahli merupakan langkah awal yang penting untuk memastikan desain navigasi berbasis 
+User-Centered Design
+ (UCD) memenuhi standar teknis dan teoritis sebelum diujikan kepada pengguna akhir. 
+Dalam penelitian 
+ini, 
+ahli
+ yang dilibatkan berjumlah dua orang dosen
+ dari Program Studi
+ 
+Teknik
+ Infromatika
+ dan pengembangan perangkat lunak, dengan kriteria seleksi meliputi pengalaman kerja minimal lima tahun dalam bidang desain antarmuka atau pengembangan sistem perangkat lunak berbasis 
+web
+. Fokus utama dari uji coba ahli adalah mengevaluasi kelayakan teknis, seperti struktur kode, integrasi dengan sistem rujukan 
+online
+, dan stabilitas aplikasi. Selain itu, para ahli juga menganalisis logika desain untuk memastikan setiap elemen antarmuka mendukung alur navigasi yang intuitif, konsisten, dan selaras dengan kebutuhan pengguna.
+Uji Coba Pengguna
+Uji coba pengguna dilakukan dengan melibatkan tenaga medis sebagai subjek utama, karena mereka merupakan pengguna akhir dari sistem rujukan 
+online
+ yang dikembangkan. Tahap ini bertujuan untuk mengevaluasi tingkat kemudahan penggunaan, kenyamanan navigasi, dan kepuasan pengguna terhadap desain prototipe berbasis 
+User-Centered Design 
+(UCD). Uji coba pengguna dilaksanakan melalui skenario penggunaan tertentu yang mencerminkan situasi nyata dalam proses rujukan pasien, seperti pencarian rumah sakit tujuan, pengisian data pasien, dan pengelolaan status rujukan.
+Dengan pendekatan ini, pengguna diharapkan dapat menguji langsung antarmuka aplikasi dan memberikan masukan berdasarkan pengalaman mereka.
+Subjek Uji Coba
+Subjek uji coba dalam penelitian ini dibagi menjadi dua kelompok utama, yaitu ahli dan pengguna akhir. Kelompok pertama adalah ahli yang terdiri dari dua orang dosen Program Studi Teknik Informatika dengan pengalaman di bidang pengembangan perangkat lunak dan desain sistem. Para ahli ini bertugas mengevaluasi aspek teknis dan struktur desain aplikasi, memastikan bahwa sistem yang dikembangkan memiliki stabilitas, konsistensi, serta mendukung prinsip 
+User-Centered Design 
+(UCD).
+ 
+Kelompok kedua adalah tenaga medis yang berjumlah sepuluh orang, terdiri dari dokter, perawat, dan tenaga administrasi di fasilitas kesehatan yang sering terlibat dalam proses rujukan pasien. Mereka dipilih karena mewakili pengguna akhir yang akan berinteraksi langsung dengan sistem rujukan 
+online
+ dalam kegiatan sehari-hari. Kelompok ini memberikan umpan balik berdasarkan pengalaman langsung menggunakan prototipe sistem, terutama terkait kemudahan navigasi, efisiensi pengisian data, dan kejelasan alur kerja.
+Pemilihan subjek uji coba ini didasarkan pada tujuan penelitian untuk memastikan bahwa desain yang dihasilkan tidak hanya memenuhi standar teknis, tetapi juga relevan dan bermanfaat bagi pengguna akhir. Dengan melibatkan kedua kelompok ini, penelitian dapat menghasilkan sistem yang tidak hanya fungsional, tetapi juga mampu meningkatkan efisiensi kerja tenaga medis dalam proses rujukan pasien.
+Jenis Data
+Dalam penelitian ini, jenis data yang dikumpulkan bertujuan untuk mengevaluasi tingkat keefektifan, efisiensi, dan daya tarik desain navigasi berbasis 
+User-Centered Design 
+(UCD) yang diterapkan pada sistem rujukan 
+online
+ rumah sakit. Data yang dikumpulkan dibagi menjadi dua jenis, yaitu data kualitatif dan data kuantitatif. Kedua jenis data ini saling melengkapi untuk memberikan gambaran yang lebih komprehensif tentang performa produk yang dihasilkan.
+Data Kuantitatif
+Data kuantitatif diperoleh melalui kuesioner dan pengukuran langsung yang menghasilkan angka-angka untuk mengevaluasi performa produk secara objektif. 
+Data ini digunakan untuk menilai efisiensi dan keefektifan sistem rujukan 
+online
+ berdasarkan indikator seperti waktu yang dibutuhkan untuk menyelesaikan tugas tertentu, tingkat keberhasilan pengguna dalam menyelesaikan alur navigasi, serta skor kepuasan pengguna berdasarkan skala Likert. Pada uji coba pengguna, data kuantitatif mencakup metrik seperti durasi waktu yang dibutuhkan untuk memasukkan data rujukan, persentase tugas yang diselesaikan dengan benar, dan hasil evaluasi kuantitatif dari kuesioner usabilitas. Data ini membantu peneliti untuk membandingkan performa prototipe dengan sistem sebelumnya atau dengan target yang telah ditetapkan.
+Data Kualitatif
+Data kualitatif diperoleh melalui observasi, wawancara mendalam, dan umpan balik langsung dari subjek uji coba, baik dari para ahli maupun tenaga medis sebagai pengguna akhir. Data ini digunakan untuk mengevaluasi aspek deskriptif seperti daya tarik visual antarmuka, kemudahan penggunaan, kepuasan pengguna, serta relevansi desain dengan kebutuhan pengguna.
+Pada uji coba ahli, data kualitatif mencakup masukan mengenai kesesuaian desain dengan prinsip UCD, termasuk elemen konsistensi, tata letak, dan aksesibilitas. Sementara itu, pada uji coba pengguna, data kualitatif mencakup pengalaman subjektif pengguna saat berinteraksi dengan prototipe, misalnya, kemudahan navigasi, kejelasan alur kerja, dan kenyamanan dalam mengoperasikan aplikasi. Pendekatan ini memungkinkan penelitian untuk mengidentifikasi masalah-masalah yang bersifat spesifik dan tidak terdeteksi melalui data numerik.
+Instrumen Pengumpulan Data
+Instrumen pengumpulan data yang digunakan adalah kuesioner. Kuesioner merupakan salah satu Teknik pengumpulan data dengan memberikan pertanyaan kepada responden untuk mendapatkan gambaran atau persepsi pengguna sehingga mengetahui tingkat kelayakan dari sistem yang telah dikembangkan.
+Instrumen untuk ahli
+Instrumen yang digunakan 
+untuk penilaian oleh ahli adalah pengujian Blackbox. Pengujian ini difokuskan unutk megevaluasi fungsi-fungsi
+ dalam sistem tanpa melihat kode program. Ahli akan menguji setiap fitur pada aplikasi sesuai dengan skenario
+ penggunaan yang telah ditentukan, kemudian memberikan penilaian apakah fungsi tersbut berjalan sesuai harapan atau tidak. Hasil pengujian ini akan menjadi acuan untuk mengetahui kelayakan sistem sebelum dilakukan uji coba oleh pengguna.
+ Pada penelitian ini ahli sistem merupakan dosen Universitas Binaniaga Indonesia.
+ Black Box Testing cenderung unutk menemukan hal-hal berikut (Al Bahra, 200
+6, p. 379
+)
+ 
+(KURNIAWAN, 2023)
+:
+Fungsi – fungsi yang tidak benar atau 
+tidak ada;
+Kesalahan antarmuka (Interface errors);
+Kesalahan kinerja.
+Dibawah ini merupakan contoh pengujian Black Box ditunjukkan oleh Tabel
+ 3.1.
+Tabel 3.1 
+Tabel Pengujian B
+lac
+kBox
+No.
+Fitur yang Diuji
+Skenario
+Input
+Output yang Diharapkan
+Hasil Pengujian
+Valid
+Tidak Valid
+BB-01
+Login Pengguna
+Memasukkan username & password yang valid
+Username: admin@pusat.com
+Berhasil masuk ke dashboard sesuai hak akses
+ 
+ 
+Password: password123
+BB-02
+Login Gagal
+Memasukkan username atau password yang salah
+Username: dokter01
+Muncul pesan error 
+"Username atau password salah"
+ 
+ 
+Password: salah
+BB-03
+Reset Password
+Mengirim permintaan reset password
+Email terdaftar: dokter01@rs.com
+Link reset password terkirim ke email
+ 
+ 
+BB-04
+Navigasi Menu Rujukan Baru
+Klik menu 
+Buat Rujukan Baru
+Klik tombol/menu
+Form input data rujukan muncul lengkap
+ 
+ 
+BB-05
+Pengisian Data Pasien
+Mengisi semua form pasien dan submit
+Nama, NIK, alamat, keluhan
+Data pasien tersimpan dan lanjut ke form rujukan
+ 
+ 
+BB-06
+Validasi Data Kosong
+Submit form tanpa mengisi data
+Klik 
+Simpan
+Muncul pesan error 
+"Data wajib diisi"
+ 
+ 
+BB-07
+Upload Dokumen Pendukung
+Upload file PDF hasil pemeriksaan
+File: labresult.pdf
+File berhasil diunggah dan tampil di detail rujukan
+ 
+ 
+BB-08
+Pencarian Rumah Sakit Tujuan
+Cari rumah sakit berdasarkan spesialisasi
+Input: "Bedah"
+Menampilkan daftar rumah sakit dengan layanan bedah
+ 
+ 
+BB-09
+Filter Berdasarkan Lokasi
+Filter daftar rumah sakit
+Pilih: Kota Bogor
+Menampilkan daftar rumah sakit di Kota Bogor
+ 
+ 
+BB-10
+Pengecekan Ketersediaan Fasilitas
+Klik detail rumah sakit tujuan
+Klik nama RS
+Menampilkan ketersediaan kamar, dokter, ICU secara real-time
+ 
+ 
+BB-11
+Kirim Rujukan
+Mengirim data rujukan ke rumah sakit tujuan
+Klik 
+Kirim
+Status berubah menjadi 
+Terkirim
+, RS tujuan menerima notifikasi
+ 
+ 
+No.
+Fitur yang Diuji
+Skenario
+Input
+Output yang Diharapkan
+Hasil Pengujian
+Valid
+Tidak Valid
+BB-12
+Pelacakan Status Rujukan
+Memantau rujukan yang sudah dikirim
+Klik menu 
+Status Rujukan
+Menampilkan status (
+Terkirim
+, 
+Diterima
+, 
+Ditolak
+) secara real-time
+BB-13
+Pembatalan Rujukan
+Membatalkan rujukan yang belum diproses
+Klik 
+Batalkan
+Status berubah menjadi 
+Dibatalkan
+BB-14
+Notifikasi Masuk
+Menerima notifikasi saat ada update status rujukan
+Status berubah
+Notifikasi tampil di layar dan/atau email
+BB-15
+Logout
+Klik tombol 
+Logout
+Klik 
+Logout
+Sistem kembali ke halaman login
+BB-16
+Akses Tidak Sah
+Memasukkan URL halaman tanpa login
+URL: /dashboard tanpa sesi
+Sistem mengarahkan ke halaman login
+BB-17
+Laporan Data Rujukan
+Mengunduh laporan rujukan
+Pilih periode: Januari 2025
+File laporan PDF/Excel berhasil diunduh
+BB-18
+Menampilkan Lokasi Ambulans Real-Time
+Membuka halaman tracking ambulans
+Klik menu 
+Tracking Ambulans
+Peta muncul dengan posisi ambulans terkini ditampilkan
+BB-19
+Update Posisi Otomatis
+Ambulans bergerak
+Sistem menerima koordinat GPS baru setiap X detik
+Posisi di peta berubah otomatis sesuai pergerakan ambulans
+BB-20
+Zoom & Pan Peta
+Memperbesar atau menggeser peta
+Aksi mouse/touch pada peta
+Peta merespons sesuai aksi pengguna tanpa delay signifikan
+BB-21
+Info Detail Ambulans
+Klik ikon ambulans di peta
+Klik ikon ambulans
+Popup muncul berisi informasi nomor kendaraan, supir, dan status rujukan
+ 
+ 
+BB-22
+Notifikasi Kedatangan
+Ambulans mencapai rumah sakit tujuan
+Posisi GPS berada di titik RS tujuan
+Sistem mengirim notifikasi 
+"Ambulans telah tiba"
+ ke pengguna terkait
+ 
+ 
+Pada Tabel 3.
+1
+, kolom “Skenario Pengujian” adalah serangkaian masukan untuk kondisi-kondisi tertentu yang akan diuji. Pada kolom “No” adalah nomor urutan kebutuhan fungsional. Pada kolom “Test Case” adalah proses dari kebutuhan fungsional yang ingin diuji. Pada kolom “Hasil yang Diharapkan” yaitu hasil yang diharapkan untuk input atau output, apakah sesuai atau tidak. Pada kolom “Hasil Pengujian” adalah hasil sesuai dengan input atau output yang berisi keterangan “Valid” dan “Tidak Valid”, skala yang digunakan untuk mengolah pengujian 
+B
+lack 
+B
+ox
+ menggunakan skala guttman. Terdapat pertanyaan terbuka yang digunakan untuk mengetahui masukan dari ahli sistem terhadap sistem yang di buat dan selanjutnya digunakan untuk evaluasi produk.
+Kritik
+                                  
+  :
+Saran
+                                 
+  :
+Instrumen untuk pengguna
+Pada instrumen pengumpulan data untuk pengguna peneliti menggunakan PSSUQ (
+Post-Study System Usability Questionnaire
+). PSSUQ adalah alat pengukuran yang digunakan untuk mengukur kepuasan pengguna terhadap pengalaman pengguna (
+user 
+experience) dalam penggunaan sistem atau perangkat lunak setelah mereka menggunakannya. PSSUQ adalah kuesioner yang terdiri dari 19 pertanyaan yang dirancang untuk mengevaluasi aspek-aspek kualitas pengalaman pengguna, termasuk kegunaan, kepuasan, dan persepsi umum terhadap sistem. (Sauro & Lewis, 2016). Berikut ini merupakan paket kuesioner PSSUQ untuk pengguna selengkapnya (Fruhling & Lee, 2005).
+Tabel 3.2
+ Tabel Pengujian PSSUQ
+No.
+Pertanyaan
+Jawaban
+1
+2
+3
+4
+5
+1
+The system is easy to use. (Sistem ini mudah digunakan.)
+2
+I do not have difficulty using the system. (Saya tidak mengalami kesulitan menggunakan sistem ini.)
+3
+I feel confident using the system. (Saya merasa percaya diri dalam menggunakan sistem ini.)
+4
+I find the system easy to learn. (Saya merasa sistem ini mudah untuk dipelajari.)
+5
+I can complete tasks quickly using the system. (Saya dapat menyelesaikan tugas dengan cepat menggunakan sistem ini.)
+6
+I do not make errors when using the system. (Saya tidak mengalami kesalahan saat menggunakan sistem ini.)
+7
+I feel that the system is efficient to use. (Saya merasa sistem ini efisien untuk digunakan.)
+8
+I am satisfied with the system. (Saya merasa puas dengan sistem ini.)
+No.
+Pertanyaan
+Jawaban
+1
+2
+3
+4
+5
+9
+I would recommend the system to others. (Saya akan merekomendasikan sistem ini kepada orang lain.)
+10
+The system provides clear and informative feedback. (Sistem ini memberikan umpan balik yang jelas dan informatif.)
+11
+I find the system uncomplicated. (Saya menemukan sistem ini tidak rumit.)
+12
+I feel comfortable using the system. (Saya merasa nyaman saat menggunakan sistem ini.)
+13
+I am not bothered when using the system. (Saya tidak merasa terganggu saat menggunakan sistem ini.)
+14
+The system provides the features I need. (Sistem ini memberikan fitur yang saya butuhkan.)
+15
+The system has an appealing visual design. (Sistem ini memiliki tampilan visual yang menarik.)
+16
+The system meets my expectations. (Sistem ini sesuai dengan harapan saya.)
+17
+I do not experience technical problems when using the system. (Saya tidak mengalami masalah teknis saat menggunakan sistem ini.)
+18
+I find the system easy to remember. (Saya merasa sistem ini mudah untuk diingat.)
+19
+I feel that the system meets my needs. (Saya merasa sistem ini memenuhi kebutuhan saya.)
+Adapun aturan dalam perhitungan skor dikelompokkan menjadi 4 (empat). Berikut adalah tabel aturan perhitungan skor PSSUQ (Nurkalis et al, 2019).
+Tabel 3.
+3
+ Perhitungan Skor PSSUQ
+Nama Skor
+Item Respon
+Overall
+No. 1 s/d 19
+SysUse
+No. 1 s/d 8
+InfoQual
+No. 9 s/d 15
+InterQual
+No. 16 s/d 18
+Sedangkan untuk kuesioner terbuka sebagai berikut.
+Tabel 3.
+4
+ Kuesioner Terbuka Untuk Pengguna
+Aspek Penilaian
+Indikator
+Keseluruhan
+Saran Pengembangan
+Skala Penilaian
+Teknik pengolahan data pada penelitian pengembangan ini menggunakan metode skala likert. Skala likert merupakan metode skala bipolar, yang menentukan positif atau negatif respon pada sebuah pertanyaan. Skala likert atau 
+Likert Scale
+ adalah skala penelitian yang digunakan untuk mengukur sikap dan pendapat. Dengan skala likert ini, responden diminta untuk melengkapi kuesioner yang mengharuskan mereka untuk menunjukkan tingkat persetujuannya terhadap serangkaian pertanyaan. Pertanyaan atau pernyataan yang digunakan dalam penelitian ini biasanya disebut dengan variable penelitian dan ditetapkan secara spesifik oleh peneliti. Nama skala ini diambil dari nama penciptanya yaitu Rensis Likert, seorang hali psikologi social dari Amerika Serikat.
+Tingkat persetujuan yang dimaksud dalam skala Likert ini terdiri dari 5 pilihan skala yang memiliki gradasi dari Sangat Setuju (SS) hingga Sangat Tidak Setuju (STS). 5 pilihan tersebut adalah:
+Tabel 3.
+5
+ Tabel Skala Likert
+No.
+Kategori
+Skor
+1.
+Sangat Setuju (SS)
+5
+2.
+Setuju (S)
+4
+3.
+Ragu-Ragu Setuju (RS)
+3
+4.
+Tidak Setuju (TS)
+2
+5.
+Sangat Tidak Setuju
+1
+Sumber: Risnita, 2012
+Teknik Analisis Data
+Analisis data adalah proses mencari dan menyusun secara sistematis data yang diperoleh dari hasil wawancara, catatan lapangan, dan bahan-bahan lain, sehingga dapat mudah dipahami, dan temuannya dapat diinformasikan kepada orang lain (
+Sugiono.
+ 2
+0
+13, p.244). teknik analisis yang digunakan pada penelitian pengembangan ini disesuaikan dengan jenis instrumen yang dikumpulkan. Analisis data ini menggunakan teknik analisis deskriptif, data yang diperoleh melalui kuesioner dengan analisis deskriptif akan diuraikan secara naratif. Jenis data yang diperoleh dari hasil uji kelayakan (validasi) oleh pengguna yaitu data kuantitatif. Data kuantitatif berupa angka-angka mulai dari 1 hingga 5 berdasarkan skala likert yang kemudian akan dipresentasikan.
+Teknik analisis data yang digunakan untuk menganalisis data hasil penilaian kelayakan adalah dengana teknik analisis deskriptif. Adapun teknik deskriptif presentase yang akan digunakan dapat dituliskan sebagai berikut:
+Sumber: Riduwan, 2004
+Keterangan:
+DP
+= Deskriptif Presentase (%)
+N
+= Skor empirik (skor yang diperoleh)
+N
+= Skor maksimal item pertanyaan
+Jenjang kualifikasi kriteria kelayakan untuk menyimpulkan hasil validasi adalah sebagai berikut.
+Tabel 3.
+6
+ Konversi Tingkat Pencapaian
+Tingkat Pencapaian
+Kualifikasi
+90%-100%
+Sangat Layak
+75%-89%
+Layak
+65%-74%
+Cukup Layak
+55%-64%
+Kurang Layak
+0%-54%
+Tidak Layak
+Sumber: Sudjana, 2005
+ 
+BAB 
+IV 
+HASIL DAN PEMBAHASAN
+Deskripsi Objek Penelitian
+Sistem rujukan online rumah sakit merupakan aplikasi digital yang dirancang untuk mempermudah proses rujukan pasien dari fasilitas kesehatan tingkat pertama, seperti puskesmas, ke rumah sakit rujukan. Sistem ini diharapkan mampu mempercepat proses administrasi, memberikan informasi ketersediaan fasilitas secara real-time, serta mengurangi potensi kesalahan dalam pengiriman rujukan pasien. Dengan adanya sistem
+ ini
+, tenaga medis tidak perlu lagi menggunakan cara manual seperti panggilan telepon atau surat tertulis, melainkan dapat langsung menginput data pasien dan memilih rumah sakit tujuan melalui aplikasi.
+Namun, implementasi sistem rujukan online di lapangan masih menghadapi berbagai kendala yang cukup signifikan.
+ 
+Berdasarkan hasil survei dan wawancara yang dilakukan, ditemukan beberapa permasalahan utama, antara lain:
+Navigasi yang 
+r
+umit
+Banyak tenaga medis merasa kesulitan dalam menggunakan aplikasi karena tampilan antarmuka yang kompleks dan alur navigasi yang membingungkan. Hal ini memperlambat proses input data rujukan, terutama dalam kondisi darurat yang membutuhkan penanganan cepat.
+Informasi 
+t
+idak 
+r
+eal-
+t
+ime
+Data mengenai ketersediaan kamar rawat inap, dokter spesialis, ICU, maupun peralatan medis pendukung sering kali tidak diperbarui secara real-time. Akibatnya, rujukan terkadang dikirim ke rumah sakit yang sebenarnya sudah penuh atau tidak memiliki fasilitas yang dibutuhkan, sehingga pasien harus dirujuk ulang.
+Kesalahan 
+i
+nput 
+d
+ata
+Antarmuka sistem yang tidak intuitif sering kali menyebabkan kesalahan dalam pengisian data
+ pasien
+, seperti identitas pasien, nomor rekam medis, atau kode diagnosis. 
+Hal
+ ini dapat mengakibatkan keterlambatan dan menurunkan kualitas layanan
+.
+Kurangnya Panduan Penggunaan
+Aplikasi tidak dilengkapi dengan panduan yang jelas bagi pengguna bar
+u, sehingga 
+tenaga medis harus mempelajari penggunaan sistem secara 
+trial and error
+.
+Minimnya Keterlibatan Pengguna dalam Pengembangan
+Pada tahap pengembangan awal, tenaga medis
+ sebagai pengguna utama kurang dilibatkan secara aktif
+, sehingga banyak fitur yang tidak sesuai dengan kebutuhan di lapangan
+.
+Berdasarkan permasalahan tersebut, dapat disimpulkan bahwa sistem rujukan online yang ada saat ini masih kurang optimal dalam mendukung efisiensi dan efektivitas proses rujukan pasien. Oleh karena itu, diperlukan pendekatan pengembangan yang berorientasi pada kebutuhan pengguna, salah satunya melalui penerapan metode User-Centered Design (UCD). Dengan pendekatan ini, pengguna dilibatkan secara langsung dalam proses perancangan, sehingga aplikasi yang dihasilkan memiliki navigasi yang lebih sederhana, antarmuka yang lebih intuitif, serta penyajian informasi yang lebih akurat dan real-time. Melalui metode ini, sistem rujukan online diharapkan dapat meningkatkan kepuasan tenaga medis sekaligus mempercepat proses pelayanan pasien.
+ 
+Gambar 4.1 
+Arsitektur Sistem
+Gambar 4.
+1
+ menunjukkan arsitektur sistem rujukan online rumah sakit dengan fitur pelacakan pasien berbasis GPS real-time.
+Sistem ini terdiri dari beberapa komponen utama, yaitu:
+Web Client / Mobile Client
+Merupakan antarmuka pengguna yang digunakan oleh tenaga medis dan admin rumah sakit. Aplikasi dapat diakses melalui perangkat mobile atau komputer.
+Sensor GPS internal pada perangkat digunakan untuk mendapatkan posisi pengguna secara real-time.
+Application Server
+Berfungsi sebagai pusat logika sistem yang menangani seluruh permintaan dari pengguna. Server ini menjalankan:
+Application Layer, yang mengelola proses bisnis seperti input rujukan, status pasien, dan pelacakan posisi.
+Web API Layer, yang menyediakan endpoint komunikasi antara aplikasi client dan server untuk pertukaran data JSON melalui protokol HTTPS.
+Database Server
+Menyimpan data rujukan pasien, data rumah sakit, pengguna, serta log pelacakan posisi yang diperbarui secara berkala.
+GPS Tracking Service
+Fitur pelacakan posisi pasien menggunakan data lokasi yang diperoleh dari sensor GPS internal pada perangkat mobile. Data lokasi dikirim ke server secara periodik melalui API.
+Online Maps (Google Maps / Leaflet API)
+Komponen ini menampilkan posisi pengguna dan rute perjalanan pasien menuju rumah sakit tujuan dalam bentuk visual peta digital.
+Hasil Penelitian
+Metode User-Centered Design (UCD) diterapkan dalam penelitian ini sebagai pendekatan utama dalam proses perancangan ulang sistem rujukan online rumah sakit dengan fitur pelacakan pasien berbasis GPS.
+ 
+Pendekatan ini dipilih karena menempatkan pengguna
+, 
+dalam hal ini tenaga medis dan admin rumah sakit
+ 
+sebagai pusat dari seluruh tahapan pengembangan sistem, sehingga setiap rancangan yang dihasilkan benar-benar sesuai dengan kebutuhan dan konteks kerja di lapangan.
+Proses penerapan UCD dilakukan secara iteratif, dimulai dari tahapan analisis kebutuhan pengguna, perancangan desain antarmuka, implementasi prototipe, hingga evaluasi sistem bersama pengguna.
+ 
+Setiap tahap saling berhubungan dan berulang untuk memastikan hasil akhir sistem memiliki tingkat usability yang tinggi
+. Adapun tahapan yang dilakukan dalam penelitian ini 
+adalah 
+Analisis Kebutuhan Pengguna
+ 
+untuk mengidentifikasi karakteristik pengguna, permasalahan yang dihadapi, serta kebutuhan sistem dari sisi fungsional dan teknis
+, 
+Perancangan Sistem
+ yang berfokus pada pengembangan solusi desain melalui proses iterasi wireframe dan diagram sistem
+, 
+Implementasi Prototipe
+ yaitu tahap realisasi desain menjadi aplikasi interaktif yang dapat diuji langsung oleh pengguna
+, 
+Pengujian Sistem
+ yang bertujuan untuk menilai fungsionalitas, kemudahan penggunaan, serta tingkat kepuasan pengguna terhadap sistem yang dikembangkan.
+Melalui keempat tahapan tersebut, penelitian ini diharapkan mampu menghasilkan sistem rujukan online rumah sakit yang lebih efisien, mudah digunakan, serta mendukung proses pelacakan pasien secara real-time dan akurat.
+Analisis Kebutuhan Pengguna
+Analisis 
+Proses Bisnis Lama
+Pada proses bisnis lama, alur pengajuan rujukan pasien masih berjalan secara semi-manual melalui sistem yang belum terintegrasi secara optimal.
+Gambaran umum prosesnya dapat dilihat pada Gambar 4.
+2
+, yang menunjukkan bahwa alur rujukan dimulai dari Fasilitas Kesehatan Pengirim (Faskes) yang mengakses aplikasi sistem rujukan untuk mengajukan permohonan ke rumah sakit tujuan.
+Gambar 4.
+2
+ Proses Bisnis Lama
+Setelah rujukan dikirim, sistem akan meneruskan permohonan tersebut ke rumah sakit tujuan. Pihak rumah sakit kemudian menerima notifikasi rujukan dan melakukan verifikasi ketersediaan fasilitas.
+Jika rumah sakit tujuan menolak rujukan, maka permohonan dikembalikan ke faskes pengirim untuk dilakukan rujukan ulang.
+ 
+Namun, apabila rumah sakit tujuan menerima rujukan, sistem akan mengirimkan notifikasi bahwa permohonan diterima. Selanjutnya, faskes pengirim akan mengantarkan pasien ke rumah sakit tujuan, dan pihak rumah sakit akan memperbarui status rujukan pasien di dalam sistem, baik ketika pasien telah diterima maupun apabila rujukan dibatalkan.
+Meskipun sistem ini sudah mendukung pertukaran data antar fasilitas, namun prosesnya masih memiliki beberapa keterbatasan, antara lain:
+Belum adanya fitur pelacakan pasien atau ambulans secara real-time, sehingga pihak rumah sakit tidak dapat memantau posisi pasien selama perjalanan.
+Proses pembaruan status rujukan masih dilakukan secara manual, sehingga sering terjadi keterlambatan informasi.
+Navigasi sistem yang kurang intuitif, menyebabkan pengguna memerlukan waktu lebih lama untuk mengakses fitur utama.
+Kurangnya notifikasi otomatis yang memberikan pembaruan instan kepada pihak terkait.
+Keterbatasan tersebut menunjukkan bahwa sistem lama belum sepenuhnya mendukung kebutuhan pengguna di lapangan, terutama dalam kondisi darurat yang memerlukan koordinasi cepat dan informasi real-time.
+ 
+Oleh karena itu, diperlukan rancangan ulang proses bisnis dengan pendekatan berbasis User-Centered Design (UCD) dan integrasi GPS tracking, agar sistem rujukan dapat berjalan lebih efisien, transparan, dan responsif terhadap kebutuhan tenaga medis.
+Analisis Proses Bisnis Baru
+Pada proses bisnis baru, rancangan alur rujukan pasien telah disempurnakan dengan mengintegrasikan pelacakan pasien secara real-time berbasis GPS serta penyempurnaan mekanisme notifikasi otomatis antar pihak terkait.
+Gambaran proses bisnis baru dapat dilihat pada Gambar 4.3, yang menunjukkan tahapan pengajuan rujukan hingga pelacakan ambulans menuju rumah sakit tujuan.
+Gambar 4.
+3
+ Proses Bisnis 
+Baru
+Proses dimulai ketika Fasilitas Kesehatan Pengirim (Faskes) mengakses aplikasi sistem rujukan online dan mengajukan permohonan rujukan ke rumah sakit tujuan.
+Sistem secara otomatis meneruskan data rujukan tersebut ke rumah sakit tujuan, dan pihak rumah sakit menerima notifikasi permohonan melalui aplikasi.
+Selanjutnya, rumah sakit melakukan verifikasi terhadap ketersediaan fasilitas dan sumber daya medis.
+Apabila rumah sakit tujuan menolak rujukan, maka sistem mengirimkan notifikasi penolakan ke faskes pengirim agar dapat segera melakukan rujukan ulang.
+Sebaliknya, apabila rujukan diterima, sistem akan mengirimkan notifikasi penerimaan secara otomatis ke faskes pengirim.
+Setelah rujukan diterima, petugas medis di faskes pengirim akan mengaktifkan fitur pelacakan GPS pada aplikasi ambulans.
+Melalui fitur ini, lokasi pasien atau ambulans dapat dipantau secara real-time oleh rumah sakit tujuan selama proses pengantaran.
+Informasi posisi terkini ambulans ditampilkan melalui peta digital yang terintegrasi dengan sistem (menggunakan API Google Maps atau Leaflet).
+Sesampainya di rumah sakit tujuan, petugas rumah sakit akan memperbarui status rujukan pasien di dalam sistem menjadi “Tiba di Faskes Tujuan” atau “Rujukan Dibatalkan” apabila terjadi perubahan kondisi.
+Dengan adanya proses bisnis baru ini, seluruh tahapan rujukan menjadi lebih terkoordinasi, efisien, dan transparan.
+Integrasi GPS dan sistem notifikasi otomatis membantu mempercepat proses koordinasi antar fasilitas kesehatan serta memberikan visibilitas yang lebih baik terhadap perjalanan pasien.
+Selain itu, rancangan proses baru ini juga memastikan bahwa setiap pembaruan status pasien dapat dipantau secara langsung oleh pihak terkait tanpa keterlambatan informasi.
+Analisis 
+Kuesioner User
+Tahap pertama adalah
+ 
+mengidentifikasi kebutuhan dan permasalahan yang dihadapi oleh tenaga medis sebagai pengguna utama. Proses ini dilakukan melalui penyebaran kuesioner customer feedback kepada responden dari berbagai fasilitas kesehatan. Kuesioner ini dirancang untuk menggali pengalaman pengguna, mengidentifikasi kendala yang sering muncul, serta mengumpulkan masukan mengenai fitur-fitur yang diharapkan.
+Hasil dari kuesioner tersebut kemudian dianalisis secara komprehensif untuk mendapatkan gambaran yang jelas mengenai kondisi eksisting dan area-area yang memerlukan perbaikan. Tabel berikut menyajikan rangkuman analisis dari jawaban kuesioner responden, mencakup demografi,
+ 
+tingkat kepuasan, serta identifikasi masalah dan kebutuhan utama pengguna.
+Tabel 
+4.
+1
+ 
+Temuan 
+Permasalahan 
+Utama
+Aspek
+ Temuan Utama
+Kutipan Responden 
+Pengalaman Penggunaan
+Sudah digunakan 2–4 tahun, frekuensi 10–25 kali/hari. Membantu koordinasi, tapi lambat saat jam sibuk.
+“Saya sudah menggunakan sistem ini selama 3 tahun. Sangat membantu koordinasi, tapi kalau jam sibuk sering loading lama.”
+Navigasi Sistem
+Navigasi membingungkan, fitur penting tersembunyi, memperlambat proses terutama saat darurat.
+“Saat pasien darurat, saya sulit menemukan menu ‘Buat Rujukan Baru’ karena tersembunyi di submenu.”
+Aspek
+ Temuan Utama
+Kutipan Responden 
+Form Input Pasien
+Form terlalu panjang, tidak relevan, tidak ada auto-save, validasi input kurang.
+“Form input sangat panjang, banyak field tidak penting. Kalau koneksi putus, semua data hilang karena tidak ada auto-save.”
+Akurasi Informasi
+Data ketersediaan RS sering tidak akurat → harus konfirmasi manual via telepon.
+“Sistem bilang ICU tersedia, tapi saat pasien tiba ternyata penuh. Terpaksa telepon manual ke RS tujuan.”
+Desain Visual
+Kurang profesional: warna mencolok, layout berantakan, font kecil, sulit fokus.
+“Warna terlalu mencolok, layout tidak rapi, bikin sulit fokus ke data penting.”
+Masalah Navigasi Spesifik
+Menu sering berubah posisi, fitur penting tanpa shortcut, pengguna harus menghafal jalur.
+“Menu ‘Riwayat Rujukan’ kadang hilang dari posisi biasa, jadi harus cari-cari lagi.”
+Efisiensi Waktu
+Rata-rata 5–7 menit, ideal 2–3 menit. Hambatan: form panjang, navigasi rumit, server lambat.
+“Biasanya butuh 6 menit untuk satu rujukan. Idealnya sih cukup 2 menit.”
+Kesalahan Input
+Sering salah input NIK, vital sign, rekam medis. Penyebab: form tidak user-friendly & tanpa validasi.
+“Pernah salah ketik NIK pasien, sistem tidak memberi peringatan. Baru sadar setelah dikirim.”
+Kepuasan Pengguna
+Rata-rata 5–6/10. Positif: koordinasi terbantu. Negatif: lambat, navigasi rumit, info tidak akurat.
+“Saya kasih nilai 5 dari 10. Konsepnya bagus, tapi praktiknya ribet dan lambat.”
+Harapan Sistem Ideal
+Navigasi sederhana, form singkat dengan auto-save, info real-time akurat, tracking GPS, mode darurat & mode gelap.
+“Kalau bisa ada mode darurat dengan input singkat, plus tracking GPS untuk ambulans.”
+Spesifikasi Kebutuhan Pengembangan
+Dari hasil analisis kuesioner customer feedback yang disajikan pada tabel di atas, dapat disimpulkan bahwa terdapat beberapa permasalahan krusial yang secara signifikan menghambat efisiensi proses rujukan, seperti navigasi yang rumit, kurangnya informasi real-time, dan kesulitan dalam pengisian form. Temuan-temuan ini secara langsung mengindikasikan adanya kesenjangan antara fungsionalitas sistem yang ada dengan ekspektasi dan kebutuhan operasional tenaga medis.
+Oleh karena itu, untuk mengatasi permasalahan yang teridentifikasi dan memenuhi kebutuhan pengguna, langkah selanjutnya adalah merumuskan spesifikasi kebutuhan pengembangan sistem yang jelas dan terukur. Spesifikasi ini akan menjadi panduan utama dalam tahap perancangan dan implementasi, memastikan bahwa setiap fitur dan perbaikan yang diusulkan didasarkan pada data empiris dari pengguna. Tabel spesifikasi kebutuhan pengembangan sistem berikut ini merupakan translasi dari permasalahan dan kebutuhan yang telah dianalisis menjadi persyaratan fungsional dan non-fungsional yang konkret untuk sistem yang baru.
+Tabel 4.
+2
+ Spesifikasi Kebutuhan 
+Fungsional 
+Pengembangan Sistem
+No.
+Aspek Permintaan
+Keterangan
+1
+Navigasi sederhana & user-friendly
+Sistem mudah dipahami, menu jelas, tidak berbelit.
+2
+Form input singkat dengan auto-save
+Form hanya berisi data penting, dengan fitur simpan otomatis.
+3
+Informasi ketersediaan RS real-time & akurat
+Data ICU, IGD, ruang rawat selalu update dan terpercaya.
+4
+Integrasi dengan SIMRS & BPJS
+Data pasien langsung sinkron, mengurangi input ganda.
+5
+Tracking GPS ambulans real-time
+Posisi & estimasi waktu ambulans bisa dipantau secara langsung.
+6
+Mode darurat untuk input cepat
+Menu khusus kondisi gawat darurat, input < 1 menit.
+7
+Notifikasi otomatis
+RS penerima, petugas, dan keluarga pasien mendapat update otomatis.
+8
+Dashboard ringkas untuk call center/koordinator
+Call center dapat memantau semua kasus lewat peta/dashboard.
+9
+Validasi input otomatis
+Mencegah salah input (NIK, vital sign, rekam medis).
+1
+0
+Fitur komunikasi internal
+Chat/voice antar faskes langsung dari aplikasi.
+Tabel 4.
+3
+ Spesifikasi Kebutuhan 
+Non-Fungsional 
+Pengembangan Sistem
+No.
+Aspek Permintaan
+Keterangan
+1
+Mode gelap untuk shift malam
+Tampilan gelap untuk kenyamanan petugas di malam hari.
+2
+Kecepatan sistem & stabilitas server
+Waktu loading cepat, server tidak sering error.
+3
+Tampilan profesional & konsisten (UI/UX modern)
+Desain rapi, font jelas, warna nyaman.
+4
+Pelatihan & sosialisasi penggunaan sistem
+Ada pelatihan rutin agar semua petugas paham sistem.
+Berdasarkan hasil analisis kebutuhan pengguna, setiap fitur dalam sistem dikategorikan berdasarkan tingkat prioritas pengembangan. Prioritas ditentukan berdasarkan frekuensi permintaan pengguna, urgensi dalam konteks operasional medis, serta dampak terhadap efektivitas proses rujukan pasien.
+Prioritas Tinggi (
+High Priority
+)
+Fitur yang berdampak langsung pada keselamatan dan efisiensi kerja tenaga medis, serta sering dikeluhkan dalam survei pengguna.
+ 
+Termasuk di dalamnya:
+Navigasi sederhana & user-friendly
+Tracking GPS ambulans real-time
+Informasi ketersediaan RS real-time
+Mode darurat untuk input cepat
+Validasi otomatis
+Fitur-fitur ini menjadi fokus utama pada tahap awal perancangan dan pengujian prototipe, karena berpengaruh langsung terhadap kecepatan dan ketepatan proses rujukan pasien.
+Prioritas Menengah (
+Medium Priority
+)
+Fitur yang mendukung kenyamanan dan kolaborasi antar pengguna, tetapi tidak berdampak langsung pada alur rujukan utama.
+ 
+Termasuk:
+Notifikasi otomatis
+Dashboard ringkas untuk koordinator
+Fitur komunikasi internal
+Fitur ini dikembangkan setelah fitur utama stabil, karena berperan dalam memperluas fungsi sistem dan memperkuat koordinasi antar fasilitas kesehatan.
+Prioritas Rendah (
+Low Priority
+)
+Fitur yang lebih bersifat peningkatan pengalaman pengguna (user experience) dan faktor non-teknis pendukung.
+ 
+Termasuk:
+Mode gelap untuk shift malam
+Desain profesional dan konsisten
+Pelatihan & sosialisasi penggunaan sistem
+Fitur ini dapat dikembangkan pada tahap akhir atau fase pemeliharaan, karena tidak memengaruhi inti proses rujukan tetapi meningkatkan kenyamanan pengguna secara keseluruhan.
+Spesifikasi Kebutuhan Aplikasi
+Perangkat Keras (Hardware)
+Komponen perangkat keras yang digunakan dalam pengembangan protoytpe ini diantaranya dapat dilihat pada tabel 4.2 dibawah ini.
+Tabel 4.
+4
+ Tabel Perangkat Keras
+Kategori
+Kebutuhan
+Spesifikasi
+Hardware (Server)
+Server Aplikasi
+Minimal CPU 4 Core, RAM 8 GB, Storage 256 GB SSD
+Server Database
+Minimal CPU 4 Core, RAM 8 GB, Storage 512 GB SSD, koneksi internet stabil
+Hardware (Client)
+PC/Laptop Admin
+Minimal CPU Dual Core, RAM 4 GB, Browser terbaru
+Smartphone Petugas Ambulans
+Android/iOS dengan GPS, RAM minimal 3 GB
+Perangkat Lunak (Software)
+Komponen perangkat lunak yang digunakan dalam pengembangan prototype ini diantaranya dapat dilihat pada tabel 4.3 dibawah ini.
+Tabel 4.
+5
+ Tabel Perangkat Lunak
+Kategori
+Kebutuhan
+Spesifikasi
+Software (Client)
+Browser
+Chrome, Firefox, Edge (versi terbaru)
+Aplikasi Mobile
+Android (min. versi 8), iOS (min. iOS 13)
+Software Pendukung
+API Peta
+Google Maps API / Leaflet + OpenStreetMap
+GPS Library
+Geolocation API, Native GPS Access
+Perancangan 
+Sistem
+Tahap kedua 
+dalam metode 
+User-Centered Design
+ adalah proses perancangan solusi desain (
+Produce Design Solutions
+). Pada tahap ini, rancangan sistem dikembangkan berdasarkan hasil analisis kebutuhan pengguna yang telah dilakukan pada tahap sebelumnya. Fokus utama proses ini adalah menghaasilkan rancangan antarmuka, arsitektur informasi, dan intereaksi sistem yang sesuai dengan konteks penggunaan di alapngan, serta memastikan desain mudah dipahami oleh tenaga medis sebagai
+ pengguna utama.
+Proses perancangan
+ dilakukan secara iteratif, yaitu melalui pemb uatan prototipe awal, pengujian oleh pengguna, serta
+ penyempurnaan desain berdasarkan umpan balik yang diperoleh. Hasil dari tahap ini berupa 
+rancangan arsitektur informasi, wireframe aplikasi, serta diagram perancangan sistem (
+Use Case
+ dan 
+Sequence Diagram
+).
+Proses Iterasi Wiraframe
+Wireframe merupakan representasi visual awal dari rancangan antarmuka aplikasi yang menggambarkan struktur halaman, alur navigasi, serta tata letak elemen-elemen utama. Dalam penelitian ini, proses iterasi wireframe dilakukan melalui beberapa tahap perbaikan untuk mencapai desain yang paling sesuai dengan kebutuhan pengguna.
+Wireframe Awal (
+Initial Prototype
+)
+Wireframe awal dirancang berdasarkan hasil analisis kebutuhan pengguna yang diperoleh dari kuesioner dan wawancara dengan tenaga medis. Fokus utama tahap ini adalah menyusun struktur navigasi yang sederhana dan menampilkan menu utama seperti Dashboard, Rujukan, Tracking, dan Profil.
+Desain awal menggunakan kombinasi warna netral dan ikon sederhana agar tidak membingungkan pengguna baru.
+Gambar 4.
+4
+ Rancangan
+ Awal
+ Halaman 
+Login
+Gambar 4.
+5
+ Rancangan 
+Awal 
+Halaman Dashboard
+Gambar 4.
+6
+ Rancangan
+ Awal
+ Halaman Rujukan
+Evaluasi dan Umpan Balik Pengguna
+Wireframe awal kemudian diuji oleh beberapa tenaga medis dari rumah sakit mitra untuk menilai tingkat kemudahan penggunaan. Berdasarkan hasil umpan balik, ditemukan beberapa masukan, di antaranya:
+Tambahkan fitur lupa password pada
+ form login
+Tambahkan fitur lihat password
+ pada form login
+Tambahan Side Navbar
+ di setiap 
+halaman
+Warna latar belakang perlu memiliki kontras yang lebih tinggi agar tampilan tetap jelas pada kondisi pencahayaan ruang 
+IGD
+Navbar pada header dibuat dropdown
+Wireframe Revisi (
+Refined Prototype
+)
+Berdasarkan hasil evaluasi, dilakukan penyempurnaan desain dengan:
+Men
+ambahkan 
+fitur lupa password pada halaman login
+Menambahkan fitu lihat password pada halaman login
+Mengubah latar belakang menjadi leih kontras
+Mengubah susunan Navbar menjadi bentuk Dropdown
+Gambar 4.
+7
+ Rancangan
+ Revisi
+ Halaman 
+Login
+Gambar 4.
+8
+ Rancangan
+ Revisi 
+Halaman 
+Dashboard
+Wireframe Final (
+High-Fidelity Prototype
+)
+Tahap akhir menghasilkan rancangan wireframe dengan tampilan lebih modern dan profesional. Desain akhir menampilkan ikon yang konsisten, tipografi yang mudah dibaca, dan kombinasi warna kontras tinggi.
+Desain ini juga telah diuji secara internal untuk memastikan setiap elemen antarmuka dapat diakses dengan cepat, bahkan saat pengguna bekerja dalam situasi darurat.
+Diagram Use
+ C
+ase
+Desain perancangan sistem akan disajikan dalam bentuk digram usecase berdasarkan pada proses rujukan yang nanti akan dikembangkan pada prototype aplikasi sehingga mendapatkan hasil yang sesuai dengan yang diharapkan. Diagram use case pada prototye aplikasi yang akan dikembangkan dapat dilihat pada gambar 4.3 dibawah ini.
+ 
+Gambar 4.
+9
+ Usecase Diagram
+Dalam sistem eSIR2.0, setiap aktor memiliki peran dan fungsi masing-masing. Proses dimulai dengan Login dan Logout, di mana semua aktor seperti Super Admin, Admin Faskes, dan Supir Ambulance harus masuk menggunakan kredensial yang valid untuk mengakses fitur sesuai hak aksesnya. Apabila terjadi kendala lupa kata sandi, Super Admin dapat melakukan Reset Password untuk membantu pengguna agar dapat kembali masuk ke sistem.
+Super Admin memegang kendali penuh terhadap data sistem. Ia dapat melakukan pengelolaan data user dengan menambah, memperbarui, atau menghapus akun pengguna. Selain itu, ia juga mengelola informasi mengenai fasilitas kesehatan (faskes) termasuk detail rumah sakit atau puskesmas. Super Admin juga bertanggung jawab dalam pengelolaan data pasien, memastikan informasi yang tersimpan tetap valid dan mutakhir. Lebih lanjut, ia memiliki kemampuan menghasilkan berbagai laporan, melakukan ekspor data, serta menampilkan statistik untuk kebutuhan monitoring dan evaluasi kinerja sistem maupun faskes. Super Admin juga dapat mengirimkan notifikasi kepada aktor lain terkait informasi penting dalam sistem.
+Sementara itu, Admin Faskes berperan langsung dalam proses pelayanan pasien. Ia dapat membuat rujukan pasien ke rumah sakit tujuan sesuai kebutuhan medis. Untuk mendukung proses tersebut, Admin Faskes juga dapat melakukan pencarian pasien dan mengelola data terkait, termasuk ketersediaan tempat tidur yang dapat ditambah, diubah, atau dihapus sesuai kondisi di rumah sakit. Selain itu, Admin Faskes memiliki akses untuk mengunggah, mengunduh, dan melihat dokumen penting seperti rekam medis atau surat rujukan. Ia juga berinteraksi dengan sistem notifikasi, di mana Admin Faskes dapat menerima notifikasi mengenai rujukan maupun memperbarui status melalui fitur update notifikasi.
+Di sisi lain, Supir Ambulance terintegrasi dalam alur rujukan pasien dengan peran operasional di lapangan. Ia menerima informasi melalui notifikasi yang dikirimkan sistem, misalnya ketika ada pasien yang harus dijemput. Selanjutnya, Supir Ambulance menggunakan fitur tracking rujukan dan real-time tracking untuk memantau serta memperbarui posisi ambulans selama proses pengantaran pasien. Hal ini membantu Admin Faskes maupun Super Admin untuk memonitor pergerakan pasien secara langsung.
+Secara keseluruhan, sistem eSIR2.0 menghubungkan berbagai aktor melalui alur notifikasi, pengelolaan data, pelacakan rujukan, hingga dokumentasi, sehingga proses rujukan pasien dapat berjalan lebih cepat, transparan, dan terintegrasi.
+Sequence Diagram
+Sequence Diagram
+Gambar 4.
+10
+ Sequence Diagram
+ Login
+Pada proses Login dalam sistem eSIR2.0, alur dimulai dari aktor Faskes yang memasukkan username atau email beserta password pada halaman login di Frontend Web. Setelah data kredensial dikirimkan, frontend meneruskan permintaan ke Backend API melalui endpoint POST /auth/login. Backend kemudian melakukan validasi dengan cara mengirimkan permintaan ke Database untuk melakukan query user credentials. Jika data user ditemukan dan sesuai, database mengembalikan informasi pengguna kepada Backend API. Selanjutnya, backend akan memproses data tersebut dengan melakukan generate JWT (JSON Web Token) beserta informasi pengguna (user info). Setelah token berhasil dibuat, backend mengirimkan kembali JWT dan user info kepada frontend sebagai bukti autentikasi yang valid. Terakhir, Frontend Web menggunakan data tersebut untuk menampilkan halaman dashboard kepada pengguna, yang menandakan bahwa proses login berhasil dan pengguna telah masuk ke dalam sistem.
+Sequence Rujukan
+Gambar 4.
+11
+ Sequence Diagram
+ Rujukan
+Pada proses Rujukan dalam sistem eSIR2.0, alur dimulai ketika aktor Faskes mengisi form rujukan pada Frontend Web dengan memasukkan data pasien, tujuan fasilitas kesehatan, serta diagnosis. Setelah form selesai diisi, frontend mengirimkan permintaan ke Backend API melalui endpoint POST /rujukan/create. Backend kemudian memproses data yang diterima dengan melakukan penyimpanan data rujukan ke dalam Database menggunakan instruksi INSERT, dan database mengembalikan rujukan_id sebagai identitas unik dari data rujukan tersebut.
+Selanjutnya, Backend API meneruskan informasi rujukan ini dengan cara mengirimkan notifikasi ke faskes tujuan melalui Sistem Notifikasi. Sistem notifikasi kemudian melakukan push notifikasi ke perangkat atau aplikasi faskes terkait, dan setelah berhasil diterima akan memberikan acknowledgement sebagai tanda bahwa pesan notifikasi sudah sampai. Setelah itu, backend melakukan pembaruan status pada tabel rujukan di database dengan mengubah status menjadi pending_confirmation, lalu database mengembalikan konfirmasi sukses.
+Terakhir, Backend API mengembalikan respons ke frontend berupa status success beserta rujukan_id. Frontend kemudian menampilkan halaman konfirmasi rujukan kepada pengguna, yang menandakan bahwa proses pembuatan rujukan berhasil dilakukan dan sedang menunggu konfirmasi dari faskes tujuan.
+Sequence Konfirmasi Faskes
+Gambar 4.
+12
+ Sequence Diagram
+ Login
+Pada proses Konfirmasi Faskes dalam sistem eSIR2.0, alur dimulai ketika aktor Faskes menerima notifikasi rujukan melalui Mobile App dan membuka detail notifikasi tersebut. Permintaan ini diteruskan ke Backend API melalui perintah GET /rujukan/{id}, yang kemudian memicu query pada Database untuk mengambil data rujukan sesuai ID yang diminta. Database mengembalikan data rujukan tersebut, lalu backend menyusunnya dalam bentuk JSON dan meneruskannya kembali ke Mobile App agar dapat ditampilkan kepada faskes.
+Setelah menerima informasi lengkap, faskes melakukan aksi konfirmasi penerimaan rujukan melalui Mobile App. Aksi ini dikirimkan ke backend dalam bentuk PUT /rujukan/{id}/confirm. Backend kemudian memperbarui status rujukan di Database dengan menandai status sebagai confirmed serta mencatat waktu konfirmasi. Setelah database berhasil memperbarui data, backend mengembalikan respon success kepada frontend sebagai tanda bahwa proses konfirmasi telah tercatat.
+Selanjutnya, backend juga mengirimkan notifikasi konfirmasi kepada faskes terkait melalui Sistem Notifikasi, yang kemudian didistribusikan menggunakan WebSocket notification sehingga informasi konfirmasi dapat diterima secara real-time. Terakhir, Frontend Web menampilkan notifikasi konfirmasi kepada pengguna bahwa rujukan berhasil diterima dan diproses oleh faskes tujuan.
+Sequence Update Status
+Gambar 4.
+13
+ Sequence Diagram
+ Update Status
+Pada proses Update Status dalam sistem eSIR2.0, alur dimulai ketika aktor Faskes ingin melihat perkembangan rujukan pasien melalui Frontend Web dengan memilih menu lihat status rujukan. Permintaan tersebut kemudian dikirimkan ke Backend API melalui endpoint GET /rujukan/{id}/status. Backend API meneruskan permintaan ini ke Database dengan menjalankan query untuk mengambil data status rujukan beserta waktu terakhir diperbarui berdasarkan ID rujukan yang diminta. Setelah database berhasil mengeksekusi query, data status dikembalikan kepada backend. Backend API kemudian mengemas hasil tersebut dalam bentuk JSON status dan mengirimkannya kembali ke frontend. Selanjutnya, Frontend Web menampilkan informasi status terbaru kepada faskes, sehingga pengguna dapat mengetahui kondisi terkini dari rujukan pasien.
+Sequence Tracking
+Gambar 4.
+14
+ Sequence Diagram
+ Tracking
+Pada proses 
+Tracking
+ dalam sistem eSIR2.0, alur dimulai ketika aktor Faskes mengaktifkan fitur 
+tracking
+ melalui 
+Frontend Web
+ untuk memantau posisi atau perkembangan rujukan pasien secara 
+real-time
+. Permintaan ini diteruskan ke 
+Backend
+ API melalui endpoint 
+GET
+ /rujukan/{id}
+/tracking
+. Selanjutnya, backend melakukan 
+query
+ ke Database dengan perintah 
+SELECT * FROM tracking WHERE
+ rujukan_id 
+= ?
+ untuk mengambil data tracking berdasarkan ID rujukan. Database mengembalikan informasi hasil 
+query
+, lalu 
+backend
+ meneruskan data tersebut dalam bentuk JSON 
+tracking
+ kepada 
+frontend
+. Setelah menerima data, 
+Frontend Web
+ menampilkan informasi 
+real-time tracking
+ kepada faskes, sehingga pengguna dapat memantau pergerakan atau status perjalanan pasien secara langsung.
+Melalui tahapan 
+Produce Design Solutions
+, rancangan sistem disusun dengan pendekatan iteratif yang berfokus pada kebutuhan pengguna. Desain antarmuka disesuaikan berdasarkan hasil umpan balik tenaga medis agar sistem lebih mudah digunakan, cepat, dan efisien.
+ 
+Rancangan akhir ini menjadi dasar pengembangan prototipe sistem pada tahap berikutnya.
+Implementasi 
+Prototype
+Tahap ketiga dalam metode User-Centered Design (UCD) adalah implementasi prototipe (Implementation).
+ 
+Pada tahap ini, rancangan antarmuka dan interaksi yang telah disusun melalui proses iterasi wireframe direalisasikan ke dalam bentuk prototipe interaktif menggunakan komponen dan teknologi yang menyerupai aplikasi sesungguhnya.
+Tujuan utama dari implementasi ini adalah untuk menguji keterpakaian (usability) desain secara nyata, serta memastikan seluruh fungsi utama dapat dijalankan dengan baik sebelum dilakukan uji pengguna.
+Deskripsi Prototipe yang Dikembangkan
+Prototipe yang dihasilkan merupakan Aplikasi Sistem Rujukan Online Rumah Sakit dengan Fitur Pelacakan GPS Real-Time. Aplikasi ini dikembangkan dengan antarmuka sederhana, responsif, dan mudah diakses melalui perangkat mobile maupun desktop.
+Fitur-fitur yang diimplementasikan pada prototipe ini disesuaikan dengan hasil analisis kebutuhan pengguna dan prioritas fitur yang telah ditetapkan sebelumnya
+. 
+Fitur utama dalam prototipe meliputi:
+Login dan Hak Akses Pengguna
+Setiap pengguna harus melakukan autentikasi sesuai perannya (tenaga medis, admin rumah sakit, atau koordinator rujukan). Hal ini untuk memastikan keamanan data pasien serta pembatasan hak akses.
+Input Data Rujukan Pasien
+Formulir input dilengkapi dengan fitur auto-save untuk mencegah kehilangan data. Pengguna hanya perlu mengisi informasi penting seperti identitas pasien, diagnosis awal, dan kebutuhan fasilitas rumah sakit.
+Informasi Fasilitas Rumah Sakit Secara Real-Time
+Sistem menampilkan daftar rumah sakit dengan status ketersediaan tempat tidur, ruang ICU, dan dokter spesialis secara langsung.
+Pelacakan GPS Ambulans Real-Time
+Posisi ambulans ditampilkan di peta digital (Google Maps / Leaflet) dengan estimasi waktu tempuh menuju rumah sakit tujuan. Data lokasi diambil langsung dari sensor GPS pada perangkat petugas lapangan.
+Mode Darurat (Emergency Mode)
+Fitur ini memungkinkan input data rujukan dilakukan dalam waktu kurang dari satu menit dengan hanya mengisi data prioritas pasien.
+Notifikasi Otomatis
+Sistem secara otomatis mengirimkan pembaruan status rujukan kepada rumah sakit tujuan dan koordinator rujukan melalui notifikasi dalam aplikasi.
+Dashboard Monitoring
+Koordinator rujukan dapat memantau seluruh proses rujukan dan posisi ambulans melalui tampilan peta terpusat (tracking dashboard).
+Gambar 4.
+15
+ Tampilan
+ 
+Final Prototype
+ Halaman
+ Login
+Implementasi Antarmuka Utama
+Proses implementasi antarmuka dilakukan berdasarkan desain final hasil iterasi wireframe. Setiap halaman memiliki fungsi spesifik sesuai kebutuhan pengguna. Berikut beberapa tampilan utama prototipe yang dikembangkan:
+Halaman Dashboard Utama
+Pengguna dapat masuk sesuai peran masing-masing. Setelah login, sistem menampilkan dashboard berisi ringkasan data rujukan, status pasien, serta tombol navigasi utama (Rujukan, Tracking, dan Laporan).
+Gambar 4
+.
+16
+ Tampilan
+ 
+Final Prototype
+ Dashboard Utama
+Halaman Input Data Rujukan
+Terdapat form input data pasien yang sederhana dan informatif. Sistem menyediakan fitur auto-validation untuk mencegah kesalahan penulisan seperti NIK atau kode diagnosis.
+Gambar 4.
+17
+ Tampilan
+ 
+Final Prototype
+ 
+Halaman
+ Rujukan Pasien
+Gambar 4.
+1
+8
+ Tampilan 
+Final Prototype
+ 
+Form Input Rujukan Pasien
+Halaman Tracking GPS Real-Time
+Halaman ini menampilkan posisi ambulans di peta digital menggunakan API Google Maps atau Leaflet. Posisi diperbarui secara otomatis berdasarkan data GPS internal perangkat petugas.
+Gambar 4.
+1
+9
+ Tampilan 
+Final Prototype
+ 
+Tracking Ambulans Real-Time
+Halaman 
+Ambulans Tracker
+Halaman Ambulans Tracker merupakan fitur utama yang diakses langsung oleh petugas atau sopir ambulans untuk melakukan pelacakan dan pembaruan status perjalanan pasien secara real-time.
+Fitur ini menjadi jembatan antara petugas lapangan dan pihak rumah sakit penerima dalam memastikan proses rujukan berjalan cepat, aman, dan terpantau dengan baik.
+ 
+Aplikasi memanfaatkan sensor GPS internal perangkat sopir ambulans (smartphone/tablet) untuk mengirimkan koordinat lokasi ke server secara berkala. 
+Selain itu, sopir dapat mengaktifkan dan memperbarui status perjalanan melalui tombol kendali yang tersedia pada halaman ini.
+ 
+Data posisi dan status kemudian dikirim ke server, dan secara bersamaan ditampilkan pada dashboard tenaga medis serta admin rumah sakit penerima.
+Fitur utama pada halaman Ambulans Tracker meliputi:
+Aktivasi Status Perjalanan
+Sopir ambulans dapat memilih dan memperbarui status aktivitas, seperti:
+Menjemput Pasien – ambulans dalam perjalanan menuju lokasi pasien.
+Mengantar ke Faskes Tujuan – pasien sudah di dalam ambulans dan sedang diantar ke rumah sakit rujukan.
+Tiba di Faskes Tujuan – ambulans telah sampai di rumah sakit, status otomatis diperbarui di sistem pusat.
+Pelacakan Posisi Real-Time
+Posisi ambulans diperoleh dari GPS internal perangkat dan ditampilkan pada peta digital (Google Maps atau Leaflet Map).
+ 
+Titik lokasi akan diperbarui secara otomatis setiap interval 5–10 detik agar pihak rumah sakit penerima dapat memantau posisi ambulans secara akurat.
+Rute dan Estimasi Waktu Tiba (ETA)
+Sistem menghitung jarak dan waktu tempuh menuju faskes tujuan berdasarkan posisi terkini ambulans. Jalur rute perjalanan divisualisasikan di peta digital dengan penanda khusus.
+Notifikasi Otomatis ke Rumah Sakit Tujuan
+Setiap kali sopir memperbarui status, sistem mengirimkan notifikasi ke dashboard tenaga medis di rumah sakit penerima untuk menyiapkan ruang dan tenaga medis sebelum ambulans tiba.
+Tampilan Responsif dan Aman Digunakan Saat Berkendara
+Antarmuka dirancang sederhana dengan tombol berukuran besar, ikon jelas, dan kontras tinggi agar mudah dioperasikan dalam kondisi darurat tanpa mengganggu fokus berkendara.
+Gambar 4.
+20
+ Tampilan 
+Final Prototype 
+Halaman Ambulans Tracker
+Dengan adanya halaman Ambulans Tracker, petugas ambulans dapat secara aktif memperbarui status dan posisi perjalanan pasien, sedangkan pihak rumah sakit dapat memantau pergerakan ambulans secara real-time.
+Fitur ini mempercepat koordinasi antar fasilitas kesehatan, mengurangi waktu tunggu pasien, dan meningkatkan kesiapan rumah sakit penerima.
+Selain itu, pengembangan fitur ini merupakan hasil penerapan prinsip User-Centered Design, karena kebutuhan ini muncul langsung dari hasil wawancara dengan tenaga medis dan sopir ambulans yang terlibat dalam proses rujukan.
+Integrasi Modul GPS dan Peta Digital
+Salah satu fitur utama dalam prototipe ini adalah pelacakan pasien dan ambulans secara real-time.
+Integrasi dilakukan dengan memanfaatkan sensor GPS yang tertanam di dalam perangkat pengguna (smartphone atau tablet), tanpa memerlukan perangkat tambahan eksternal.
+Data posisi pengguna diperoleh melalui API geolokasi dan dikirim ke server dalam interval waktu tertentu menggunakan koneksi internet.
+ 
+Proses integrasi dilakukan melalui tahapan berikut:
+Aplikasi membaca koordinat GPS (latitude, longitude) dari perangkat.
+Data dikirim ke server menggunakan Web API dalam format JSON.
+Server menyimpan posisi terkini ke dalam basis data.
+Data ditampilkan kembali ke pengguna lain melalui peta digital yang terus diperbarui.
+Dengan adanya integrasi ini, proses pelacakan ambulans dapat dilakukan secara real-time, memungkinkan tenaga medis dan admin rumah sakit memantau perjalanan pasien menuju rumah sakit tujuan secara akurat dan efisien.
+Diagram Deployment
+ Sistem
+Gambar 4.
+21
+ Deployment Diagram
+Pada Deployment Model eSIR2.0, arsitektur sistem terbagi atas beberapa komponen utama yang saling terhubung untuk mendukung proses layanan rujukan pasien. Pada sisi Client, terdapat dua jenis aplikasi yang dapat digunakan pengguna, yaitu Web Browser untuk mengakses aplikasi berbasis web, serta Mobile App untuk penggunaan di perangkat seluler. Keduanya berkomunikasi dengan server melalui jaringan dengan mengirimkan request dan menerima response.
+Di sisi Server, terdapat beberapa lapisan yang berperan penting. Pertama, Network Infrastructure yang mencakup Load Balancer untuk mendistribusikan trafik, VPN Gateway untuk koneksi aman, serta Firewall sebagai pelindung jaringan. Lalu, Web Server berfungsi melayani permintaan pengguna melalui Reverse Proxy, menyediakan konten static, serta mengelola SSL Certificate untuk komunikasi aman.
+Selanjutnya, terdapat Frontend Server yang memuat React App, Build Files, serta Leaflet Maps untuk menampilkan peta interaktif. Semua aset frontend ini diproses dan diteruskan ke pengguna melalui web atau mobile. Bagian inti sistem berada di Backend Server yang berjalan di atas Node.js Runtime. Backend menggunakan Express.js Server sebagai pengelola API, JWT Auth untuk autentikasi berbasis token, Socket.io untuk komunikasi real-time, serta CORS Middleware agar aplikasi dapat diakses lintas domain.
+Selain itu, terdapat Email Service yang terhubung ke Email Server eksternal untuk mengirimkan notifikasi melalui SMTP Server dan Email Template.
+Untuk penyimpanan data, sistem terhubung ke Database Server yang menggunakan MySQL sebagai manajemen basis data utama. Selain itu, terdapat juga File Storage yang digunakan untuk menyimpan berbagai jenis file seperti Upload Directory, Document Files, dan Image Files. Seluruh interaksi antara komponen ini dilakukan melalui mekanisme request–response, sehingga membentuk sebuah arsitektur yang terintegrasi, aman, dan dapat mendukung operasional sistem eSIR2.0 secara optimal.
+Uji Internal Prototipe
+Sebelum dilakukan pengujian oleh pengguna (
+usability testing
+), prototipe diuji secara internal untuk memastikan setiap fungsi utama dapat berjalan sesuai rancangan.
+Pengujian internal meliputi:
+Autentikasi pengguna dan pembatasan hak akses.
+Metode: uji POST /api/auth/login, akses rute dilindungi dengan Bearer <JWT>, verifikasi middleware.
+Skenario peran: admin_pusat, admin_faskes, driver, viewer.
+Gambar 4.
+2
+2
+ Autentikasi
+ dan Akses
+Fungsi auto-save dan validasi form input.
+Metode: isi form Rujukan/Pasien, picu kehilangan fokus/interval auto-save, matikan jaringan sementara, verifikasi retry dan state pemulihan.
+Validasi: required fields, format email/no. telepon, panjang teks, batasan pilihan.
+Gambar 4.
+2
+3
+ 
+Validasi dan Auto-Save
+Sinkronisasi data dengan database server.
+Metode: uji CRUD endpoint (/api/pasien, /api/rujukan, /api/faskes) dan verifikasi MySQL (affectedRows, row versioning sederhana via updated_at).
+Latensi rata-rata (ms): GET 120–180, POST 180–260, PUT 220–300, DELETE 170–240.
+Konsistensi: tidak ada mismatch setelah reload; index digunakan (respon stabil).
+Gambar 4.
+2
+4
+ 
+Distribusi Operasi
+Responsivitas tampilan antarmuka pada berbagai ukuran layar (mobile dan desktop).
+Metode: viewport 360×740 (mobile), 768×1024 (tablet), 1366×768 dan 1920×1080 (desktop). Pantau layout utama: Navbar, Sidebar, Dashboard cards, Tabel, Peta.
+Hasil: tidak ada overlap/overflow mayor; navigasi tetap dapat diakses; peta responsif (Leaflet reflow OK).
+Gambar 4.
+2
+5
+ Status Responsivitas
+Pembaruan posisi GPS dan pemetaan pada peta digital.
+Metode: 
+navigator.geolocation
+.watchPosition
+ di sisi driver, kirim ke 
+/api/tracking/update
+ + 
+broadcast 
+location:update
+ via Socket.IO, render 
+marker/polyline
+ di Leaflet.
+Interval update: 5–10 detik (median 7.2 s).
+Jitter koneksi: <= 1.5 s (ditoleransi dengan smoothing di UI).
+Akurasi posisi: 10–25 m (tergantung kondisi sinyal).
+Gambar 4.
+2
+6
+ 
+Interval Update GPS
+Hasil pengujian internal menunjukkan bahwa seluruh fungsi utama prototipe dapat berjalan dengan baik, dengan waktu pemuatan halaman rata-rata kurang dari 3 detik dan pembaruan posisi GPS dalam interval 5–10 detik.
+Pengujian Uji Sistem
+Tahap keempat dari metode User-Centered Design (UCD) adalah 
+Evaluate Designs
+.
+ 
+Tahapan ini bertujuan untuk menilai sejauh mana rancangan sistem yang dikembangkan telah memenuhi kebutuhan dan harapan pengguna, baik dari segi fungsionalitas maupun aspek pengalaman pengguna (usability). Evaluasi dilakukan melalui dua pendekatan, yaitu pengujian ahli (Expert Testing) menggunakan metode Blackbox Testing, dan pengujian pengguna (User Testing) menggunakan Post-Study System Usability Questionnaire (PSSUQ).
+Hasil pengujian ini menjadi dasar dalam menilai apakah sistem telah layak untuk
+ 
+diimplementasikan atau masih memerlukan perbaikan lanjutan.
+Hasil Pengujian Ahli
+Dilakukan 
+pengujian prototype kepada dua orang ahli sistem di bidang teknik informatika dan pengujian menggunakan metode 
+blackbox testing
+ bertujuan untuk memastikan setiap fungsi aplikasi berjalan sesuai kebutuhan tanpa memeriksa kode program. Data hasil kuesioner uji ahli disajikan pada tabel 4.6 berikut ini.
+Data Hasil Pengujian Ahli
+Tabel 4.
+6
+ Hasil 
+Kuesioner
+ Uji Ahli
+No.
+Fitur yang Diuji
+Skenario
+Input
+Output yang Diharapkan
+Hasil Pengujian
+Ahli 1
+Ahli 2
+Status
+BB-01
+Login Pengguna
+Memasukkan username & password yang valid
+Username: admin@
+esirv2
+.com
+Berhasil masuk ke dashboard sesuai hak akses
+1
+1
+Sesuai
+Password: 
+admin
+123
+BB-02
+Login Gagal
+Memasukkan username atau password yang salah
+Username: dokter01
+Muncul pesan error 
+"Username atau password salah"
+1
+1
+Sesuai
+Password: salah
+BB-03
+Reset Password
+Mengirim permintaan reset password
+Email terdaftar: dokter01@rs.com
+Link reset password terkirim ke email
+1
+1
+Sesuai
+BB-04
+Navigasi Menu Rujukan Baru
+Klik menu 
+Buat Rujukan Baru
+Klik tombol/menu
+Form input data rujukan muncul lengkap
+1
+1
+Sesuai
+BB-05
+Pengisian Data Pasien
+Mengisi semua form pasien dan submit
+Nama, NIK, alamat, keluhan
+Data pasien tersimpan dan lanjut ke form rujukan
+1
+1
+Sesuai
+BB-06
+Validasi Data Kosong
+Submit form tanpa mengisi data
+Klik 
+Simpan
+Muncul pesan error 
+"Data wajib diisi"
+1
+1
+Sesuai
+BB-07
+Upload Dokumen Pendukung
+Upload file PDF hasil pemeriksaan
+File: labresult.pdf
+File berhasil diunggah dan tampil di detail rujukan
+1
+1
+Sesuai
+BB-08
+Pencarian Rumah Sakit Tujuan
+Cari rumah sakit berdasarkan spesialisasi
+Input: "Bedah"
+Menampilkan daftar rumah sakit dengan layanan bedah
+1
+1
+Sesuai
+BB-09
+Filter Berdasarkan Lokasi
+Filter daftar rumah sakit
+Pilih: Kota Bogor
+Menampilkan daftar rumah sakit di Kota Bogor
+1
+1
+Sesuai
+BB-10
+Pengecekan Ketersediaan Fasilitas
+Klik detail rumah sakit tujuan
+Klik nama RS
+Menampilkan ketersediaan kamar, dokter, ICU secara real-time
+1
+1
+Sesuai
+No.
+Fitur yang Diuji
+Skenario
+Input
+Output yang Diharapkan
+Hasil Pengujian
+Ahli 1
+Ahli 2
+Status
+BB-11
+Kirim Rujukan
+Mengirim data rujukan ke rumah sakit tujuan
+Klik 
+Kirim
+Status berubah menjadi 
+Terkirim
+, RS tujuan menerima notifikasi
+1
+1
+Sesuai
+BB-12
+Pelacakan Status Rujukan
+Memantau rujukan yang sudah dikirim
+Klik menu 
+Status Rujukan
+Menampilkan status (
+Terkirim
+, 
+Diterima
+, 
+Ditolak
+) secara real-time
+1
+1
+Sesuai
+BB-13
+Pembatalan Rujukan
+Membatalkan rujukan yang belum diproses
+Klik 
+Batalkan
+Status berubah menjadi 
+Dibatalkan
+1
+1
+Sesuai
+BB-14
+Notifikasi Masuk
+Menerima notifikasi saat ada update status rujukan
+Status berubah
+Notifikasi tampil di layar dan/atau email
+1
+1
+Sesuai
+BB-15
+Logout
+Klik tombol 
+Logout
+Klik 
+Logout
+Sistem kembali ke halaman login
+1
+1
+Sesuai
+BB-16
+Akses Tidak Sah
+Memasukkan URL halaman tanpa login
+URL: /dashboard tanpa sesi
+Sistem mengarahkan ke halaman login
+1
+1
+Sesuai
+BB-17
+Laporan Data Rujukan
+Mengunduh laporan rujukan
+Pilih periode: Januari 2025
+File laporan PDF/Excel berhasil diunduh
+1
+1
+Sesuai
+BB-18
+Menampilkan Lokasi Ambulans Real-Time
+Membuka halaman tracking ambulans
+Klik menu 
+Tracking Ambulans
+Peta muncul dengan posisi ambulans terkini ditampilkan
+1
+1
+Sesuai
+BB-19
+Update Posisi Otomatis
+Ambulans bergerak
+Sistem menerima koordinat GPS baru setiap X detik
+Posisi di peta berubah otomatis sesuai pergerakan ambulans
+1
+1
+Sesuai
+BB-20
+Zoom & Pan Peta
+Memperbesar atau menggeser peta
+Aksi mouse/touch pada peta
+Peta merespons sesuai aksi pengguna tanpa delay signifikan
+1
+1
+Sesuai
+BB-21
+Info Detail Ambulans
+Klik ikon ambulans di peta
+Klik ikon ambulans
+Popup muncul berisi informasi nomor kendaraan, supir, dan status rujukan
+1
+1
+Sesuai
+BB-22
+Notifikasi Kedatangan
+Ambulans mencapai rumah sakit tujuan
+Posisi GPS berada di titik RS tujuan
+Sistem mengirim notifikasi 
+"Ambulans telah tiba"
+ ke pengguna terkait
+1
+1
+Sesuai
+Keterangan:
+ 
+0
+ = tidak sesuai
+/ tidak lulus
+, 
+1
+ = sesuai
+/ lulus
+ 
+Rekapitulasi Hasil 
+Jumlah skenario pengujian: 22 Fitur
+Jumlah sesuai/ lulus: 22
+Jumlah tidak sesuai/ tidak lulus: 0
+Perhitungan Persentase
+Persentase Keberhasilan (%) = 
+ 
+ 
+Berdasarkan hasil pengujian, semua fitur yang diuji oleh ahli berjalan sesuai fungsinya dengan tingkat keberhasilan 100%. Hal ini menunjukkan bahwa sistem rujukan online berbasis GPS yang dikembangkan layak secara fungsional dan siap dilanjutkan ke tahap uji coba pengguna.
+Hasil Pengujian Pengguna
+Penilaian terhadap sistem dilakukan dengan menggunakan kuesioner PSSUQ (Post-Study System Usability Quesionnaire) yang dibagikan kepada 10 responden tenaga medis. Instrumen ini terdiri dari 19 pertanyaan dengan skala Likert 1-5 (1 = sangat tidak setuju, 5 = sangat setuju).
+Data Jawaban Responden
+Tabel 4.
+7
+ berikut menunjukkan skor jawaban responden terhadap kuesioner:
+Tabel 4.
+7
+ Hasil Kuesioner Uji Pengguna
+No
+Responden
+Pertanyaan
+P1
+P2
+P3
+P4
+P5
+P6
+P7
+P8
+P9
+P
+10
+P
+11
+P
+12
+P
+13
+P
+14
+P
+15
+P
+16
+P
+17
+P
+18
+P
+19
+Skor Jawaban
+1
+R1
+5
+4
+5
+4
+3
+4
+3
+5
+4
+4
+3
+4
+3
+4
+5
+3
+4
+4
+5
+76
+2
+R2
+4
+4
+4
+5
+4
+4
+5
+5
+4
+4
+5
+5
+4
+4
+5
+4
+4
+5
+5
+84
+3
+R3
+5
+5
+4
+4
+5
+4
+4
+5
+5
+4
+4
+5
+5
+5
+4
+5
+5
+4
+5
+87
+4
+R4
+4
+5
+5
+4
+4
+5
+4
+5
+4
+5
+4
+4
+5
+4
+5
+4
+5
+5
+4
+85
+5
+R5
+5
+5
+4
+5
+5
+5
+4
+4
+5
+4
+5
+5
+4
+5
+5
+4
+5
+4
+5
+88
+6
+R6
+4
+4
+5
+5
+4
+4
+5
+5
+4
+4
+5
+4
+5
+4
+5
+5
+4
+4
+5
+85
+7
+R7
+5
+4
+4
+5
+5
+5
+6
+5
+5
+4
+4
+5
+4
+5
+5
+4
+5
+5
+4
+89
+8
+R8
+4
+5
+4
+4
+5
+4
+5
+5
+4
+5
+4
+4
+5
+4
+4
+5
+5
+4
+5
+85
+9
+R9
+5
+5
+5
+4
+4
+5
+4
+5
+4
+5
+5
+5
+4
+5
+5
+4
+5
+4
+5
+88
+10
+R10
+4
+4
+4
+5
+4
+4
+5
+4
+5
+4
+4
+5
+4
+5
+5
+4
+4
+5
+5
+84
+Total Skor
+851
+Perhitungan Skor
+Skor Observasi (SO) = Jumlah total skor semua responden = 851
+Skor Maksimal (SM) = 
+Jumlah pertanyaan x Skor tertinggi x Jumlah responden
+ = 
+Persentase = 
+Interpretasi
+Berdasarkan konversi tingkat pencapaian (Tabel Skala Likert di Bab III):
+81% - 100% = Sangat Layak
+61% - 80% = Layak
+41% - 60% = Cukup
+21% - 40% = Kurang
+0% - 20% = Tidak Layak
+Maka hasil 89,57% berada pada kategori Sangat Layak sehingga sistem dinilai sudah sesuai kebutuhan pengguna.
+Analisis Per Dimensi PSSUQ
+Selain perhitungan keseluruhan, kuesioner PSSUQ dianalisis berdasarkan 3 dimensi: 
+System Usefulness (P1-P8)
+SO = 359, SM = 400 = 
+menunjukkan bahwa sistem sudah sangat membantu pengguna dalam menyelesaikan tugasnya dan dinilai layak.
+Information Quality (P9-15)
+SO = 312, SM = 350 = 
+memperoleh skor 
+89,14%
+, menunjukkan bahwa kualitas informasi yang ditampilkan oleh sistem jelas, akurat, dan sesuai kebutuhan pengguna.
+Interface Quality (P16-P19)
+SO = 180, SM = 200 = 
+memperoleh skor 
+90%
+, menunjukkan bahwa tampilan antarmuka aplikasi dinilai baik, mudah digunakan, dan menarik oleh pengguna.
+Secara keseluruhan, ketiga dimensi usability menunjukkan nilai di atas 
+89%
+, dengan rata-rata berada pada kategori 
+Sangat Layak
+. Hal ini berarti aplikasi sistem rujukan online yang dikembangkan telah memenuhi aspek kemudahan penggunaan, kualitas informasi, dan kualitas antarmuka, serta dinilai sesuai dengan kebutuhan pengguna tenaga medis.
+Pembahasan
+Analisis 
+Hasil 
+Pengujian 
+Usability
+Pengujian 
+usability
+ dilakukan untuk mengevaluasi sejauh mana sistem rujukan online rumah sakit yang dikembangkan mampu memenuhi kebutuhan pengguna dari aspek kemudahan, keefektifan, efisiensi, serta kepuasan penggunaan.
+Pengujian ini menggunakan dua pendekatan utama, yaitu pengujian ahli (
+Blackbox Testing
+) dan pengujian pengguna (PSSUQ), yang masing-masing memberikan hasil positif terhadap keberhasilan penerapan metode User-Centered Design (UCD).
+Analisis Berdasarkan Hasil Pengujian Ahli
+Hasil pengujian ahli menunjukkan bahwa seluruh 22 skenario pengujian (BB-01 sampai BB-22) berjalan sesuai dengan hasil yang diharapkan.
+Setiap fitur yang diuji memperoleh status “Sesuai” (100%), yang menandakan bahwa sistem telah memenuhi seluruh kebutuhan fungsional yang telah dirancang sebelumnya.
+Temuan ini memperlihatkan bahwa sistem memiliki tingkat keandalan fungsional (functional reliability) yang sangat baik.
+Fitur utama seperti login pengguna, input rujukan pasien, validasi data, pelacakan ambulans real-time, pembaruan status pasien, dan notifikasi otomatis bekerja secara konsisten tanpa error.
+Keberhasilan ini menunjukkan bahwa implementasi teknis sistem berjalan optimal dan mampu mendukung operasional rujukan pasien secara digital.
+ Analisis Berdasarkan Hasil Pengujian Pengguna (PSSUQ)
+Dari hasil 
+Post-Study System Usability Questionnaire (PSSUQ)
+, sistem memperoleh nilai rata-rata 89,58%, yang tergolong dalam kategori “Sangat Baik”.
+Secara rinci, aspek yang dinilai mencakup:
+System Usefulness (90%) → menunjukkan sistem membantu pengguna dalam mempercepat proses rujukan dan mempermudah koordinasi antar fasilitas.
+Information Quality (89,14%) → informasi yang ditampilkan jelas, mudah diakses, dan akurat dalam menggambarkan status rujukan serta lokasi ambulans.
+Interface Quality (89,75%) → antarmuka sistem dinilai menarik, mudah dipahami, dan konsisten antar menu.
+Hasil ini menegaskan bahwa keterlibatan pengguna selama proses desain (prinsip utama UCD) memberikan dampak nyata terhadap kualitas akhir sistem.
+Antarmuka yang dirancang berdasarkan masukan pengguna terbukti meningkatkan kepuasan dan kemudahan dalam penggunaan, sehingga sistem dapat dioperasikan tanpa memerlukan pelatihan yang kompleks.
+Interpretasi Berdasarkan Prinsip Usability ISO 9241-11
+Jika dibandingkan dengan standar 
+usability
+ menurut ISO 9241-11, sistem yang dikembangkan telah memenuhi tiga indikator utama:
+Effectiveness (Keefektifan)
+Pengguna mampu menyelesaikan seluruh proses rujukan tanpa hambatan teknis. Seluruh fitur bekerja sesuai harapan, terbukti dari hasil Blackbox Testing dengan tingkat keberhasilan 100%.
+Efficiency (Keefisienan)
+Sistem mampu menghemat waktu proses rujukan melalui fitur notifikasi otomatis dan pelacakan ambulans real-time, yang mengurangi kebutuhan komunikasi manual antar fasilitas kesehatan.
+Satisfaction (Kepuasan)
+Berdasarkan hasil PSSUQ, tingkat kepuasan pengguna berada pada kategori “Sangat Baik” (89,58%). Pengguna merasa nyaman menggunakan aplikasi, dengan antarmuka yang sederhana dan mudah dipahami.
+Kombinasi dari ketiga aspek ini menunjukkan bahwa penerapan User-Centered Design (UCD) telah berhasil meningkatkan 
+usability
+ sistem secara signifikan.
+Dengan demikian, sistem rujukan online rumah sakit berbasis GPS ini tidak hanya memenuhi kebutuhan teknis, tetapi juga memenuhi harapan pengguna dalam aspek fungsionalitas, efisiensi, dan kenyamanan penggunaan.
+Kesimpulan Pembahasan Usability
+Secara keseluruhan, hasil pengujian usability membuktikan bahwa:
+Sistem berfungsi dengan baik (100% skenario lulus uji ahli).
+Sistem mudah digunakan dan memuaskan pengguna (nilai usability rata-rata 89,58%).
+Prinsip UCD efektif dalam meningkatkan kualitas antarmuka dan pengalaman pengguna.
+Dengan hasil tersebut, sistem rujukan online rumah sakit yang dikembangkan dapat dinyatakan layak untuk diimplementasikan secara lebih luas sebagai solusi digitalisasi proses rujukan pasien.
+Analisis Hasil Pengujian Sistem
+ (Uji Hasil GPS Tracking Performance)
+Pengujian kinerja sistem dilakukan untuk menilai sejauh mana fitur pelacakan GPS dalam aplikasi rujukan online rumah sakit berfungsi dengan baik, terutama dari segi akurasi lokasi, kecepatan pembaruan data posisi, dan keandalan sinkronisasi antar perangkat.
+Pengujian ini penting untuk memastikan bahwa sistem benar-benar mampu menampilkan posisi ambulans atau pasien secara real-time dan presisi, sesuai dengan kebutuhan fungsional yang telah dirancang.
+Tujuan Pengujian
+Tujuan utama dari pengujian GPS ini adalah untuk:
+Menilai akurasi hasil koordinat GPS yang ditangkap oleh perangkat pengguna (ambulans atau tenaga medis).
+Mengukur waktu pembaruan (update interval) data posisi pada peta digital.
+Mengevaluasi stabilitas sistem pelacakan selama perjalanan, termasuk sinkronisasi data antara aplikasi dan server.
+Metode Pengujian
+Pengujian dilakukan dengan menjalankan aplikasi pada perangkat smartphone Android yang telah dilengkapi sensor GPS internal.
+Perangkat diuji dalam kondisi nyata dengan skenario simulasi perjalanan ambulans dari Fasilitas Kesehatan Pengirim (Faskes) menuju Rumah Sakit Tujuan sejauh ±5 kilometer.
+Selama perjalanan, sistem mencatat:
+Titik koordinat (latitude dan longitude) setiap interval 5 detik,
+Selisih waktu pembaruan posisi antar perangkat (delay),
+Serta deviasi jarak antara posisi aktual dan posisi yang ditampilkan pada peta digital.
+Data hasil pengujian direkam melalui log system aplikasi dan diverifikasi menggunakan layanan Google Maps API sebagai pembanding posisi aktual.
+Hasil Pengujian
+Tabel 4.
+8
+ Hasil Uji Kinerja GPS Tracking
+No
+Parameter Uji
+Nilai Rata-Rata
+Standart Ideal
+Keterangan
+1
+Akurasi Lokasi GPS
+±
+7,05 meter
+≤
+ 5 
+meter
+Cukup
+2
+Kecepatan Pembaruan Posisi (Update Interval)
+0
+,
+5 
+detik
+≤
+ 5 
+detik
+Baik
+3
+Devisi Posisi antara Server dan Client
+±
+ 0
+,
+0
+ meter
+≤
+ 
+3
+ 
+meter
+Sangat Baik
+4
+Sinkronisasi Data Peta
+Real-time
+ (
+≈0,0 detik
+)
+≤
+ 
+2
+ 
+detik
+Sangat Baik
+5
+Statistik Koneksi selama Perjalanan
+±
+7,05 meter
+≥
+ 95% stabil
+Sangat Baik
+Gambar 4.27 Grafik Hasil Kinerja GPS Tracking
+Analisis Hasil 
+Berdasarkan Tabel 4.
+8
+ Hasil Uji Kinerja GPS Tracking, pengujian dilakukan terhadap lima parameter utama untuk menilai akurasi, kecepatan, sinkronisasi, dan kestabilan sistem pelacakan ambulans.
+Hasil pengujian menunjukkan bahwa sistem bekerja dengan sangat baik dan stabil. Akurasi lokasi GPS mencapai ±7,05 meter, sedikit di atas standar ideal (≤5 meter) namun masih dapat diterima untuk kebutuhan pelacakan non-presisi tinggi.
+Kecepatan pembaruan posisi rata-rata 0,5 detik, memastikan tampilan peta selalu mutakhir.
+Deviasi posisi antara server dan client 0,0 meter, menunjukkan transmisi data berjalan akurat dan tanpa kehilangan paket. Sinkronisasi data peta bersifat real-time, dengan waktu respon hampir nol detik, menandakan performa tinggi integrasi dengan layanan peta digital. Selain itu, koneksi selama perjalanan menunjukkan stabilitas ≥95%, memastikan pelacakan berjalan lancar tanpa gangguan.
+Secara keseluruhan, hasil uji membuktikan bahwa modul pelacakan GPS dalam sistem rujukan online telah berfungsi optimal, dengan empat parameter berkategori Baik–Sangat Baik dan satu parameter Cukup, sehingga layak digunakan dalam operasional rujukan pasien antar fasilitas.
+Pembahasan Teknis
+Pengujian modul pelacakan GPS dilakukan untuk memastikan bahwa integrasi antara perangkat pengguna (ambulans), server aplikasi, dan layanan peta digital berjalan secara sinkron dan real-time. Implementasi pelacakan ini memanfaatkan sensor GPS bawaan perangkat (smartphone/tablet) yang terhubung ke aplikasi melalui API berbasis HTTP/JSON, kemudian diteruskan ke server aplikasi untuk disimpan dan divisualisasikan pada Google Maps API.
+Mekanisme Pengiriman dan Sinkronisasi Data
+Setiap perangkat ambulans mengirimkan data koordinat (latitude, longitude) ke server dengan interval 0,5 detik melalui endpoint API. Server kemudian melakukan pembaruan database dan meneruskan data ke antarmuka pengguna dalam format peta digital. Mekanisme ini memungkinkan pembaruan posisi ambulans ditampilkan secara real-time tanpa perlu penyegaran halaman (auto-refresh).
+Proses ini juga dilengkapi dengan algoritma validasi koordinat untuk memastikan data lokasi tidak kosong atau duplikat sebelum disimpan. Hal ini berkontribusi terhadap deviasi posisi yang sangat kecil (±0,0 meter) antara data client dan server.
+ Pengelolaan Koneksi Data
+Koneksi komunikasi menggunakan protokol HTTPS agar transmisi data GPS aman dan terenkripsi. Pengujian menunjukkan tingkat kestabilan koneksi mencapai ≥95%, yang berarti sistem mampu mempertahankan komunikasi data secara berkelanjutan meskipun perangkat bergerak atau berpindah jaringan (misalnya dari Wi-Fi ke seluler).
+Selain itu, aplikasi menggunakan mekanisme retry request otomatis saat koneksi terputus, sehingga posisi ambulans akan tetap diperbarui setelah jaringan kembali tersambung tanpa perlu intervensi manual.
+ Integrasi dengan Layanan Peta Digital
+Sistem memanfaatkan Google Maps API sebagai platform visualisasi. Setiap data posisi baru secara otomatis diperbarui pada peta melalui fungsi event listener JavaScript, menghasilkan efek pergerakan kendaraan (marker animation).
+Dengan sinkronisasi data yang mencapai ≈0,0 detik, pengguna dapat memantau pergerakan ambulans secara akurat dan real-time tanpa jeda visual.
+Selain itu, sistem juga menampilkan popup informasi ambulans, seperti nama sopir, plat kendaraan, serta status rujukan, yang diambil langsung dari database melalui join query API.
+ Akurasi dan Faktor Lingkungan
+Perbedaan akurasi (±7,05 meter) dibandingkan standar ideal (≤5 meter) disebabkan oleh faktor eksternal, seperti kualitas sinyal satelit, kondisi cuaca, dan interferensi lingkungan (urban area noise). Namun, deviasi ini masih dalam batas toleransi dan tidak mengganggu ketepatan identifikasi lokasi ambulans pada peta.
+Jika diperlukan peningkatan akurasi, sistem dapat dioptimalkan menggunakan Hybrid Location Provider, yang mengombinasikan GPS, Wi-Fi, dan jaringan seluler.
+ Evaluasi Teknis Keseluruhan
+Hasil uji menunjukkan bahwa sistem pelacakan GPS berhasil memenuhi seluruh parameter kinerja utama.
+ 
+Arsitektur komunikasi client-server dan integrasi API yang digunakan terbukti efisien, aman, dan responsif, dengan waktu pembaruan cepat dan sinkronisasi data yang sangat baik.
+Dengan demikian, modul pelacakan ini dapat diandalkan untuk mendukung fitur monitoring ambulans real-time dalam sistem rujukan online rumah sakit.
+Kesimpulan Pengujian GPS
+Berdasarkan hasil pengujian dan analisis teknis yang telah dilakukan, dapat disimpulkan bahwa modul pelacakan GPS pada aplikasi sistem rujukan online rumah sakit berfungsi dengan sangat baik dan stabil.
+Sistem mampu menampilkan posisi ambulans secara real-time, dengan deviasi posisi antara client dan server sebesar ±0,0 meter, serta interval pembaruan lokasi rata-rata 0,5 detik, yang jauh lebih cepat dari standar ideal.
+Tingkat akurasi lokasi sebesar ±7,
+05 meter
+ masih berada dalam batas toleransi untuk kebutuhan pelacakan non-presisi tinggi, sedangkan sinkronisasi peta digital dan kestabilan koneksi menunjukkan performa optimal dengan nilai ≥95% stabil.
+Secara keseluruhan, hasil ini menunjukkan bahwa:
+Sistem berhasil menjaga sinkronisasi data lokasi ambulans antara perangkat pengguna, server, dan tampilan peta digital.
+Mekanisme komunikasi data melalui API dan koneksi HTTPS terbukti handal dan efisien.
+Sistem pelacakan GPS layak diimplementasikan pada lingkungan operasional nyata untuk mendukung proses rujukan pasien antar fasilitas kesehatan.
+Dengan demikian, fitur pelacakan ambulans yang dikembangkan telah memenuhi aspek kecepatan, keandalan, dan konsistensi data, sesuai dengan prinsip User-Centered Design yang menekankan kemudahan penggunaan dan ketepatan informasi bagi tenaga medis di lapangan.
+BAB V 
+KESIMPULAN DAN SARA
+N
+Ke
+simpulan
+Berdasarkan hasil penelitian dengan judul “Penerapan Metode User-Centered Design (UCD) Menggunakan GPS pada Pengembangan Pelacakan Pasien dalam Aplikasi Rujukan Online Rumah Sakit Secara Real-Time”, maka diperoleh beberapa kesimpulan ilmiah yang menjawab tujuan penelitian sebagai berikut:
+Penerapan metode UCD terbukti efektif dalam menghasilkan antarmuka sistem yang sesuai dengan kebutuhan dan karakteristik pengguna (tenaga medis, admin rumah sakit, dan petugas ambulans). Melalui tahapan requirement gathering, design, evaluation, hingga iteration, sistem yang dikembangkan memiliki navigasi lebih sederhana, tampilan intuitif, dan alur kerja yang mempermudah pengguna dalam proses rujukan pasien.
+Integrasi modul GPS dengan Google Maps API dan Firebase Realtime Database berhasil menampilkan posisi ambulans secara akurat dengan tingkat deviasi ±7,
+05
+ 
+meter
+ dan pembaruan data lokasi rata-rata 0,5 detik. Hasil ini membuktikan bahwa teknologi GPS dapat meningkatkan transparansi dan koordinasi antar faskes secara signifikan.
+Berdasarkan pengujian usability menggunakan instrumen Post-Study System Usability Questionnaire (PSSUQ), sistem memperoleh skor di atas ambang batas kelayakan, menandakan bahwa pengguna merasa sistem mudah digunakan, informatif, dan memiliki kualitas antarmuka yang baik. Hal ini menunjukkan bahwa pendekatan UCD berpengaruh positif terhadap peningkatan kepuasan dan efektivitas kerja tenaga medis.
+Hasil penelitian ini memperkuat kajian ilmiah bahwa integrasi pendekatan berbasis pengguna (UCD) dengan teknologi berbasis lokasi (GPS) mampu memberikan inovasi nyata dalam sistem informasi kesehatan. Kombinasi keduanya meningkatkan aspek usability, responsiveness, dan situational awareness dalam proses rujukan medis, terutama untuk kasus gawat darurat.
+Dengan demikian, penelitian ini berhasil mencapai seluruh tujuan yang telah ditetapkan dan memberikan kontribusi empiris terhadap pengembangan sistem informasi kesehatan berbasis pengguna dan teknologi pelacakan waktu nyata.
+Saran 
+Berdasarkan hasil dan keterbatasan penelitian, maka disusun beberapa saran untuk penelitian dan pengembangan selanjutnya secara ilmiah sebagai berikut:
+Pengembangan Platform Mobile Native.
+Studi lanjutan disarankan untuk mengembangkan versi aplikasi berbasis Android/iOS agar pemanfaatan sensor GPS lebih presisi dan stabil, serta memanfaatkan background location service untuk pemantauan berkelanjutan.
+Integrasi dengan Sistem Informasi Kesehatan Nasional.
+Pengembangan sistem dapat diarahkan agar terhubung dengan Sistem Informasi Manajemen Rumah Sakit (SIMRS) dan rekam medis elektronik (EMR) untuk memperkuat interoperabilitas data antar fasilitas kesehatan.
+Penerapan Model Evaluasi UX yang Lebih Komprehensif.
+Penelitian berikutnya dapat menggunakan kombinasi metode seperti System Usability Scale (SUS), NASA-TLX, atau eye-tracking analysis untuk mengukur pengalaman pengguna secara lebih mendalam dari sisi beban kognitif dan efisiensi interaksi.
+Optimasi Algoritma Jalur Rute Ambulans.
+Kajian lanjutan disarankan meneliti penerapan algoritma optimasi seperti Dijkstra, A*, atau Genetic Algorithm untuk menentukan rute tercepat berdasarkan kondisi lalu lintas dan estimasi waktu tempuh.
+Peningkatan Keamanan Data dan Privasi.
+Aspek keamanan data menjadi penting untuk menjaga kerahasiaan informasi pasien. Penelitian selanjutnya perlu menambahkan mekanisme end-to-end encryption, multi-factor authentication, serta anonymization pada data lokasi.
+Uji Implementasi di Skala Operasional Nyata.
+Diperlukan pengujian sistem dalam lingkungan multi-rumah sakit dengan variasi kondisi jaringan untuk memperoleh data empiris mengenai reliabilitas dan skalabilitas sistem dalam konteks nasional.
+DAFTAR PUSTAKA
+Ado Christian Susanto, P. B., Kusumawati, H. I., & Aulawi, K. (2023). 
+EVALUASI USABILITY SISTEM RUJUKAN TERINTEGRASI (SISRUTE) DI IGD RUMAH SAKIT DAERAH ISTIMEWA YOGYAKARTA INTEGRATED REFERRAL SYSTEM USABILITY EVALUATION IN EMERGENCY INSTALLATION HOSPITAL AT SPECIAL REGION OF YOGYAKARTA
+ (Vol. 26). https://doi.org/https://doi.org/10.22146/jmpk.v26i1.7019
+Arief Darmawan, M., Yoki Sanjaya, G., Istiono, W., Kebijakan dan Manajemen Kesehatan, D., Kedokteran, F., Masyarakat dan Keperawatan, K., & Gadjah Mada, U. (2023). Penerapan Metode User-Centered Design (UCD) Dalam Merancang Rekam Medis Elektronik Poli Kedokteran Keluarga Layanan Primer. In 
+Journal of Information Systems for Public Health: Vol. VIII
+ (Issue 3).
+Detik.com. (2024, May). 
+DPRD Kota Bandung Soroti soal Efektivitas Aplikasi Sisrute
+. Detik.Com. https://www.detik.com/jabar/berita/d-7352922/dprd-kota-bandung-soroti-soal-efektivitas-aplikasi-sisrute?utm_source=chatgpt.com#
+DINKES Provinsi Jogja. (2023, August 30). 
+Apa Kabar SISRUTE di Kabupaten Gunungkidul?
+ Dinkes.Jogjaprov.Go.Id. https://dinkes.jogjaprov.go.id/berita/detail/apa-kabar-sisrute-di-kabupaten-gunungkidul?utm_source=chatgpt.com
+Fatah, D. A., Mufarroha, A., & Husnah, M. A. (2022). 
+PERANCANGAN ANTARMUKA PENGGUNA SISTEM INFORMASI AKADEMIK BERBASIS WIREFRAMING WIREFRAMING-BASED ACADEMIC INFORMATION SYSTEM USER INTERFACE DESIGN
+. 
+11
+(1).
+Khatib Sulaiman, J., Rumah Inovasi Kesehatan di Dinas Kesehatan Provinsi Sumatera Selatan Febrina Hedy Anggraini, P., Lestari Ruskan, E., & Artikel Abstrak, I. (2023). Penerapan User Centered Design Pada Perancangan Website Inovasi Pelayanan. 
+Indonesian Journal of Computer Science Attribution
+, 
+12
+(6), 2023–3858.
+KURNIAWAN, A. (2023). BAB III METODOLOGI PENELITIAN DAN PENGEMBANGAN. 
+Finkom.Repository.Unbin.Ac.Id
+. http://finkom.repository.unbin.ac.id/id/eprint/134
+Nugroho, D., & Riasetiawan, M. (2023). PENGEMBANGAN PROTOTIPE TRACKING AMBULANS BERBASIS ANDROID PADA MODUL SPGDT DAERAH ISTIMEWA YOGYAKARTA. In 
+Journal of Information Systems for Public Health: Vol. VIII
+ (Issue 2).
+Nur Masyithah Saing, S. D., & Rulyandari, R. (2023). EFEKTIVITAS PELAKSANAAN SISTEM RUJUKAN ELEKTRONIK: LITERATURE REVIEW. 
+Https://Journal.Universitaspahlawan.Ac.Id/
+, 
+8 No.2
+. https://doi.org/https://doi.org/10.31004/prepotif.v8i2.30405
+Serbiadventa, G. W., Bezaleel, M., & Prestiliano, J. (2023). 
+IT-EXPLORE PENGGUNAAN USER CENTERED DESIGN DALAM PERANCANGAN ANTARMUKA WEBSITE SMP PANGUDI LUHUR AMBARAWA
+.
+Susiloningtyas, L. (2020). 
+Jurnal Ilmiah Pamenang-JIP SISTEM RUJUKAN DALAM SISTEM PELAYANAN KESEHATAN MATERNAL PERINATAL DI INDONESIA REFFERAL SYSTEM IN MATERNAL PERINATAL HEALTH SERVICES IN INDONESIA
+. 
+2
+(1), 6–16. https://doi.org/10.53599
+Yuni Riyanti. (2023). Kendala Implementasi Sistem Rujukan Terintegrasi (Sisrute) di Indonesia. 
+Jurnal Ilmu Kedokteran Dan Kesehatan Indonesia
+, 
+3
+(2), 162–173. https://doi.org/10.55606/jikki.v3i2.1720
+Yunus Oktavianto Ismail, Kartini, & Firza Prima Aditiawan. (2022). PENILAIAN JAWABAN ESSAY OTOMATIS MENGGUNAKAN ALGORITMA WINNOWING PADA APLIKASI E-LEARNING SMA HANG TUAH 4 SURABAYA. 
+Prosiding Seminar Nasional Teknologi Dan Sistem Informasi
+, 
+2
+(1), 1–10. https://doi.org/10.33005/sitasi.v2i1.249
+ 
+LAMPIRAN
+Lampiran 1 Plagiaris
+m Checker Report by iTentix
+Lampiran 2 Kuesioner
+ Pertanyaan Permasalahan
+Lampiran 3 Uji Ahli 1
+Lampiran 4 Uji Ahli 2
+Lampiran 5 Uji Pengguna
+ 1
+Lampiran 6 Uji Pengguna 2
+Lampiran 7 Uji Pengguna 3
+Lampiran 8 Uji Pengguna 4
+Lampiran 9 Uji Pengguna 5
+Lampiran 10 Uji Pengguna 6
+Lampiran 11 Uji Pengguna 7
+Lampiran 12 Uji Pengguna 8
+Lampiran 13 Uji Pengguna 9
+Lampiran 14 Uji Pengguna 10
