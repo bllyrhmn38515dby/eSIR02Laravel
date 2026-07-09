@@ -138,7 +138,12 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-primary fw-bold" href="{{ route('internal-testing.index') }}">
-                                    <i class="bi bi-shield-check"></i> Uji Internal
+                                    <i class="bi bi-shield-check"></i> Uji Internal (Live)
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-info fw-bold" href="{{ route('uat-sandbox.index') }}">
+                                    <i class="bi bi-file-earmark-check"></i> UAT Sandbox
                                 </a>
                             </li>
                             @endif
@@ -178,26 +183,44 @@
                         @auth
                         <li class="nav-item dropdown me-3">
                             <a id="navbarDropdownNotif" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                🔔 <span class="badge bg-danger">{{ auth()->user()->unreadNotifications->count() ?: '' }}</span>
+                                🔔 <span class="badge bg-danger rounded-pill">{{ auth()->user()->unreadNotifications->count() ?: '' }}</span>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownNotif">
-                                @forelse(auth()->user()->unreadNotifications as $notification)
-                                    <a class="dropdown-item text-wrap" style="width: 300px; border-bottom: 1px solid #eee;" href="#">
-                                        <small class="text-muted">{{ $notification->created_at->diffForHumans() }}</small><br>
-                                        {{ $notification->data['message'] }}
-                                    </a>
-                                @empty
-                                    <a class="dropdown-item text-muted" href="#">Tidak ada notifikasi baru</a>
-                                @endforelse
+                            <div class="dropdown-menu dropdown-menu-end p-0 border-0 shadow" aria-labelledby="navbarDropdownNotif" style="width: 320px; border-radius: 12px; overflow: hidden;">
+                                <div class="bg-primary text-white p-3 d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0 fw-bold"><i class="bi bi-bell-fill me-2"></i>Notifikasi</h6>
+                                    @if(auth()->user()->unreadNotifications->count() > 0)
+                                        <span class="badge bg-light text-primary rounded-pill">{{ auth()->user()->unreadNotifications->count() }} Baru</span>
+                                    @endif
+                                </div>
+                                <div class="list-group list-group-flush" style="max-height: 350px; overflow-y: auto;">
+                                    @forelse(auth()->user()->unreadNotifications as $notification)
+                                        @php
+                                            $url = isset($notification->data['url']) ? $notification->data['url'] : (isset($notification->data['referral_id']) ? route('referrals.edit', $notification->data['referral_id']) : '#');
+                                        @endphp
+                                        <a href="{{ $url }}" class="list-group-item list-group-item-action p-3 border-bottom {{ $notification->read_at ? '' : 'bg-light' }}">
+                                            <div class="d-flex w-100 justify-content-between align-items-center mb-1">
+                                                <small class="text-primary fw-bold">Pembaruan Status</small>
+                                                <small class="text-muted" style="font-size: 0.75rem;">{{ $notification->created_at->diffForHumans() }}</small>
+                                            </div>
+                                            <p class="mb-0 text-dark small">{{ $notification->data['message'] ?? 'Ada pembaruan status rujukan.' }}</p>
+                                        </a>
+                                    @empty
+                                        <div class="p-4 text-center text-muted">
+                                            <i class="bi bi-bell-slash fs-2 d-block mb-2 text-secondary opacity-50"></i>
+                                            <small>Tidak ada notifikasi baru</small>
+                                        </div>
+                                    @endforelse
+                                </div>
                                 @if(auth()->user()->unreadNotifications->count() > 0)
-                                    <div class="dropdown-divider"></div>
-                                    <form action="{{ route('notifications.mark-all-read') }}" method="POST" class="px-2">
-                                        @csrf
-                                        <button type="submit" class="btn btn-sm btn-outline-primary w-100 rounded-pill">
-                                            Tandai Semua Dibaca
-                                        </button>
-                                    </form>
+                                    <div class="p-2 bg-light border-top text-center">
+                                        <form action="{{ route('notifications.mark-all-read') }}" method="POST" class="m-0">
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-link text-decoration-none w-100 text-primary fw-bold py-2">
+                                                <i class="bi bi-check2-all me-1"></i> Tandai Semua Dibaca
+                                            </button>
+                                        </form>
+                                    </div>
                                 @endif
                             </div>
                         </li>
@@ -300,6 +323,12 @@
                 if (window.Echo) {
                     window.Echo.private('App.Models.User.{{ auth()->id() }}')
                         .notification((notification) => {
+                            // Mainkan suara notifikasi
+                            const audio = document.getElementById('notification-sound');
+                            if(audio) {
+                                audio.play().catch(e => console.log('Audio autoplay blocked by browser', e));
+                            }
+
                             // Cetuskan Push Notification OS Native
                             if ("Notification" in window && Notification.permission === "granted") {
                                 const pushInfo = new Notification(notification.title || "Peringatan Darurat eSIR", {

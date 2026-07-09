@@ -12,7 +12,23 @@ class TrackingController extends Controller
     public function show(Referral $referral)
     {
         $referral->load('trackingPoints', 'patient', 'toFaskes', 'fromFaskes', 'ambulance');
-        return view('tracking.show', compact('referral'));
+        $isAssignedDriver = auth()->user()->role === 'driver' && $referral->driver_id === auth()->id();
+        return view('tracking.show', compact('referral', 'isAssignedDriver'));
+    }
+
+    public function latestPosition(Referral $referral)
+    {
+        $latest = $referral->trackingPoints()->latest('recorded_at')->first();
+        if (!$latest) {
+            return response()->json(['found' => false]);
+        }
+        return response()->json([
+            'found'     => true,
+            'lat'       => $latest->latitude,
+            'lng'       => $latest->longitude,
+            'heading'   => $latest->heading ?? null,
+            'recorded_at' => $latest->recorded_at,
+        ]);
     }
 
     public function updateLocation(Request $request, Referral $referral)
@@ -25,16 +41,18 @@ class TrackingController extends Controller
         $request->validate([
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
+            'heading' => 'nullable|numeric',
         ]);
 
         $point = TrackingPoint::create([
             'referral_id' => $referral->id,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
+            'latitude'    => $request->latitude,
+            'longitude'   => $request->longitude,
+            'heading'     => $request->heading,
             'recorded_at' => now(),
         ]);
 
-        broadcast(new AmbulanceLocationUpdated($referral, $request->latitude, $request->longitude))->toOthers();
+        broadcast(new AmbulanceLocationUpdated($referral, $request->latitude, $request->longitude, $request->heading))->toOthers();
 
         return response()->json(['success' => true, 'point' => $point]);
     }

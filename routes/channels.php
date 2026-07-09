@@ -17,7 +17,7 @@ Broadcast::channel('referral.{id}', function ($user, $id) {
     }
 
     // Driver yang bertugas
-    if ($user->role === 'driver' && $referral->ambulance && $referral->ambulance->driver_id === $user->id) {
+    if ($user->role === 'driver' && $referral->driver_id === $user->id) {
         return ['id' => $user->id, 'name' => $user->name, 'role' => $user->role];
     }
 

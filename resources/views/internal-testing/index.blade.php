@@ -209,13 +209,13 @@ body { font-family: 'Inter', sans-serif; }
                     </button>
                 </div>
                 <span style="font-size:0.72rem; color:rgba(255,255,255,0.35); font-family:'JetBrains Mono',monospace;">
-                    5 skenario &nbsp;|&nbsp; Laravel {{ app()->version() }}
+                    6 skenario &nbsp;|&nbsp; Laravel {{ app()->version() }}
                 </span>
             </div>
         </div>
         <div class="hero-progress-wrap">
             <div class="hero-progress-bar"><div class="hero-progress-fill" id="progress-fill"></div></div>
-            <span class="hero-progress-label" id="progress-label">0 / 5</span>
+            <span class="hero-progress-label" id="progress-label">0 / 6</span>
         </div>
     </div>
 
@@ -228,6 +228,7 @@ body { font-family: 'Inter', sans-serif; }
             ['id'=>'db_sync',    'n'=>'03', 'name'=>'Sinkronisasi Data Database',        'desc'=>'Koneksi MySQL, jumlah record, integritas relasi data'],
             ['id'=>'responsive', 'n'=>'04', 'name'=>'Responsivitas Antarmuka (UI)',      'desc'=>'Keberadaan view kritis, Bootstrap 5, dan Leaflet.js'],
             ['id'=>'gps',        'n'=>'05', 'name'=>'GPS Real-time (WebSocket Reverb)',  'desc'=>'Konfigurasi Reverb, event class, dan TCP ping port'],
+            ['id'=>'gps_perf',   'n'=>'06', 'name'=>'Kinerja GPS Tracking (Stress Test)', 'desc'=>'Uji latensi pengiriman 50 titik koordinat secara simultan'],
         ];
         @endphp
 
@@ -316,7 +317,7 @@ body { font-family: 'Inter', sans-serif; }
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-const TESTS = ['auth', 'form', 'db_sync', 'responsive', 'gps'];
+const TESTS = ['auth', 'form', 'db_sync', 'responsive', 'gps', 'gps_perf'];
 const CSRF  = document.querySelector('meta[name="csrf-token"]').content;
 
 // Store results dynamically for Targeted Re-run & Chart
@@ -356,7 +357,7 @@ function setState(id, state, ms = 0) {
     step.className = 'step-num ' + state;
 
     if (state === 'idle') {
-        step.textContent = { auth:'01', form:'02', db_sync:'03', responsive:'04', gps:'05' }[id];
+        step.textContent = { auth:'01', form:'02', db_sync:'03', responsive:'04', gps:'05', gps_perf:'06' }[id];
         badge.className  = 'dur-badge dur-idle';
         badge.textContent = 'pending';
     } else if (state === 'running') {
@@ -416,7 +417,7 @@ function setTbStatus(state) {
 
 // ── Run single test function ──
 async function runTestLogic(testId) {
-    const names = { auth: 'Autentikasi & Hak Akses', form: 'Validasi Form & Auto-save', db_sync: 'Sinkronisasi Database', responsive: 'Responsivitas UI', gps: 'GPS Real-time (WebSocket)' };
+    const names = { auth: 'Autentikasi & Hak Akses', form: 'Validasi Form & Auto-save', db_sync: 'Sinkronisasi Database', responsive: 'Responsivitas UI', gps: 'GPS Real-time (WebSocket)', gps_perf: 'Kinerja GPS Tracking' };
     
     setState(testId, 'running');
     logSep();

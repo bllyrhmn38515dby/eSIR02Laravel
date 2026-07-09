@@ -23,6 +23,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/internal-testing', [App\Http\Controllers\InternalTestController::class, 'index'])->name('internal-testing.index');
         Route::post('/internal-testing/run', [App\Http\Controllers\InternalTestController::class, 'run'])->name('internal-testing.run');
         Route::post('/internal-testing/pdf', [App\Http\Controllers\InternalTestController::class, 'exportPdf'])->name('internal-testing.pdf');
+        
+        // UAT Sandbox Interactive
+        Route::get('/uat-sandbox', [App\Http\Controllers\UatSandboxController::class, 'index'])->name('uat-sandbox.index');
+        Route::post('/uat-sandbox/login', [App\Http\Controllers\UatSandboxController::class, 'mockLogin'])->name('uat-sandbox.login');
     });
 
     // Admin Pusat & Admin Faskes
@@ -30,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:admin_pusat,admin_faskes,driver'])->group(function () {
         Route::post('/referrals/{referral}/start-trip', [App\Http\Controllers\ReferralController::class, 'startTrip'])->name('referrals.start-trip');
         Route::get('/tracking/{referral}', [App\Http\Controllers\TrackingController::class, 'show'])->name('tracking.show');
+        Route::get('/tracking/{referral}/latest', [App\Http\Controllers\TrackingController::class, 'latestPosition'])->name('tracking.latest');
         Route::post('/tracking/{referral}/location', [App\Http\Controllers\TrackingController::class, 'updateLocation'])->name('tracking.location.update');
         Route::post('/referrals/{referral}/chat', [\App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
         Route::get('/documents/{document}/download', [App\Http\Controllers\DocumentController::class, 'download'])->name('documents.download');
@@ -41,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('patients', App\Http\Controllers\PatientController::class);
         Route::resource('bed-capacities', App\Http\Controllers\BedCapacityController::class);
         Route::resource('ambulances', App\Http\Controllers\AmbulanceController::class);
+        Route::get('/referrals/export', [App\Http\Controllers\ReferralController::class, 'exportCsv'])->name('referrals.export');
         Route::resource('referrals', App\Http\Controllers\ReferralController::class);
         Route::resource('drivers', App\Http\Controllers\DriverController::class);
         

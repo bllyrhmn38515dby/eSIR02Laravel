@@ -13,6 +13,7 @@ class TrackingPoint extends Model
         'referral_id',
         'latitude',
         'longitude',
+        'heading',
         'recorded_at',
     ];
 

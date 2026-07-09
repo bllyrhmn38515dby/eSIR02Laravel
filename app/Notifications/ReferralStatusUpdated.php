@@ -32,6 +32,7 @@ class ReferralStatusUpdated extends Notification implements ShouldBroadcast
             'referral_number' => $this->referral->referral_number,
             'status' => $this->referral->status,
             'message' => "Rujukan {$this->referral->referral_number} statusnya menjadi: " . strtoupper($this->referral->status),
+            'url' => route('referrals.edit', $this->referral->id),
         ];
     }
 

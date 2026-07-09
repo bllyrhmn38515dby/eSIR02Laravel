@@ -44,6 +44,18 @@
         animation: slideIn 0.3s ease-out;
     }
     @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+    /* Ambulance divIcon: hapus border/background default Leaflet */
+    .ambulance-marker-wrapper {
+        background: none !important;
+        border: none !important;
+    }
+    .ambulance-icon-img {
+        display: block;
+        transform-origin: center center;
+        transition: transform 0.6s ease;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+    }
 </style>
 @endpush
 
@@ -142,12 +154,18 @@
             maxNativeZoom: 19 
         }).addTo(map);
 
-        // Ikon Custom Mobil Ambulans
-        var ambulanceIcon = L.icon({
-            iconUrl: 'https://cdn-icons-png.flaticon.com/512/2966/2966327.png',
-            iconSize: [45, 45],
-            iconAnchor: [22, 22]
-        });
+        // Ikon Custom Mobil Ambulans — pakai divIcon agar bisa di-rotate via CSS
+        function createAmbulanceIcon(bearing) {
+            bearing = bearing || 0;
+            return L.divIcon({
+                className: 'ambulance-marker-wrapper',
+                html: `<img src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png"
+                            class="ambulance-icon-img"
+                            style="width:45px;height:45px;transform:rotate(${bearing}deg);" />`,
+                iconSize: [45, 45],
+                iconAnchor: [22, 22]
+            });
+        }
 
         // Setup Routing
         const destLat = {{ $referral->toFaskes->latitude }};
@@ -169,9 +187,12 @@
             createMarker: function() { return null; } // Jangan buat marker baru dari routing
         }).addTo(map);
 
+        let currentRouteCoords = []; // Array untuk menyimpan titik rute (untuk Snap-to-Road)
+
         routingControl.on('routesfound', function(e) {
             const routes = e.routes;
             const summary = routes[0].summary;
+            currentRouteCoords = routes[0].coordinates; // Simpan koordinat rute
             
             const infoBox = document.getElementById('route-info');
             infoBox.classList.remove('d-none');
@@ -180,8 +201,29 @@
             document.getElementById('eta-time').textContent = Math.round(summary.totalTime / 60) + ' Menit';
         });
 
+        // --- SNAP TO ROAD (Koreksi GPS Inakurasi ke Garis Rute) ---
+        function snapToRoute(lat, lng) {
+            if (!currentRouteCoords || currentRouteCoords.length === 0) return [lat, lng];
+            
+            let closest = [lat, lng];
+            let minDistance = Infinity;
+            const p = L.latLng(lat, lng);
+
+            for (let i = 0; i < currentRouteCoords.length; i++) {
+                const routePt = currentRouteCoords[i];
+                const d = p.distanceTo(routePt);
+                // Hanya memaku (snap) ke rute jika jaraknya kurang dari 60 meter
+                // Jika melenceng jauh (> 60m), biarkan saja (kemungkinan supir mengambil jalur alternatif)
+                if (d < minDistance && d < 60) {
+                    minDistance = d;
+                    closest = [routePt.lat, routePt.lng];
+                }
+            }
+            return closest;
+        }
+
         // Gambar Ikon Ambulans dan Garis Jejak (Breadcrumb)
-        let marker = L.marker(lastLocation, {icon: ambulanceIcon}).addTo(map);
+        let marker = L.marker(lastLocation, {icon: createAmbulanceIcon(0)}).addTo(map);
         let polyline = L.polyline(initialPoints, {color: '#f72585', weight: 3, opacity: 0.5, dashArray: '5, 10' }).addTo(map);
 
         // State Kontrol Kamera
@@ -204,19 +246,118 @@
             }, 4000);
         }
 
-        function updateMarkerAndPolyline(lat, lng) {
-            let newPoint = [lat, lng];
-            marker.setLatLng(newPoint);
-            polyline.addLatLng(newPoint);
+        // --- BEARING CALCULATOR (Hitung sudut arah gerak) ---
+        function calculateBearing(fromLat, fromLng, toLat, toLng) {
+            const dLng  = (toLng - fromLng) * Math.PI / 180;
+            const lat1  = fromLat * Math.PI / 180;
+            const lat2  = toLat   * Math.PI / 180;
+            const y     = Math.sin(dLng) * Math.cos(lat2);
+            const x     = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLng);
+            return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+        }
+
+        // --- SMOOTH MARKER ANIMATION (Interpolasi posisi marker) ---
+        let animationFrameId = null;
+
+        function animateMarkerTo(fromLatLng, toLatLng, durationMs) {
+            durationMs = durationMs || 1500;
+            // Batalkan frame animasi sebelumnya agar tidak overlap
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+            const startTime = performance.now();
+            const startLat  = fromLatLng[0], startLng = fromLatLng[1];
+            const endLat    = toLatLng[0],   endLng   = toLatLng[1];
+
+            function step(now) {
+                const elapsed = now - startTime;
+                // Ease-in-out cubic: gerakan alami, tidak kaku
+                let t = Math.min(elapsed / durationMs, 1);
+                t = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+
+                marker.setLatLng([
+                    startLat + (endLat - startLat) * t,
+                    startLng + (endLng - startLng) * t
+                ]);
+
+                if (t < 1) {
+                    animationFrameId = requestAnimationFrame(step);
+                } else {
+                    animationFrameId = null;
+                }
+            }
+            animationFrameId = requestAnimationFrame(step);
+        }
+
+        // --- THROTTLE OSRM ROUTING (Jangan request tiap GPS update) ---
+        let lastRoutingUpdate  = 0;
+        const ROUTING_THROTTLE = 25000; // Update rute setiap 25 detik saja
+        let currentBearing = 0; // Simpan arah terakhir agar tidak reset saat berhenti
+        let deviceHeading = null; // Menyimpan heading dari sensor kompas HP
+
+        // Fungsi khusus untuk memutar ikon secara instan (tanpa perlu update GPS)
+        function updateLocalRotationOnly(heading) {
+            if (heading === null) return;
+            let diff = heading - (currentBearing % 360);
+            if (diff > 180) diff -= 360;
+            else if (diff < -180) diff += 360;
             
-            // Update Routing waypoints untuk ETA baru
-            routingControl.setWaypoints([
-                L.latLng(lat, lng),
-                L.latLng(destLat, destLng)
-            ]);
+            currentBearing += diff;
+            const markerEl = marker.getElement();
+            if (markerEl) {
+                const img = markerEl.querySelector('img.ambulance-icon-img');
+                if (img) img.style.transform = `rotate(${currentBearing}deg)`;
+            }
+        }
+
+        function updateMarkerAndPolyline(rawLat, rawLng, headingFromServer = null, animDuration = 1500) {
+            // SNAP TO ROAD: Tarik titik koordinat GPS ke jalan raya terdekat
+            const snapped = snapToRoute(rawLat, rawLng);
+            const lat = snapped[0];
+            const lng = snapped[1];
+
+            const from    = marker.getLatLng();
+            const distance = from.distanceTo(L.latLng(lat, lng));
             
+            // Deduplikasi: Abaikan jika koordinat sudah sama (misal dari Websocket Event yang terlambat dibanding Whisper)
+            if (distance < 0.5) return;
+
+            const fromArr = [from.lat, from.lng];
+            const toArr   = [lat, lng];
+
+            let newBearing = null;
+
+            // Prioritas arah rotasi:
+            if (headingFromServer !== null) {
+                newBearing = headingFromServer;
+            } else if (deviceHeading !== null) {
+                newBearing = deviceHeading;
+            } else if (distance > 1) {
+                newBearing = calculateBearing(from.lat, from.lng, lat, lng);
+            }
+
+            if (newBearing !== null) {
+                updateLocalRotationOnly(newBearing);
+            }
+
+            // 3. Animasi smooth movement
+            animateMarkerTo(fromArr, toArr, animDuration);
+
+            // 4. Tambah titik ke polyline jejak GPS
+            polyline.addLatLng(toArr);
+
+            // 5. Throttle OSRM
+            const now = Date.now();
+            if (now - lastRoutingUpdate > ROUTING_THROTTLE) {
+                routingControl.setWaypoints([
+                    L.latLng(lat, lng),
+                    L.latLng(destLat, destLng)
+                ]);
+                lastRoutingUpdate = now;
+            }
+
+            // 6. Ikuti kamera ke posisi ambulans
             if (isFollowing) {
-                map.panTo(newPoint);
+                map.panTo(toArr, { animate: true, duration: (animDuration / 1000) });
             }
         }
 
@@ -235,7 +376,13 @@
         });
 
         // Membuka portal komunikasi WebSocket Presence Channel
-        if(window.Echo) {
+        function initRealtime() {
+            if (!window.Echo) {
+                console.log('⏳ Menunggu modul Echo siap dari Vite...');
+                setTimeout(initRealtime, 200); // Coba lagi dalam 200ms
+                return;
+            }
+
             console.log('📡 Menghubungkan ke Radar Presence eSIR... Channel: referral.{{ $referral->id }}');
             
             window.Echo.join('referral.{{ $referral->id }}')
@@ -244,16 +391,27 @@
                 })
                 .joining((user) => {
                     console.log('User joining:', user.name);
-                    // Tambahkan notifikasi toast jika diperlukan
                 })
                 .leaving((user) => {
                     console.log('User leaving:', user.name);
                 })
-                .listen('AmbulanceLocationUpdated', (e) => {
+                .listenForWhisper('headingUpdate', (e) => {
+                    if (e.heading !== undefined && e.heading !== null) {
+                        updateLocalRotationOnly(e.heading);
+                    }
+                })
+                .listenForWhisper('positionUpdate', (e) => {
+                    if (e.lat !== undefined && e.lng !== undefined) {
+                        const duration = e.duration || 1000;
+                        updateMarkerAndPolyline(parseFloat(e.lat), parseFloat(e.lng), e.heading !== undefined ? e.heading : null, duration);
+                    }
+                })
+                .listen('.AmbulanceLocationUpdated', (e) => {
                     console.log('📍 Sinyal GPS Diterima:', e);
                     const lat = parseFloat(e.latitude);
                     const lng = parseFloat(e.longitude);
-                    updateMarkerAndPolyline(lat, lng);
+                    const heading = e.heading !== null && e.heading !== undefined ? parseFloat(e.heading) : null;
+                    updateMarkerAndPolyline(lat, lng, heading);
                     
                     // Update status di list pengguna jika perlu
                     updateUserLastSeen(e.user_id);
@@ -261,38 +419,8 @@
                 .error((error) => {
                     console.error('WebSocket Error:', error);
                 });
-        }
 
-        function updateOnlineUsers(users) {
-            const list = document.getElementById('online-users');
-            if(!list) return;
-            
-            list.innerHTML = '';
-            users.forEach(user => {
-                const li = document.createElement('li');
-                li.className = 'list-group-item d-flex justify-content-between align-items-center bg-light rounded mb-1 border-0';
-                li.innerHTML = `
-                    <span>
-                        <i class="bi bi-person-circle text-primary"></i> ${user.name} 
-                        <small class="text-muted">(${user.role})</small>
-                    </span>
-                    <span class="badge bg-success p-1"><i class="bi bi-lightning-fill"></i></span>
-                `;
-                li.id = `user-online-${user.id}`;
-                list.appendChild(li);
-            });
-        }
-
-        function updateUserLastSeen(userId) {
-            const el = document.getElementById(`user-online-${userId}`);
-            if(el) {
-                el.classList.add('bg-info-subtle');
-                setTimeout(() => el.classList.remove('bg-info-subtle'), 1000);
-            }
-        }
-
-        // Listen for Chat Messages (Live Consulting) to show Notifications
-        if (window.Echo) {
+            // Listen for Chat Messages (Live Consulting) to show Notifications
             window.Echo.channel('referral.{{ $referral->id }}')
                 .listen('.MessageSent', (e) => {
                     const authUserId = {{ auth()->id() }};
@@ -385,6 +513,84 @@
                     }
                 });
         }
+        
+        // Panggil inisialisasi!
+        initRealtime();
+
+        function updateOnlineUsers(users) {
+            const list = document.getElementById('online-users');
+            if(!list) return;
+            
+            list.innerHTML = '';
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex justify-content-between align-items-center bg-light rounded mb-1 border-0';
+                li.innerHTML = `
+                    <span>
+                        <i class="bi bi-person-circle text-primary"></i> ${user.name} 
+                        <small class="text-muted">(${user.role})</small>
+                    </span>
+                    <span class="badge bg-success p-1"><i class="bi bi-lightning-fill"></i></span>
+                `;
+                li.id = `user-online-${user.id}`;
+                list.appendChild(li);
+            });
+        }
+
+        function updateUserLastSeen(userId) {
+            const el = document.getElementById(`user-online-${userId}`);
+            if(el) {
+                el.classList.add('bg-info-subtle');
+                setTimeout(() => el.classList.remove('bg-info-subtle'), 1000);
+            }
+        }
+
+        // ============================================================
+        // VIEWER MODE: Polling otomatis untuk Faskes / Admin
+        // Mengambil posisi terbaru dari database setiap 2 detik.
+        // Ini adalah fallback utama agar peta SELALU update bahkan
+        // jika WebSocket Whisper gagal terhubung.
+        // ============================================================
+        @if(!$isAssignedDriver)
+        let lastPolledAt = null;
+        let pollingActive = true;
+
+        async function pollLatestPosition() {
+            if (!pollingActive) return;
+
+            try {
+                const res = await fetch('{{ route("tracking.latest", $referral->id) }}', {
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                });
+                const data = await res.json();
+
+                if (data.found) {
+                    // Hanya update jika posisi beda dari sebelumnya
+                    if (data.recorded_at !== lastPolledAt) {
+                        lastPolledAt = data.recorded_at;
+                        updateMarkerAndPolyline(
+                            parseFloat(data.lat),
+                            parseFloat(data.lng),
+                            data.heading ? parseFloat(data.heading) : null,
+                            1800 // animasi 1.8 detik (sedikit di atas interval polling 2 detik agar halus)
+                        );
+                        console.log('📍 Polling update:', data.lat, data.lng);
+                    }
+                }
+            } catch (err) {
+                console.warn('Polling gagal:', err);
+            }
+
+            // Jadwalkan polling berikutnya
+            if (pollingActive) setTimeout(pollLatestPosition, 2000);
+        }
+
+        // Mulai polling segera
+        pollLatestPosition();
+
+        // Hentikan polling saat halaman ditinggalkan
+        window.addEventListener('beforeunload', () => { pollingActive = false; });
+        @endif
 
         // Logic Broadcast untuk Supir (Browser Supir akan agresif mengekstrak GPS Hardware HP)
         @if($isAssignedDriver)
@@ -402,6 +608,33 @@
                     statusBadge.classList.replace('bg-secondary', 'bg-warning');
                     statusBadge.innerHTML = '<span class="spinner-grow spinner-grow-sm me-2"></span> Mencari Sinyal GPS...';
 
+                    // Minta izin orientasi kompas (Device Orientation)
+                    if (window.DeviceOrientationEvent) {
+                        let lastWhisperTime = 0;
+                        window.addEventListener('deviceorientationabsolute', function(event) {
+                            if (event.alpha !== null) deviceHeading = 360 - event.alpha;
+                        }, true);
+                        window.addEventListener('deviceorientation', function(event) {
+                            if (event.webkitCompassHeading) deviceHeading = event.webkitCompassHeading;
+                            else if (event.absolute && event.alpha !== null) deviceHeading = 360 - event.alpha;
+                            
+                            // Putar ikon secara instan di HP supir (real-time tanpa tunggu GPS ping)
+                            if (deviceHeading !== null) {
+                                updateLocalRotationOnly(deviceHeading);
+                                
+                                // Broadcast via Whisper (Client-to-Client) ke Faskes/Admin 
+                                // Di-throttle max 5x per detik (200ms) agar WebSocket server tidak overload
+                                const now = Date.now();
+                                if (window.Echo && (now - lastWhisperTime > 200)) {
+                                    window.Echo.join('referral.{{ $referral->id }}').whisper('headingUpdate', {
+                                        heading: deviceHeading
+                                    });
+                                    lastWhisperTime = now;
+                                }
+                            }
+                        }, true);
+                    }
+
                     // Minta izin lokasi ke HP Supir
                     watchId = navigator.geolocation.watchPosition(function(position) {
                         const lat = position.coords.latitude;
@@ -413,7 +646,24 @@
                             statusBadge.innerHTML = 'Tracker Online (Ping: <span id="sync-count">0</span>x)';
                         }
 
-                        updateMarkerAndPolyline(lat, lng);
+                        const nowTime = Date.now();
+                        let pingDuration = 1500;
+                        if (window.lastGpsTime) {
+                            pingDuration = Math.max(500, Math.min(nowTime - window.lastGpsTime, 3000));
+                        }
+                        window.lastGpsTime = nowTime;
+
+                        updateMarkerAndPolyline(lat, lng, null, pingDuration);
+                        
+                        // Broadcast koordinat langsung via Whisper ke Viewer agar instan (Bypass Server PHP)
+                        if (window.Echo) {
+                            window.Echo.join('referral.{{ $referral->id }}').whisper('positionUpdate', {
+                                lat: lat,
+                                lng: lng,
+                                heading: deviceHeading !== null ? deviceHeading : null,
+                                duration: pingDuration
+                            });
+                        }
                         
                         fetch('{{ route("tracking.location.update", $referral->id) }}', {
                             method: 'POST',
@@ -421,7 +671,11 @@
                                 'Content-Type': 'application/json',
                                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
                             },
-                            body: JSON.stringify({ latitude: lat, longitude: lng })
+                            body: JSON.stringify({ 
+                                latitude: lat, 
+                                longitude: lng, 
+                                heading: deviceHeading !== null ? deviceHeading : (position.coords.heading || null) 
+                            })
                         }).then(res => res.json()).then(data => {
                             count++;
                             document.getElementById('sync-count').textContent = count;
@@ -446,8 +700,8 @@
                         stopTracking();
                     }, { 
                         enableHighAccuracy: true,
-                        timeout: 20000, // Tingkatkan ke 20 detik untuk perangkat mobile yang lambat mendapatkan lock GPS
-                        maximumAge: 10000 // Izinkan penggunaan posisi terakhir jika masih baru (10 detik) untuk stabilitas
+                        timeout: 10000,  // 10 detik sudah cukup untuk mendapatkan lock GPS
+                        maximumAge: 0    // KRITIS: selalu ambil posisi segar dari hardware GPS, JANGAN pakai cache
                     });
                 } else {
                     alert("Aplikasi browser ini tidak mendukun fitur GPS Loc.");
@@ -496,6 +750,8 @@
                         statusBadge.innerHTML = 'Simulator Jalan Raya Aktif...';
                         
                         let step = 0;
+                        let lastSyncTime = 0;
+                        
                         simulationInterval = setInterval(() => {
                             if (step >= points.length) {
                                 clearInterval(simulationInterval);
@@ -505,7 +761,39 @@
                             }
 
                             const [lng, lat] = points[step];
-                            updateLocationOnServer(lat, lng);
+                            const now = Date.now();
+                            
+                            // 1. Update Visual (Sangat Halus, interval 200ms, presisi tinggi di jalur)
+                            const fromArr = [marker.getLatLng().lat, marker.getLatLng().lng];
+                            const toArr = [lat, lng];
+                            
+                            if (fromArr[0] !== lat || fromArr[1] !== lng) {
+                                let diffBearing = calculateBearing(fromArr[0], fromArr[1], lat, lng);
+                                updateLocalRotationOnly(diffBearing);
+                            }
+                            
+                            animateMarkerTo(fromArr, toArr, 200);
+                            polyline.addLatLng(toArr); // Update breadcrumb visual
+                            
+                            if (isFollowing) {
+                                map.panTo(toArr, { animate: true, duration: 0.2 });
+                            }
+                            
+                            // Whisper posisi ke Faskes/Admin (interval 200ms -> Ultra Smooth Simulation!)
+                            if (window.Echo) {
+                                window.Echo.join('referral.{{ $referral->id }}').whisper('positionUpdate', {
+                                    lat: lat,
+                                    lng: lng,
+                                    heading: currentBearing,
+                                    duration: 200
+                                });
+                            }
+
+                            // 2. Sync Server (Hanya tiap 3 detik agar tidak membebani database)
+                            if (now - lastSyncTime >= 3000 || step === points.length - 1) {
+                                updateLocationOnServer(lat, lng, true); // true = skipVisual default
+                                lastSyncTime = now;
+                            }
                             
                             if (step >= points.length - 1) {
                                 clearInterval(simulationInterval);
@@ -523,10 +811,10 @@
                                 return;
                             }
 
-                            // Percepat simulasi: langkahi beberapa titik jika rute terlalu detail (opsional)
-                            step += Math.max(1, Math.floor(points.length / 50)); 
+                            // Maju 2 titik per 200ms (Menyusuri seluruh kurva jalan dengan sempurna)
+                            step += 2; 
                             if (step >= points.length) step = points.length - 1;
-                        }, 2000);
+                        }, 200);
                     }
                 } catch (err) {
                     console.error('Routing Error:', err);
@@ -537,10 +825,16 @@
                 }
             });
 
-            function updateLocationOnServer(lat, lng) {
-                updateMarkerAndPolyline(lat, lng);
+            function updateLocationOnServer(lat, lng, skipVisual = false) {
+                if (!skipVisual) {
+                    updateMarkerAndPolyline(lat, lng);
+                }
                 
-                const payload = { latitude: lat, longitude: lng };
+                const payload = { 
+                    latitude: lat, 
+                    longitude: lng,
+                    heading: deviceHeading !== null ? deviceHeading : null
+                };
                 
                 fetch('{{ route("tracking.location.update", $referral->id) }}', {
                     method: 'POST',

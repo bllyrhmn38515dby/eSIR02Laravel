@@ -17,17 +17,19 @@ class AmbulanceLocationUpdated implements ShouldBroadcast
     public $referral_id;
     public $latitude;
     public $longitude;
+    public $heading;
     public $user_id;
     public $user_name;
 
     /**
      * Create a new event instance.
      */
-    public function __construct($referral, $latitude, $longitude)
+    public function __construct($referral, $latitude, $longitude, $heading = null)
     {
         $this->referral_id = $referral->id;
         $this->latitude = $latitude;
         $this->longitude = $longitude;
+        $this->heading = $heading;
         $this->user_id = auth()->id();
         $this->user_name = auth()->user()->name;
     }
@@ -42,5 +44,10 @@ class AmbulanceLocationUpdated implements ShouldBroadcast
         return [
             new PresenceChannel('referral.' . $this->referral_id),
         ];
+    }
+
+    public function broadcastAs()
+    {
+        return 'AmbulanceLocationUpdated';
     }
 }
