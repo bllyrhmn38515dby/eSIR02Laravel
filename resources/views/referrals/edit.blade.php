@@ -63,6 +63,16 @@
         </div>
     </div>
 
+    @if($referral->status === 'rejected')
+    <div class="alert alert-danger mb-4 d-flex align-items-center rounded-4 shadow-sm animate__animated animate__shakeX">
+        <i class="bi bi-exclamation-triangle-fill fs-3 me-3"></i>
+        <div>
+            <h5 class="alert-heading fw-bold mb-1">Rujukan Ditolak</h5>
+            <p class="mb-0">Faskes tujuan menolak rujukan ini. Silakan pilih Faskes Tujuan Lain untuk merujuk kembali.</p>
+        </div>
+    </div>
+    @endif
+
     <div class="row g-4">
         <!-- Left Column: Patient & Clinical info -->
         <div class="col-lg-4 animate__animated animate__fadeInLeft">
@@ -175,6 +185,22 @@
                                     </select>
                                 </div>
                             </div>
+
+                            @if($referral->status === 'rejected' && auth()->user()->faskes_id === $referral->from_faskes_id)
+                            <div class="col-12">
+                                <label class="form-label fw-bold text-danger small text-uppercase ls-1">Alihkan ke Faskes Lain</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-0"><i class="bi bi-hospital text-danger"></i></span>
+                                    <select name="to_faskes_id" class="form-select border-0 bg-light py-3 fw-bold">
+                                        <option value="{{ $referral->to_faskes_id }}" selected>Tetap (Tidak Dialihkan)</option>
+                                        @foreach($faskesList as $f)
+                                            <option value="{{ $f->id }}">{{ $f->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <small class="text-muted d-block mt-1">Pilih faskes baru dan klik update untuk mengirim ulang (status otomatis menjadi Sent).</small>
+                            </div>
+                            @endif
 
                             <div class="col-md-6">
                                 <label class="form-label fw-bold text-muted small text-uppercase ls-1">Driver Penugasan</label>

@@ -95,13 +95,27 @@
                         </div>
                     </div>
 
+                    <!-- Real-Time Speedometer -->
+                    <div id="speedometer-panel" class="p-3 bg-dark text-white rounded mb-3 border text-center position-relative overflow-hidden d-none" style="transition: background-color 0.5s ease;">
+                        <div class="position-absolute w-100 h-100 start-0 top-0 opacity-25" style="background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px);"></div>
+                        <h6 class="mb-0 text-uppercase fw-bold text-info" style="position: relative; z-index: 2;"><i class="bi bi-speedometer2"></i> Kecepatan</h6>
+                        <div class="display-4 fw-bolder mt-1 mb-0" id="current-speed" style="position: relative; z-index: 2;">
+                            0 <span class="fs-4 text-white-50">km/j</span>
+                        </div>
+                    </div>
+
                     @if($isAssignedDriver)
                         <div class="alert alert-info py-2" style="font-size: 0.9rem;">Anda ditugaskan sebagai supir pada rujukan ini.</div>
                         <button class="btn btn-success w-100 mb-2 py-2 fw-bold shadow-sm" id="btn-start-tracking"><i class="bi bi-broadcast"></i> Mulai Live Sharing GPS</button>
                         <button class="btn btn-danger w-100 d-none mb-2 py-2 fw-bold shadow-sm" id="btn-stop-tracking"><i class="bi bi-stop-circle"></i> Hentikan Sharing Lokasi</button>
                         
-                        <!-- Virtual Simulator for Developer/Testing -->
+                        <!-- Virtual Simulator & Testing Tools -->
                         <div class="mt-2 border-top pt-2">
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" id="toggle-snap-road" checked>
+                                <label class="form-check-label small fw-bold text-dark" for="toggle-snap-road">Magnet Rute (Snap to Road)</label>
+                            </div>
+                            
                             <button class="btn btn-warning btn-sm w-100 rounded-pill mb-2 fw-bold" id="btn-simulate-gps">
                                 🎮 Simulasikan Pergerakan (Virtual)
                             </button>
@@ -203,6 +217,12 @@
 
         // --- SNAP TO ROAD (Koreksi GPS Inakurasi ke Garis Rute) ---
         function snapToRoute(lat, lng) {
+            // Cek toggle magnet jalan
+            const snapToggle = document.getElementById('toggle-snap-road');
+            if (snapToggle && !snapToggle.checked) {
+                return [lat, lng]; // Bypass magnet rute, kembalikan posisi mentah/raw
+            }
+
             if (!currentRouteCoords || currentRouteCoords.length === 0) return [lat, lng];
             
             let closest = [lat, lng];
@@ -256,6 +276,33 @@
             return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
         }
 
+        // --- SPEEDOMETER UI UPDATER ---
+        function updateSpeedometerUI(speedKmph) {
+            const panel = document.getElementById('speedometer-panel');
+            const speedEl = document.getElementById('current-speed');
+            if (panel && speedEl) {
+                panel.classList.remove('d-none');
+                
+                // Hapus warna lama
+                panel.classList.remove('bg-dark', 'bg-success', 'bg-warning', 'bg-danger', 'text-dark', 'text-white');
+                
+                // Set warna sesuai kecepatan
+                let labelClass = 'text-white-50';
+                if (speedKmph > 80) {
+                    panel.classList.add('bg-danger', 'text-white'); // Merah = Ngebut
+                } else if (speedKmph > 40) {
+                    panel.classList.add('bg-warning', 'text-dark'); // Kuning = Sedang
+                    labelClass = 'text-muted'; // menyesuaikan teks jika background terang
+                } else if (speedKmph > 5) {
+                    panel.classList.add('bg-success', 'text-white'); // Hijau = Normal
+                } else {
+                    panel.classList.add('bg-dark', 'text-white'); // Gelap = Pelan/Berhenti
+                }
+
+                speedEl.innerHTML = `${Math.round(speedKmph)} <span class="fs-4 ${labelClass}">km/j</span>`;
+            }
+        }
+
         // --- SMOOTH MARKER ANIMATION (Interpolasi posisi marker) ---
         let animationFrameId = null;
 
@@ -294,6 +341,50 @@
         let currentBearing = 0; // Simpan arah terakhir agar tidak reset saat berhenti
         let deviceHeading = null; // Menyimpan heading dari sensor kompas HP
 
+        // --- EMA SMOOTHER (Exponential Moving Average untuk menghaluskan GPS jitter) ---
+        const EMA_ALPHA = 0.25; // Faktor smoothing: 0.25 = lebih halus, 1.0 = tanpa filter
+        let emaLat = null;
+        let emaLng = null;
+
+        function applyEMA(rawLat, rawLng) {
+            if (emaLat === null || emaLng === null) {
+                // Inisialisasi pertama kali dengan nilai raw
+                emaLat = rawLat;
+                emaLng = rawLng;
+            } else {
+                emaLat = EMA_ALPHA * rawLat + (1 - EMA_ALPHA) * emaLat;
+                emaLng = EMA_ALPHA * rawLng + (1 - EMA_ALPHA) * emaLng;
+            }
+            return [emaLat, emaLng];
+        }
+
+        // --- VELOCITY-BASED SPIKE DETECTOR (Buang koordinat yang tidak realistis secara fisika) ---
+        const MAX_SPEED_MPS = 80; // 80 m/s ≈ 288 km/jam — ambang batas kecepatan maksimum
+        let lastValidTime = null;
+        let lastValidLat  = null;
+        let lastValidLng  = null;
+
+        function isGPSSpike(lat, lng) {
+            if (lastValidLat === null || lastValidLng === null || lastValidTime === null) {
+                return false; // Belum ada referensi sebelumnya, tidak bisa dinilai spike
+            }
+            const dt = (Date.now() - lastValidTime) / 1000; // detik
+            if (dt <= 0) return false;
+            const dist = L.latLng(lastValidLat, lastValidLng).distanceTo(L.latLng(lat, lng)); // meter
+            const speed = dist / dt; // m/s
+            if (speed > MAX_SPEED_MPS) {
+                console.warn(`⚡ GPS Spike terdeteksi! Kecepatan: ${(speed * 3.6).toFixed(1)} km/jam — koordinat dibuang.`);
+                return true;
+            }
+            return false;
+        }
+
+        function recordValidPosition(lat, lng) {
+            lastValidLat  = lat;
+            lastValidLng  = lng;
+            lastValidTime = Date.now();
+        }
+
         // Fungsi khusus untuk memutar ikon secara instan (tanpa perlu update GPS)
         function updateLocalRotationOnly(heading) {
             if (heading === null) return;
@@ -319,7 +410,7 @@
             const distance = from.distanceTo(L.latLng(lat, lng));
             
             // Deduplikasi: Abaikan jika koordinat sudah sama (misal dari Websocket Event yang terlambat dibanding Whisper)
-            if (distance < 0.5) return;
+            if (distance < 10) return;
 
             const fromArr = [from.lat, from.lng];
             const toArr   = [lat, lng];
@@ -403,7 +494,14 @@
                 .listenForWhisper('positionUpdate', (e) => {
                     if (e.lat !== undefined && e.lng !== undefined) {
                         const duration = e.duration || 1000;
-                        updateMarkerAndPolyline(parseFloat(e.lat), parseFloat(e.lng), e.heading !== undefined ? e.heading : null, duration);
+                        // [GPS ANTI-JITTER] Haluskan koordinat dari Whisper sebelum ditampilkan ke Viewer
+                        const [smoothLat, smoothLng] = applyEMA(parseFloat(e.lat), parseFloat(e.lng));
+                        updateMarkerAndPolyline(smoothLat, smoothLng, e.heading !== undefined ? e.heading : null, duration);
+                        
+                        // Update Speedometer untuk Viewer
+                        if (e.speed !== undefined) {
+                            updateSpeedometerUI(parseFloat(e.speed));
+                        }
                     }
                 })
                 .listen('.AmbulanceLocationUpdated', (e) => {
@@ -639,7 +737,35 @@
                     watchId = navigator.geolocation.watchPosition(function(position) {
                         const lat = position.coords.latitude;
                         const lng = position.coords.longitude;
+
+                        // [GPS ANTI-JITTER] 1. Buang koordinat spike yang tidak realistis secara fisika
+                        if (isGPSSpike(lat, lng)) return;
+
+                        // Hitung kecepatan untuk UI
+                        let currentSpeedKmph = 0;
+                        if (position.coords.speed !== null && !isNaN(position.coords.speed)) {
+                            // Jika hardware mendeteksi kecepatan (biasanya m/s)
+                            currentSpeedKmph = position.coords.speed * 3.6;
+                        } else {
+                            // Hitung manual dari selisih jarak & waktu jika hardware tidak menyediakan
+                            if (lastValidLat !== null && lastValidLng !== null && lastValidTime !== null) {
+                                const dt = (Date.now() - lastValidTime) / 1000;
+                                if (dt > 0) {
+                                    const dist = L.latLng(lastValidLat, lastValidLng).distanceTo(L.latLng(lat, lng));
+                                    currentSpeedKmph = (dist / dt) * 3.6;
+                                }
+                            }
+                        }
+
+                        // [GPS ANTI-JITTER] 2. Rekam posisi valid untuk perbandingan berikutnya
+                        recordValidPosition(lat, lng);
+
+                        // [GPS ANTI-JITTER] 3. Haluskan koordinat dengan EMA
+                        const [smoothLat, smoothLng] = applyEMA(lat, lng);
                         
+                        // Update UI Speedometer Lokal
+                        updateSpeedometerUI(currentSpeedKmph);
+
                         // Set ke online jika sudah dapat koordinat pertama
                         if (count === 0) {
                             statusBadge.classList.replace('bg-warning', 'bg-success');
@@ -653,16 +779,42 @@
                         }
                         window.lastGpsTime = nowTime;
 
-                        updateMarkerAndPolyline(lat, lng, null, pingDuration);
-                        
+                        updateMarkerAndPolyline(smoothLat, smoothLng, null, pingDuration);
+
                         // Broadcast koordinat langsung via Whisper ke Viewer agar instan (Bypass Server PHP)
                         if (window.Echo) {
                             window.Echo.join('referral.{{ $referral->id }}').whisper('positionUpdate', {
-                                lat: lat,
-                                lng: lng,
+                                lat: smoothLat,
+                                lng: smoothLng,
                                 heading: deviceHeading !== null ? deviceHeading : null,
+                                speed: currentSpeedKmph,
                                 duration: pingDuration
                             });
+                        }
+                        
+                        // [GEOFENCING] Auto-Arrived jika jarak < 100 meter dari tujuan
+                        const destLatLng = L.latLng(destLat, destLng);
+                        if (L.latLng(lat, lng).distanceTo(destLatLng) <= 100 && !window.hasAutoArrived) {
+                            window.hasAutoArrived = true;
+                            
+                            showToast("📍 Anda telah memasuki radius 100m dari Rumah Sakit Tujuan. Sistem otomatis menyelesaikan navigasi Anda!", "success");
+                            
+                            // Matikan tracker
+                            stopTracking();
+                            statusBadge.classList.remove('bg-warning', 'bg-success', 'bg-secondary');
+                            statusBadge.classList.add('bg-info', 'text-dark', 'fw-bold');
+                            statusBadge.innerHTML = '<i class="bi bi-check-circle-fill"></i> Telah Tiba di Tujuan';
+                            
+                            // Informasikan ke backend
+                            fetch('{{ route("referrals.arrive", $referral->id) }}', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                }
+                            }).catch(err => console.error("Gagal Auto-Arrive", err));
+                            
+                            return; // Stop eksekusi lebih lanjut untuk ping ini
                         }
                         
                         fetch('{{ route("tracking.location.update", $referral->id) }}', {

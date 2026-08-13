@@ -137,25 +137,25 @@
             <!-- Management Tools (Optional/Placeholders for Look) -->
             <div class="row g-3 animate__animated animate__fadeInUp animate__delay-1s">
                 <div class="col-6 col-md-3">
-                    <a href="#" class="card border-0 shadow-sm rounded-4 text-center p-3 text-decoration-none hover-up bg-white">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#comingSoonModal" class="card border-0 shadow-sm rounded-4 text-center p-3 text-decoration-none hover-up bg-white">
                         <i class="bi bi-exclamation-triangle text-danger fs-3 mb-2"></i>
                         <span class="text-dark small fw-bold d-block">Lapor Kendala</span>
                     </a>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a href="#" class="card border-0 shadow-sm rounded-4 text-center p-3 text-decoration-none hover-up bg-white">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#comingSoonModal" class="card border-0 shadow-sm rounded-4 text-center p-3 text-decoration-none hover-up bg-white">
                         <i class="bi bi-fuel-pump text-primary fs-3 mb-2"></i>
                         <span class="text-dark small fw-bold d-block">Lapor Bahan Bakar</span>
                     </a>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a href="#" class="card border-0 shadow-sm rounded-4 text-center p-3 text-decoration-none hover-up bg-white">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#comingSoonModal" class="card border-0 shadow-sm rounded-4 text-center p-3 text-decoration-none hover-up bg-white">
                         <i class="bi bi-chat-dots text-info fs-3 mb-2"></i>
                         <span class="text-dark small fw-bold d-block">Pusat Bantuan</span>
                     </a>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a href="#" class="card border-0 shadow-sm rounded-4 text-center p-3 text-decoration-none hover-up bg-white">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#comingSoonModal" class="card border-0 shadow-sm rounded-4 text-center p-3 text-decoration-none hover-up bg-white">
                         <i class="bi bi-gear text-secondary fs-3 mb-2"></i>
                         <span class="text-dark small fw-bold d-block">Pengaturan</span>
                     </a>
@@ -213,6 +213,20 @@
                 <div class="card-footer bg-white text-center py-3 border-outer-0">
                     <a href="{{ route('referrals.index') }}" class="text-primary fw-bold text-decoration-none small">LIHAT SEMUA RIWAYAT <i class="bi bi-arrow-right"></i></a>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Coming Soon Modal -->
+<div class="modal fade" id="comingSoonModal" tabindex="-1" aria-labelledby="comingSoonModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 text-center p-4">
+            <div class="modal-body">
+                <i class="bi bi-tools text-primary d-block mb-3" style="font-size: 3rem;"></i>
+                <h5 class="fw-bold mb-2">Segera Hadir</h5>
+                <p class="text-muted small mb-4">Fitur ini sedang dalam tahap pengembangan dan akan segera tersedia pada pembaruan berikutnya.</p>
+                <button type="button" class="btn btn-primary rounded-pill px-4" data-bs-dismiss="modal">Mengerti</button>
             </div>
         </div>
     </div>

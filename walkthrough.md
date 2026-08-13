@@ -26,7 +26,27 @@ Berikut adalah ringkasan catatan pengerjaan yang telah diselesaikan untuk proyek
 
 ---
 
-## 📡 Tahap 2: Real-time & Tracking
+## 📡 Tahap 2:## Peningkatan Precision Tracking (16 Juli 2026)
+
+### 1. Filter Anti-Jitter (Exponential Moving Average)
+Koordinat GPS mentah dari browser seringkali "melompat" (jitter) karena akurasi perangkat. Kami mengimplementasikan filter **EMA (Exponential Moving Average)** dengan `Alpha = 0.25`. 
+- **Efek:** Pergerakan marker menjadi jauh lebih stabil dan mulus, mengurangi efek zigzag saat ambulans melaju lurus.
+
+### 2. Velocity-Based Spike Detector
+Jika perangkat GPS tiba-tiba melaporkan koordinat yang berjarak puluhan kilometer dalam 1 detik (GPS Glitch), sistem kini akan memblokir koordinat tersebut.
+- **Logika:** Sistem menghitung kecepatan (jarak / waktu) antara dua titik koordinat. Jika kecepatannya melampaui **80 m/s (288 km/jam)**, titik tersebut dianggap tidak valid (Spike) dan dibuang.
+
+### 3. Real-Time Speedometer (UI & Broadcast)
+Menambahkan panel indikator kecepatan (km/jam) yang dinamis pada antarmuka peta.
+- **Deteksi Hardware:** Menggunakan properti `speed` dari sensor GPS native (jika didukung).
+- **Fallback Hitungan Manual:** Jika perangkat tidak mengirimkan kecepatan, sistem secara otomatis menghitung selisih jarak dan waktu dari titik koordinat sebelumnya.
+- **Status Warna Dinamis:** Warna background panel akan berubah berdasarkan laju kendaraan (Gelap: Pelan, Hijau: Normal >5km/j, Kuning: Sedang >40km/j, Merah: Ngebut >80km/j).
+- **Sinkronisasi Viewer:** Kecepatan ini langsung di-broadcast via Echo Whisper sehingga admin/Faskes yang memantau (Viewer) dapat melihat kecepatan melaju ambulans secara *real-time*.
+
+### 4. Geofencing "Auto-Arrived" (Deteksi Tiba Otomatis)
+Menambahkan logika cerdas yang mengevaluasi jarak sisa antara ambulans dan rumah sakit tujuan pada setiap kedipan (ping) GPS.
+- **Radius 100 Meter:** Jika titik koordinat mendeteksi jarak ambulans kurang dari sama dengan 100 meter dari titik Rumah Sakit Tujuan, sistem akan mencegat proses tracking.
+- **Trigger Otomatis:** Sistem akan secara otomatis mematikan radar GPS, memberikan notifikasi hijau "Telah Tiba di Tujuan" di layar supir, dan menembak API (AJAX) untuk mengubah status Rujukan di backend (MySQL) menjadi `arrived`. Hal ini membebaskan supir dari keharusan meraba-raba layar HP saat baru sampai dan sibuk memindahkan pasien ke IGD.l Reverb)**
 
 ### **Fase 4: Tracking & Real-time (Laravel Reverb)**
 - [x] Setup **Laravel Reverb** sebagai WebSocket server native.

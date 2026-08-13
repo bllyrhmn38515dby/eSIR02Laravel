@@ -54,6 +54,8 @@
             border-bottom: 1px solid var(--glass-border);
             padding: 1rem 0;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 1050;
         }
 
         .navbar-brand {
@@ -127,44 +129,54 @@
                     <ul class="navbar-nav me-auto">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                                <a class="nav-link {{ request()->routeIs('dashboard') ? 'active fw-bold text-primary' : '' }}" href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
-                            @if(auth()->user()->role === 'admin_pusat')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('faskes.index') }}">Faskes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('users.index') }}">Pengguna</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-primary fw-bold" href="{{ route('internal-testing.index') }}">
-                                    <i class="bi bi-shield-check"></i> Uji Internal (Live)
+
+                            @if(in_array(auth()->user()->role, ['admin_pusat', 'admin_faskes']))
+                            <!-- Master Data Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="masterDataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Master Data
                                 </a>
+                                <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="masterDataDropdown">
+                                    @if(auth()->user()->role === 'admin_pusat')
+                                    <li><a class="dropdown-item" href="{{ route('faskes.index') }}"><i class="bi bi-hospital me-2"></i>Faskes</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('users.index') }}"><i class="bi bi-people me-2"></i>Pengguna</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    @endif
+                                    <li><a class="dropdown-item" href="{{ route('patients.index') }}"><i class="bi bi-person-badge me-2"></i>Pasien</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('bed-capacities.index') }}"><i class="bi bi-hospital-bed me-2"></i>Tempat Tidur</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('ambulances.index') }}"><i class="bi bi-truck me-2"></i>Armada Ambulans</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('drivers.index') }}"><i class="bi bi-person-workspace me-2"></i>Sopir</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('referrals.*') ? 'active fw-bold text-primary' : '' }}" href="{{ route('referrals.index') }}">Rujukan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-info fw-bold" href="{{ route('uat-sandbox.index') }}">
-                                    <i class="bi bi-file-earmark-check"></i> UAT Sandbox
-                                </a>
+                                <a class="nav-link {{ request()->routeIs('reports.*') ? 'active fw-bold text-primary' : '' }}" href="{{ route('reports.index') }}">Laporan</a>
                             </li>
                             @endif
-                            @if(in_array(auth()->user()->role, ['admin_pusat', 'admin_faskes']))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('patients.index') }}">Pasien</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('bed-capacities.index') }}">Tempat Tidur</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('ambulances.index') }}">Armada Ambulans</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('drivers.index') }}">Sopir</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('referrals.index') }}">Rujukan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('reports.index') }}">Laporan</a>
+
+                            @if(auth()->user()->role === 'admin_pusat')
+                            <!-- Pengujian Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="testingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Sistem
+                                </a>
+                                <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="testingDropdown">
+                                    <li>
+                                        <a class="dropdown-item text-primary fw-bold" href="{{ route('internal-testing.index') }}">
+                                            <i class="bi bi-shield-check me-2"></i> Uji Internal (Live)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-info fw-bold" href="{{ route('uat-sandbox.index') }}">
+                                            <i class="bi bi-file-earmark-check me-2"></i> UAT Sandbox
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             @endif
                         @endauth

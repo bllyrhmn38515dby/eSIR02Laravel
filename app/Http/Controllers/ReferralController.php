@@ -124,10 +124,11 @@ class ReferralController extends Controller
             'temperature' => $request->temperature,
             'gcs_score' => $request->gcs_score,
             'bed_capacity_id' => $request->bed_capacity_id,
-            'status' => 'draft',
+            'status' => 'sent',
         ]);
 
-        return redirect()->route('referrals.index')->with('success', 'Rujukan berhasil dibuat (Draft).');
+        return redirect()->route('referrals.index')->with('success', 'Rujukan berhasil dibuat dan dikirim ke Faskes Tujuan (Sent).');
+
     }
 
     public function generatePdf(Referral $referral)
@@ -180,7 +181,12 @@ class ReferralController extends Controller
         // Ambil list armada ambulans milik faskes pengirim
         $ambulances = \App\Models\Ambulance::where('faskes_id', $referral->from_faskes_id)->get();
         
-        return view('referrals.edit', compact('referral', 'drivers', 'ambulances'));
+        $faskesList = collect();
+        if ($referral->status === 'rejected' && auth()->user()->faskes_id === $referral->from_faskes_id) {
+            $faskesList = \App\Models\Faskes::where('id', '!=', $referral->from_faskes_id)->where('is_active', true)->get();
+        }
+        
+        return view('referrals.edit', compact('referral', 'drivers', 'ambulances', 'faskesList'));
     }
 
     public function update(Request $request, Referral $referral)
@@ -188,11 +194,13 @@ class ReferralController extends Controller
         $request->validate([
             'status' => 'required|in:draft,sent,accepted,rejected,traveling,arrived,completed,cancelled',
             'driver_id' => 'nullable|exists:users,id',
+            'ambulance_id' => 'nullable|exists:ambulances,id',
+            'to_faskes_id' => 'nullable|exists:faskes,id',
             'notes' => 'nullable|string'
         ]);
         $oldStatus = $referral->status;
         
-        $dataToUpdate = $request->only('status', 'driver_id', 'ambulance_id', 'notes');
+        $dataToUpdate = $request->only('status', 'driver_id', 'ambulance_id', 'to_faskes_id', 'notes');
 
         // Logika Eksekusi Smart Bed Booking (Reservasi Kapasitas) dan Hitung KPI Response Time
         if ($oldStatus !== 'accepted' && $request->status === 'accepted') {
@@ -201,6 +209,19 @@ class ReferralController extends Controller
                 $bed = \App\Models\BedCapacity::find($referral->bed_capacity_id);
                 if ($bed && $bed->available > 0) {
                     $bed->decrement('available');
+                }
+            }
+            // Auto assign driver and ambulance if empty
+            if (empty($dataToUpdate['driver_id']) && empty($referral->driver_id)) {
+                $driver = \App\Models\User::where('faskes_id', $referral->from_faskes_id)->where('role', 'driver')->first();
+                if ($driver) {
+                    $dataToUpdate['driver_id'] = $driver->id;
+                }
+            }
+            if (empty($dataToUpdate['ambulance_id']) && empty($referral->ambulance_id)) {
+                $ambulance = \App\Models\Ambulance::where('faskes_id', $referral->from_faskes_id)->first();
+                if ($ambulance) {
+                    $dataToUpdate['ambulance_id'] = $ambulance->id;
                 }
             }
             // Hitung menit waktu respon sejak Faskes A merubah jadi 'Sent' (Updated At terakhhir)
@@ -215,6 +236,12 @@ class ReferralController extends Controller
                     $bed->increment('available');
                 }
             }
+        }
+
+        // Logic Re-assign to another faskes
+        if ($oldStatus === 'rejected' && $request->filled('to_faskes_id') && $request->to_faskes_id != $referral->to_faskes_id) {
+            $dataToUpdate['status'] = 'sent';
+            $dataToUpdate['bed_capacity_id'] = null; // reset bed booking just in case
         }
 
         $referral->update($dataToUpdate);

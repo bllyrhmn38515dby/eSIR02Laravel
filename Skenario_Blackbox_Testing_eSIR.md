@@ -1,6 +1,6 @@
 # Skenario Blackbox Testing - Aplikasi eSIR 2.1 (Berdasarkan Prioritas)
 
-Dokumen ini memilah 19 skenario pengujian *Blackbox Testing* sebelumnya menjadi 3 tingkat prioritas. Pengujian **Prioritas Tinggi** wajib diprioritaskan karena mewakili alur bisnis inti (*Critical Path*) dari sistem eSIR.
+Dokumen ini memilah 20 skenario pengujian *Blackbox Testing* sebelumnya menjadi 3 tingkat prioritas. Pengujian **Prioritas Tinggi** wajib diprioritaskan karena mewakili alur bisnis inti (*Critical Path*) dari sistem eSIR.
 
 ---
 
@@ -33,12 +33,15 @@ Dokumen ini memilah 19 skenario pengujian *Blackbox Testing* sebelumnya menjadi 
 
 ---
 
-## 🟢 PRIORITAS RENDAH (UI/UX & PENYEMPURNAAN)
-*Skenario ini lebih menitikberatkan pada kenyamanan pengguna dan metrik tampilan yang tidak menghentikan operasional utama jika terjadi sedikit gangguan.*
+## 🟢 PRIORITAS TAMBAHAN (KEAMANAN SESI, EDGE CASES & MANAJEMEN USER)
+*Skenario ini menitikberatkan pada keamanan sesi pengguna, pengujian alur operasional sekunder, serta manajemen pengguna.*
 
 | ID Test | Modul | Skenario Pengujian | Langkah-Langkah Singkat | Hasil yang Diharapkan | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **P3-01** | UI/UX | **Pengujian *Responsiveness* Mobile** | Buka halaman utama dan daftar tugas Driver di layar *smartphone*. | Layout menyesuaikan layar, tabel tidak terpotong, tombol mudah ditekan jari. | |
-| **P3-02** | UI/UX | **Feedback Visual Interaktif** | Mengklik tombol hapus atau ubah status. | Muncul konfirmasi dialog (seperti *SweetAlert*) dan *toast notification* sukses setelahnya. | |
-| **P3-03** | Pelaporan | **Akurasi Metrik Dashboard** | Membandingkan angka "Total Rujukan" di atas layar dengan data aktual tabel. | Jumlah angka yang tampil di kartu metrik sesuai dengan total baris data yang ada. | |
-| **P3-04** | UI/UX | **Navigasi (*Broken Link* Test)** | Menekan semua menu sidebar satu per satu. | Semua link berfungsi dan mengarah ke halaman yang benar (tidak ada error 404). | |
+| **P3-01** | Autentikasi | **Logout & Proteksi Sesi** | User yang sudah login menekan tombol "Logout", lalu mencoba menekan tombol back browser untuk kembali ke halaman sebelumnya. | Sesi berakhir, user diarahkan ke halaman login. Halaman sebelumnya tidak dapat diakses kembali tanpa login ulang. | |
+| **P3-02** | Autentikasi | **Session Timeout Otomatis** | User login, lalu membiarkan sistem tidak aktif melebihi batas waktu sesi (misal 30 menit), kemudian mencoba melakukan aksi. | Sistem otomatis mengakhiri sesi dan me-redirect ke halaman login dengan pesan "Sesi Anda telah berakhir". | |
+| **P3-03** | Manajemen Rujukan | **Edit Rujukan Sebelum Disetujui** | Admin Faskes membuka rujukan berstatus "Menunggu Persetujuan" dan mengubah data pasien atau tujuan faskes, lalu menyimpan perubahan. | Data rujukan berhasil diperbarui. Riwayat perubahan (log) tercatat, dan status tetap "Menunggu Persetujuan". | |
+| **P3-04** | Manajemen Rujukan | **Pembatalan Rujukan oleh Admin Faskes** | Admin Faskes membatalkan rujukan yang masih berstatus "Menunggu Persetujuan" dengan menekan tombol "Batalkan Rujukan" dan mengisi alasan. | Status rujukan berubah menjadi "Dibatalkan". Admin Pusat menerima notifikasi pembatalan. Driver tidak menerima penugasan. | |
+| **P3-05** | Pelacakan | **Driver Menandai Pasien Tiba di Faskes Tujuan** | Driver menekan tombol "Pasien Tiba di Tujuan" setelah sampai di faskes perujuk, sebelum serah terima QR Code dilakukan. | Status rujukan diperbarui menjadi "Tiba di Tujuan". Waktu kedatangan tercatat di sistem. Admin Pusat dan Faskes menerima notifikasi. | |
+| **P3-06** | Manajemen User | **Penambahan Akun Driver Baru oleh Admin Pusat** | Admin Pusat membuka menu Manajemen User, mengisi formulir data driver baru (nama, email, nomor kendaraan) dan menyimpan. | Akun driver berhasil dibuat. Driver menerima email aktivasi. Akun muncul di daftar driver dengan status "Aktif". | |
+| **P3-07** | Pelaporan | **Validasi Laporan dengan Data Kosong (Tanpa Rujukan)** | Admin Pusat memfilter laporan pada rentang tanggal yang tidak memiliki data rujukan sama sekali, lalu mengekspor laporan. | Sistem menampilkan pesan "Tidak ada data untuk periode ini". Tombol Export tetap dapat diklik namun menghasilkan file kosong atau pesan notifikasi. | |

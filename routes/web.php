@@ -27,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
         // UAT Sandbox Interactive
         Route::get('/uat-sandbox', [App\Http\Controllers\UatSandboxController::class, 'index'])->name('uat-sandbox.index');
         Route::post('/uat-sandbox/login', [App\Http\Controllers\UatSandboxController::class, 'mockLogin'])->name('uat-sandbox.login');
+        Route::get('/uat-sandbox/free-tracking', function() {
+            return view('uat-sandbox.free-tracking');
+        })->name('uat-sandbox.free-tracking');
     });
 
     // Admin Pusat & Admin Faskes
